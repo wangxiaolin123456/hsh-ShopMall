@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/head_original_search"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="全部分类"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:background="#bebebe"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/tv_typegood"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="好评排序"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="#bebebe" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="价格排序"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="#bebebe" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="销量排序"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <View
+        android:id="@+id/viewOriginal"
+        android:background="#c8c8c8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <com.example.administrator.merchants.view.MyListView
+        android:id="@+id/aftSearchListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#f2eeee"
+        android:dividerHeight="0.1dp">
+    </com.example.administrator.merchants.view.MyListView>
+</LinearLayout>

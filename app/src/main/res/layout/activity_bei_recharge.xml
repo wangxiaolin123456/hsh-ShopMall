@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_bg_gray_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp"
+                    android:text="购买比例：1元 =1金贝币"
+                    android:textColor="@color/text_black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/all_bg_gray_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/activity_bei_recharge_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/themeColor"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:id="@+id/beibi_cz_one_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="100金贝币"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/beibi_cz_ones_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:text="100元"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <LinearLayout
+                            android:id="@+id/activity_bei_recharge_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/color_e"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:id="@+id/beibi_cz_three_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="300金贝币"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/beibi_cz_threes_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:text="300元"
+                                android:textColor="@color/text_black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <LinearLayout
+                            android:id="@+id/activity_bei_recharge_five"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/color_e"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:id="@+id/beibi_cz_five_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="500金贝币"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/beibi_cz_fives_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:text="500元"
+                                android:textColor="@color/text_black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/activity_bei_recharge_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@color/all_bg_gray_color"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:id="@+id/beibi_cz_two_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="200金贝币"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/beibi_cz_twos_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:text="200元"
+                                android:textColor="@color/text_black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <LinearLayout
+                            android:id="@+id/activity_bei_recharge_four"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@color/all_bg_gray_color"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:id="@+id/beibi_cz_four_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="400金贝币"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/beibi_cz_fours_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:text="400元"
+                                android:textColor="@color/text_black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp" />
+
+                        <LinearLayout
+                            android:id="@+id/activity_bei_recharge_six"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@color/all_bg_gray_color"
+                            android:orientation="vertical"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp">
+
+                            <TextView
+                                android:id="@+id/beibi_cz_six_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:text="600金贝币"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/beibi_cz_sixs_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:text="600元"
+                                android:textColor="@color/text_black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="其他金额："
+                        android:textColor="@color/text_black" />
+
+                    <EditText
+                        android:id="@+id/activity_bei_recharge_know"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入其他金额"
+                        android:inputType="number"
+                        android:textColorHint="@color/all_line_color"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/all_bg_gray_color" />
+
+                <LinearLayout
+                    android:id="@+id/activity_bei_recharge_weixins"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/pay_wechat" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="微信支付"
+                        android:textColor="@color/text_black"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/activity_bei_recharge_weixin"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/item_checkbox_car_false" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/all_bg_gray_color" />
+
+                <LinearLayout
+                    android:id="@+id/activity_bei_recharge_zhifubaos"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/pay_alipay" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="支付宝支付"
+                        android:textColor="@color/text_black"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/activity_bei_recharge_zhifubao"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/item_checkbox_car_false" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/all_bg_gray_color" />
+
+                <LinearLayout
+                    android:id="@+id/activity_bei_recharge_yinlians"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/pay_unionpay" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:text="银联支付"
+                        android:textColor="@color/text_black"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/activity_bei_recharge_yinlian"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/choice" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/activity_bei_recharge_commit"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/dialog_theme"
+                android:gravity="center"
+                android:text="确定充值"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+package com.example.administrator.merchants.loan.activity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseActivity;
+
+/**
+ * 作者：韩宇 on 2017/9/1 0001 14:13
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：查看详情
+ */
+public class AuditDetailsActivity extends BaseActivity{
+    private TextView error,phone;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_audit_details);
+        error= (TextView) findViewById(R.id.error);
+        phone= (TextView) findViewById(R.id.phone);
+        phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(AuditDetailsActivity.this)
+                        .setTitle("提示")
+                        .setMessage("\n\t\t\t\t\t\t\t\t" + phone.getText().toString() + "\n\n" + "\t\t\t\t\t\t\t\t\t\t是否拨打？\n")
+                        .setPositiveButton("拨打", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phone.getText().toString()));
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
+            }
+        });
+    }
+}

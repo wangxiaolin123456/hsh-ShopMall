@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--评论的item-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp">
+        <!--圆角头像-->
+        <com.diy.widget.CircularImage
+            android:id="@+id/iv_ask_head"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            />
+        <!--head_portrait-->
+        <TextView
+            android:id="@+id/tv_ask_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_ask_head"
+            android:paddingLeft="10dp"
+            android:text="王老六"
+            android:textColor="@color/dark_text_color"
+            android:textSize="12sp" />
+
+        <RatingBar
+            android:id="@+id/item_comment_yuan_rating"
+            style="@style/roomRatingBarss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ask_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/iv_ask_head"
+            android:clickable="false"
+            android:focusable="false"
+            android:isIndicator="true"
+            android:max="5"
+            android:numStars="5"
+            android:rating="4.2" />
+
+        <TextView
+            android:id="@+id/tv_ask_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"
+            android:text="2016.08.08 16:18"
+            android:textColor="@color/dark_text_color"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/tv_ask_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="3dp"
+        android:text="管理者与员工亲密度把控？管理者与员工亲密度把控？管理者与员工亲密度把控？管理者与员工亲密度把控管理者与员工亲密度把控？"
+        android:textColor="@color/dark_text_color"
+        android:textSize="14sp" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_ask_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/iv_ask_first"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_ask_second"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="17dp"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_ask_third"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="17dp"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+    <View
+        android:background="#f0f0f2"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"/>
+
+</LinearLayout>

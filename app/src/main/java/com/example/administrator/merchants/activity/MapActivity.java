@@ -1,0 +1,135 @@
+package com.example.administrator.merchants.activity;
+
+import android.os.Bundle;
+import android.widget.Button;
+
+import com.baidu.location.BDLocation;
+import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
+import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.model.LatLng;
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.OnLocationCallback;
+import com.example.administrator.merchants.common.OnLocationController;
+import com.example.administrator.merchants.common.toast.CustomToast;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：百度地图定位
+ */
+public class MapActivity extends BaseActivity implements OnLocationCallback {
+    private OnLocationController controller;
+    private MapView mMapView;
+    private BaiduMap mBaiduMap;
+    private Marker mMarker;
+    private BitmapDescriptor bitmap;
+    private LatLng p1;//测试基站坐标
+    private String longitude;//接收经度
+    private String latitude;//接收纬度
+    private double lon;
+    private double lat;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getApplicationContext());
+        setContentView(R.layout.activity_map);
+        longitude = getIntent().getStringExtra("longitude");//经度
+        latitude = getIntent().getStringExtra("latitude");//纬度
+        lon = Double.parseDouble(longitude);
+        lat = Double.parseDouble(latitude);
+        setTitles("我的定位");
+        init();
+    }
+
+    private void init() {
+        mMapView = (MapView) findViewById(R.id.mv_bs);
+        mBaiduMap = mMapView.getMap();
+        mBaiduMap.setMyLocationEnabled(true);
+
+        MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(14.0f);
+        mBaiduMap.setMapStatus(msu);
+
+        controller = new OnLocationController(this);
+        controller.getLocation(getApplicationContext(), 0);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMapView.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
+        mMapView = null;
+        controller.stopLocationClient();
+        mBaiduMap.setMyLocationEnabled(false);
+        bitmap.recycle();
+    }
+
+    @Override
+    public void onLocationSuccess(BDLocation location) {
+        initMap(location);
+    }
+
+    @Override
+    public void onLocationFailed() {
+        CustomToast.getInstance(this).setMessage("定位失败!");
+    }
+
+    /**
+     * 绘制地图
+     *
+     * @param location 定位信息
+     */
+    private void initMap(BDLocation location) {
+        MyLocationData locData = new MyLocationData.Builder()
+                .accuracy(location.getRadius())
+                        // 此处设置开发者获取到的方向信息，顺时针0-360
+                .direction(100).latitude(location.getLatitude())
+                .longitude(location.getLongitude()).build();
+        mBaiduMap.setMyLocationData(locData);
+        p1 = new LatLng(lat, lon);
+        MapStatus.Builder builder = new MapStatus.Builder();
+        builder.target(p1).zoom(18.0f);
+        mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+        bitmap = BitmapDescriptorFactory
+                .fromResource(R.drawable.icon_map);
+        MarkerOptions ooA = new MarkerOptions().position(p1).icon(bitmap).animateType(MarkerOptions.MarkerAnimateType.grow);
+        mMarker = (Marker) mBaiduMap.addOverlay(ooA);
+        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Button button = new Button(getApplicationContext());
+                button.setBackgroundResource(R.drawable.popup);
+                if (marker == mMarker) {
+                    button.setText("这是基站A");
+                    InfoWindow mInfoWindow = new InfoWindow(button, mMarker.getPosition(), -140);
+                    mBaiduMap.showInfoWindow(mInfoWindow);
+                }
+                return true;
+            }
+        });
+    }
+}

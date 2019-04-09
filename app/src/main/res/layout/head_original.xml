@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/headOriginal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#Ea3541"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/head_back"
+            android:layout_width="26dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:onClick="onBack"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/head_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="原产地采购"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/head_search"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:onClick="onBack"
+            android:src="@drawable/search_white" />
+
+
+        <ImageView
+            android:id="@+id/shop_car_icon"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/shopping_car_white" />
+
+
+    </LinearLayout>
+</LinearLayout>

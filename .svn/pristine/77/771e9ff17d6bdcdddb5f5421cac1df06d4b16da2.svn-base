@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="开户行信息"
+            android:textColor="#2d2d2d"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/activity_bank_card_add_bank_name"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="例：中国建设银行储蓄卡-沈阳分行-于洪支行"
+            android:maxLines="2"
+            android:paddingLeft="3dp"
+            android:text=""
+            android:textColor="#3873B4"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@color/all_bg_gray_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="卡            号"
+            android:textColor="#2d2d2d"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/activity_bank_card_add_bank_card_number"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="20dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="输入卡号"
+            android:inputType="number"
+            android:maxLength="23"
+            android:paddingLeft="3dp"
+            android:singleLine="true"
+            android:textColor="#3873B4"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@color/all_bg_gray_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_address_choose"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="姓            名"
+            android:textColor="#2d2d2d"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/activity_bank_card_add_user_name"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="输入姓名"
+            android:paddingLeft="3dp"
+            android:singleLine="true"
+            android:textColor="#2d2d2d"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@color/all_bg_gray_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="手    机    号"
+            android:textColor="#2D2D2D"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/activity_bank_card_add_bank_phone"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="输入电话号"
+            android:inputType="number"
+            android:maxLength="13"
+            android:paddingLeft="3dp"
+            android:singleLine="true"
+            android:textColor="#2d2d2d"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="@color/all_bg_gray_color" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/activity_bank_card_add_bank_commit"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/dialog_theme"
+        android:text="保存"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

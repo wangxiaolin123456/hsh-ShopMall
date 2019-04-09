@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\me\\app\\build\\intermediates\\res\\merged\\release\\raw\\keep.xml",
+        "source": "D:\\me\\app\\src\\main\\res\\raw\\keep.xml"
+    },
+    {
+        "merged": "D:\\ooo\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\raw\\keep.xml",
+        "source": "D:\\ooo\\Merchants\\app\\src\\main\\res\\raw\\keep.xml"
+    },
+    {
+        "merged": "D:\\android\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\raw\\keep.xml",
+        "source": "D:\\android\\Merchants\\app\\src\\main\\res\\raw\\keep.xml"
+    },
+    {
+        "merged": "F:\\android\\android\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\raw\\keep.xml",
+        "source": "F:\\android\\android\\Merchants\\app\\src\\main\\res\\raw\\keep.xml"
+    },
+    {
+        "merged": "D:\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\raw\\keep.xml",
+        "source": "D:\\Merchants\\app\\src\\main\\res\\raw\\keep.xml"
+    },
+    {
+        "merged": "E:\\texu\\ooo\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\raw\\keep.xml",
+        "source": "E:\\texu\\ooo\\Merchants\\app\\src\\main\\res\\raw\\keep.xml"
+    }
+]

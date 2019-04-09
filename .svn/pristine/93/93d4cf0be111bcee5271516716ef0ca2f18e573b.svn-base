@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <LinearLayout
+        android:id="@+id/ll_address_choose"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="所在地区："
+            android:textColor="#cfcfcf"
+            android:textSize="16sp" />
+
+        <!--<EditText-->
+        <!--android:id="@+id/activity_update_address_address"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@null"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:textColor="#000000"-->
+        <!--android:paddingLeft="3dp"-->
+        <!--android:singleLine="true"-->
+        <!--android:textSize="16sp" />-->
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/shi"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="沈阳"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="市"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/qu"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:background="@drawable/didi"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="区"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#a5a5a5" />
+
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="详细地址："
+            android:textColor="#cfcfcf"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/activity_update_address_str"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:paddingLeft="3dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#a5a5a5" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <Button
+        android:id="@+id/activity_update_address_commit"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/edit_button"
+        android:text="保存"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

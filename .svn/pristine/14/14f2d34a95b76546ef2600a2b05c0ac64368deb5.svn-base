@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<include layout="@layout/head"/>
+
+    <LinearLayout
+        android:background="@drawable/dizhi"
+        android:id="@+id/activity_confirm_order_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginTop="11dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="13dp"
+                android:textSize="13sp"
+                android:id="@+id/per_name"
+                android:text="您还没有添加收货地址！"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="16sp"
+                android:textSize="13sp"
+                android:id="@+id/per_sex"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="17dp"
+                android:textSize="13sp"
+                android:text=""
+                android:id="@+id/per_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="9dp"
+                android:id="@+id/textButton"
+                android:src="@drawable/gotopage"
+                android:layout_marginRight="13dp"
+                android:layout_width="35dp"
+                android:layout_height="11dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginBottom="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="13dp"
+                android:id="@+id/per_address"
+                android:textSize="13sp"
+                android:text="null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="14dp"
+                android:text="null"
+                android:id="@+id/per_address_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:background="#ededed"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <ListView
+        android:descendantFocusability="beforeDescendants"
+        android:id="@+id/activity_confirm_order_list"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:divider="@null">
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/rmb_car_confirm"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="¥"
+            android:textColor="#ed0a0a"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/confirm_zongqianshu"
+            android:layout_marginLeft="6dp"
+            android:textColor="#ed0a0a"
+            android:layout_toRightOf="@+id/rmb_car_confirm"
+            android:gravity="center"
+            android:text="0.00"
+            android:singleLine="true"
+            android:textSize="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/submit_order"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="提交订单"
+            android:background="#ed0a0a"
+            android:layout_width="122dp"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+</LinearLayout>

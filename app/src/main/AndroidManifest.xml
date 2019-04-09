@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.merchants">
+
+    <application
+        android:name=".application.MutualApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false" />
+        <activity
+            android:name=".activity.test.MainActivity"
+            android:label="程序入口"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <!--欢迎页-->
+        <activity
+            android:name=".activity.welcome.WelcomeActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.AboutUsActivity"
+            android:label="关于我们"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AccountStatementDetailsActivity"
+            android:label="对账单明细列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AccumulatedIncomeActivity"
+            android:label="累计收益"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AddressActivity"
+            android:label="添加和修改地址"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BankCardActivity"
+            android:label="添加和修改银行卡"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AddRecruitmentActivity"
+            android:label="添加招聘信息"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BeiBiRecordDetailsActivity"
+            android:label="贝币记录详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AddressListActivity"
+            android:label="地址列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BankCardListActivity"
+            android:label="银行卡列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BalanceActivity"
+            android:label="余额提取"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BeiBiGiveActivity"
+            android:label="贝币赠与"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BeiBiManagementActivity"
+            android:label="贝币管理"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BeiBiRechargeActivity"
+            android:label="贝币充值"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BeiBiRecordActivity"
+            android:label="贝币记录"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CommodityClassificationManagementActivity"
+            android:label="商家商品分类列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CommodityDetailsActivity"
+            android:label="商品详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CommodityManagementListActivity"
+            android:label="单个分类下商品管理列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CommodityPictureUpdateActivity"
+            android:label="商家商品图片修改"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ConfirmOrderActivity"
+            android:label="提交订单"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.EnlargePictureActivity"
+            android:label="图片放大"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EnterpriseDemandActivity"
+            android:label="企业需求"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".activity.EstimatedEarningsActivity"
+            android:label="预估收益"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EstimatedEarningsDetailsActivity"
+            android:label="预估收益详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EvaluateActivity"
+            android:label="确认/评价"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.ForgetPasswordActivity"
+            android:label="忘记登录密码和忘记贝币密码"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HSHStrategyActivity"
+            android:label="互实攻略"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="登录"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MapActivity"
+            android:label="地图定位"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MerchantAddGoodsActivity"
+            android:label="商家新增商品"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MerchantsOrderDetailActivity"
+            android:label="商家订单详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MerchantUpdateGoodsActivity"
+            android:label="商家修改商品"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MessageDetailActivity"
+            android:label="消息详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MonthIncomeActivity"
+            android:label="月收益统计"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyMessageListActivity"
+            android:label="消息列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NoticeDetailsActivity"
+            android:label="公告详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OriginalHomePageActivity"
+            android:label="原产地商品首页"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OriginalOrderDetailActivity"
+            android:label="原产地订单详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OriginalSearchActivity"
+            android:label="原产地商品搜索"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OriginalSearchResultActivity"
+            android:label="原产地搜索出的商品"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.OriginalSecondPageActivity"
+            android:label="原产地二级菜单下商品列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PayOrderActivity"
+            android:label="支付订单"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.RecruitmentManagementActivity"
+            android:label="招聘信息列表"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ServiceActivity"
+            android:label="配套服务"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ServiceDetailsActivity"
+            android:label="配套服务详情"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".activity.ShoppingCarActivity"
+            android:label="购物车"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StatementAccountActivity"
+            android:label="对账单"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StoreAddressUpdateActivity"
+            android:label="店铺地址修改"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StoreInformationManagementActivity"
+            android:label="商家店铺信息管理"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.UpdatePasswordActivity"
+            android:label="修改登录密码和贝币密码"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".scan.CaptureActivity"
+            android:label="扫一扫"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.JinbeiCoinActivity"
+            android:label="贝币记录入口"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BeiBiGrantRecordActivity"
+            android:label="贝币发放记录"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.GoodsDetailsActivity"
+            android:label="商品详情"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.GoodsEvaluateListActivity"
+            android:label="商品评价列表"
+            android:screenOrientation="portrait"/>
+        <!--<activity-->
+        <!--android:name=".loan.activity.LoanMainActivity"-->
+        <!--android:label="贷款程序入口"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait" />-->
+        <!--<activity android:name=".loan.activity.LoanBankCardListActivity"-->
+        <!--android:label="贷款银行卡列表"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait" />-->
+        <!--<activity android:name=".loan.activity.LoanNeedRepaymentListActivity"-->
+        <!--android:label="我要还款列表"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".loan.activity.NeedRepaymentRecordActivity"-->
+        <!--android:label="还款记录"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".loan.activity.DateAuthenticationActivity"-->
+        <!--android:label="资料认证"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".loan.activity.AuditProgressQueryActivity"-->
+        <!--android:label="审核进度查询"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".loan.activity.AuditDetailsActivity"-->
+        <!--android:label="查看审核失败详情"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".loan.activity.LoanMessageListActivity"-->
+        <!--android:label="贷款消息中心列表"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".loan.activity.LoanNeedActivity"-->
+        <!--android:label="我要借款"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+        <!--<activity android:name=".loan.activity.LoanNeedToActivity"-->
+        <!--android:label="借款详情"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"/>-->
+
+        <receiver android:name=".common.NotificationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="notification_cancelled" />
+                <action android:name="notification_clicked" />
+            </intent-filter>
+        </receiver>
+        <!--银联-->
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="银联"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.unionpay.UPPayWapActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="银联"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <!--银联-->
+
+        <!--支付宝-->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:label="支付宝"
+            android:screenOrientation="behind"></activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:label="支付宝"
+            android:screenOrientation="behind"></activity>
+        <!--支付宝-->
+
+        <!--微信的-->
+        <receiver android:name=".common.wechat.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name=".common.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"></activity>
+        <!--微信的-->
+        - <!--  极光-->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle" />
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <!--<action android:name="cn.jpush.android.intent.DaemonService" />-->
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!--  Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <!--  Required SDK核心功能-->
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
+        <!--  User defined.  For test only  用户自定义的广播接收器-->
+        <receiver
+            android:name=".jpush.MeReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!--  接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="3c6e5537958c333aa887a245" />
+        <!--  极光-->
+
+        <!-- 百度地图定位功能-->
+        <!-- 测试key-->
+        <!--<meta-data-->
+        <!--android:name="com.baidu.lbsapi.API_KEY"-->
+        <!--android:value="fQ00KaD9XBuNqqq5k2NnEANXD24AMcuZ" />-->
+        <!-- 正式key-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="1zrLKILwNx3nZV5ajYLGB9uMD7wyxmCB" />
+        <!---->
+        <!--xkIoiVrzKFGwZwg6DYaRdqGZsvpUpBtT-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <!-- 百度地图定位功能-->
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    <uses-permission android:name="com.example.administrator.merchants.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="com.example.administrator.customs.permission.JPUSH_MESSAGE" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.nfc.hce" />
+
+    <permission
+        android:name="com.example.administrator.merchants.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+</manifest>

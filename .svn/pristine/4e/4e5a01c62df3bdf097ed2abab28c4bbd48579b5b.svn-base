@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rel"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/goods_detail_shop_evaluate_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:divider="#d7d7d7"
+            android:dividerHeight="1dp" />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/goods_detail_rel_foot"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="@color/line_color" />
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_marginTop="11dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="37dp">
+                <TextView
+                    android:id="@+id/goods_detail_money_symbols"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="58dp"
+                    android:gravity="center"
+                    android:text="￥"
+                    android:textColor="#B4B4B4" />
+
+                <TextView
+                    android:id="@+id/goods_detail_pay_moneys"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/goods_detail_money_symbols"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="#B4B4B4" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+                <!--总金额：-->
+                <Button
+                    android:id="@+id/goods_detail_confirm_btns"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="#B4B4B4"
+                    android:text="确定"
+                    android:textColor="#FFFFFF"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/goods_detail_jiesuan_btns"
+                    android:layout_width="90dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="#e93441"
+                    android:text="结算"
+                    android:textColor="#FFFFFF"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/rel_goods_details"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ab_user_bk">
+
+                <ImageView
+                    android:id="@+id/goods_detail_image_shoppingCart"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/shoppingcart" />
+
+                <TextView
+                    android:id="@+id/goods_detail_image_buy_nums"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/num_background"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="5sp"
+                    android:visibility="visible" />
+            </RelativeLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                android:layout_alignParentBottom="true"
+                >
+                <com.example.administrator.merchants.view.BadgeView
+                    android:id="@+id/activty_goods_details_tv_count_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:text=""/>
+            </FrameLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/passby"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/head_back"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:onClick="onBack"
+            android:paddingBottom="15dp"
+            android:paddingRight="25dp"
+            android:paddingTop="15dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/head_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/head_button"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

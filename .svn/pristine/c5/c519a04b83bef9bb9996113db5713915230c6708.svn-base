@@ -1,0 +1,73 @@
+package com.example.administrator.merchants.http.show;
+
+/**
+ * 作者：韩宇 on 2017/8/30 0030 15:24
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：我要还款
+ */
+public class NeedRepaymentShowBean {
+    private String money;
+    private String stage;
+    private int stu;
+    private String date;
+    private String needId;
+    private String stuText;
+    private String type;
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setStuText(String stuText) {
+        this.stuText = stuText;
+    }
+
+    public String getStuText() {
+        return stuText;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
+    public int getStu() {
+        return stu;
+    }
+
+    public void setStu(int stu) {
+        this.stu = stu;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getNeedId() {
+        return needId;
+    }
+
+    public void setNeedId(String needId) {
+        this.needId = needId;
+    }
+}

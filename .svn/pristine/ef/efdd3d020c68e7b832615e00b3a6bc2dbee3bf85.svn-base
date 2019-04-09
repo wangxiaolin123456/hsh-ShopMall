@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_merchant_shop_list_rel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/merchant_type_list_name"
+        android:layout_width="103dp"
+        android:layout_height="50dp"
+        android:background="@drawable/item_merchant_menu_list_bg"
+        android:gravity="center"
+        android:text="饭食"
+        android:textColor="@color/text_gray_color"
+        android:textSize="14sp" />
+</RelativeLayout>

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\ooo\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\ooo\\Merchants\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\texu\\ooo\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "E:\\texu\\ooo\\Merchants\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\android\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\android\\Merchants\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\me\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\me\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\Merchants\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\android\\android\\Merchants\\app\\build\\intermediates\\res\\merged\\release\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "F:\\android\\android\\Merchants\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    }
+]

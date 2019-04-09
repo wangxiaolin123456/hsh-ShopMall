@@ -1,0 +1,75 @@
+package com.example.administrator.merchants.http.listener;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.android.volley.Response;
+import com.example.administrator.merchants.activity.ConfirmOrderActivity;
+import com.example.administrator.merchants.activity.PayOrderActivity;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.http.Status;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * 作者：韩宇 on 2017/6/25 0025 16:18
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：提交订单
+ */
+public class ToSubOrderListener implements Response.Listener<JSONObject> {
+    public Context context;
+    private TextView textViewTotal;
+    private String isSilver;
+
+    public ToSubOrderListener(Context context, TextView textViewTotal,String isSilver) {
+        this.context = context;
+        this.textViewTotal = textViewTotal;
+        this.isSilver=isSilver;
+    }
+
+    @Override
+    public void onResponse(JSONObject jsonObject) {
+        Log.e("ppp", jsonObject.toString());
+        if (Status.status(jsonObject)) {
+            //返回成功
+            Intent intent = new Intent(); //toDo 此处放在回调里操作
+            try {
+                intent.putExtra("ordno", jsonObject.getString("ordno"));
+                intent.putExtra("beibiamt", jsonObject.getString("beibiamt"));
+                intent.putExtra("money", textViewTotal.getText().toString());
+                intent.putExtra("mername", MutualApplication.chooseList.get(0).getMername());//默认取第一个商品名称
+                intent.putExtra("merdescr", MutualApplication.chooseList.get(0).getMerdescr());//默认取第一个商品描述
+                intent.putExtra("isSilver", isSilver);
+                intent.setClass(context, PayOrderActivity.class);
+                context.startActivity(intent);
+                ((ConfirmOrderActivity) context).finish();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            //返回失败
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage("无法提交订单!" + "\r\n" + "收货地址为空或备注字数超出限制!");
+            builder.setTitle("提示");
+            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.setNegativeButton("", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.create().show();
+        }
+    }
+}

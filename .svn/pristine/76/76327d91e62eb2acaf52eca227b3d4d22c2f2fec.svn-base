@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ListView
+                android:id="@+id/goodsDetail_listview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:divider="@null" />
+
+            <LinearLayout
+                android:id="@+id/bottom_goods_detail"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/goodsDetail_car_left_down"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff">
+
+                    <ImageView
+                        android:id="@+id/image_goodsDetail_car"
+                        android:layout_width="38dp"
+                        android:layout_height="36dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/shopping_car_gray" />
+
+                    <TextView
+                        android:id="@+id/car_dot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-9dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_toRightOf="@+id/image_goodsDetail_car"
+                        android:background="@drawable/yuan"
+                        android:gravity="center"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:text="0"
+                        android:textColor="#ffffff"
+                        android:textSize="10sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/goodsDetail_joinCar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/dialog_yellow"
+                    android:gravity="center"
+                    android:text="加入购物车"
+                    android:textColor="#ffffff"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/instantBuy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#ea3541"
+                    android:gravity="center"
+                    android:text="立即购买"
+                    android:textColor="#ffffff"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+        <include layout="@layout/loading_gif"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

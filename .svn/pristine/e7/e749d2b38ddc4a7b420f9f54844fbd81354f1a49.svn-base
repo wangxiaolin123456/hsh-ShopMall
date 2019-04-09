@@ -1,0 +1,64 @@
+package com.example.administrator.merchants.http.show;
+
+/**
+ * 作者：韩宇 on 2017/8/30 0030 17:05
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：还款记录
+ */
+public class NeedRepaymentRecordShowBean {
+    private int type;
+    private String date;
+    private String dateAll;
+    private String payType;
+    private String money;
+    private int image;
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDateAll() {
+        return dateAll;
+    }
+
+    public void setDateAll(String dateAll) {
+        this.dateAll = dateAll;
+    }
+
+    public String getPayType() {
+        return payType;
+    }
+
+    public void setPayType(String payType) {
+        this.payType = payType;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+}

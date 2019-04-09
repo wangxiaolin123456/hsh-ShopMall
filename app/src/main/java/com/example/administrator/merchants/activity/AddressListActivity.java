@@ -1,0 +1,218 @@
+package com.example.administrator.merchants.activity;
+
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.adapter.AddressListAdapter;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.DefaultAddressPostBean;
+import com.example.administrator.merchants.http.post.DeleteAddressPostBean;
+import com.example.administrator.merchants.http.post.ListPostBean;
+import com.example.administrator.merchants.http.show.AddressContentShowBean;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/6/21 0021 13:50
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：收货地址列表
+ */
+public class AddressListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener,
+        RefreshLayout.OnLoadListener {
+    private List<AddressContentShowBean> list;
+    private ListView listView;
+    private AddressListAdapter addressListAdapter;
+    private View header;
+    private RefreshLayout swipeLayout;
+    private View footView;
+    public static int s = 0;//是否加载
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_address_list);
+        setTitles("我的收货地址");
+        TextView textView = (TextView) findViewById(R.id.add);
+        textView.setText("添加新地址");
+        textView.setVisibility(View.VISIBLE);
+        list = new ArrayList<>();
+        listView = (ListView) findViewById(R.id.activity_address_list_listView);
+        footView = getLayoutInflater().inflate(R.layout.no_more_date_footview, null);
+        addressListAdapter = new AddressListAdapter(AddressListActivity.this, list);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转添加地址界面
+                Intent intent = new Intent();
+                intent.putExtra("type", "add");
+                intent.setClass(AddressListActivity.this, AddressActivity.class);
+                startActivity(intent);
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //点击设置默认地址
+                if (position <= list.size()) {
+                    defaultAddress(list.get(position - 1).getAddressid(), position);
+                }
+
+            }
+        });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                if (position <= list.size()) {
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(AddressListActivity.this);
+                    builder.setMessage("确认删除吗？");
+                    builder.setTitle("提示");
+                    builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //长按删除地址
+                            deleteAddress(list.get(position - 1).getAddressid(), dialog, position);
+                        }
+                    });
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.create().show();
+                }
+
+                return true;
+            }
+        });
+        initView();//初始化布局
+        setListener();//设置监听
+        swipeLayout.post(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(true);
+            }
+        }));
+
+    }
+
+
+    /**
+     * 初始化布局
+     */
+    @SuppressLint({"InlinedApi", "InflateParams"})
+    private void initView() {
+        header = getLayoutInflater().inflate(R.layout.loding_header, null);
+        swipeLayout = (RefreshLayout) findViewById(R.id.swipe_container);
+        listView.addHeaderView(header);
+
+    }
+
+    /**
+     * 设置监听
+     */
+    private void setListener() {
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+
+    /***
+     * 设置默认地址
+     *
+     * @param id
+     * @param position
+     */
+    public void defaultAddress(String id, final int position) {
+        DefaultAddressPostBean defaultAddressPostBean = new DefaultAddressPostBean();
+        defaultAddressPostBean.setAddressid(id);
+        defaultAddressPostBean.setStoreid(UserInfo.getInstance().getUser(this).getStoreid());
+        Http.defaultAddress(this, defaultAddressPostBean, list, position, addressListAdapter);
+    }
+
+    /***
+     * 删除地址
+     *
+     * @param addressId
+     * @param progressDialog
+     * @param posstion
+     */
+    public void deleteAddress(String addressId, final DialogInterface progressDialog, final int posstion) {
+        DeleteAddressPostBean deleteAddressPostBean = new DeleteAddressPostBean();
+        deleteAddressPostBean.setAddressid(addressId);
+        Http.delectAddress(this, deleteAddressPostBean, list, posstion, addressListAdapter, progressDialog);
+    }
+
+    /***
+     * 获取地址列表
+     *
+     * @param offset
+     * @param limit
+     * @param type
+     */
+    public void getAddressList(String offset, String limit, int type) {
+        ListPostBean listPostBean = new ListPostBean();
+        listPostBean.setStoreid(UserInfo.getInstance().getUser(this).getStoreid());
+        listPostBean.setOffset(offset);
+        listPostBean.setLimit(limit);
+        Http.addressList(AddressListActivity.this, listPostBean, list, type, listView, addressListAdapter, swipeLayout, footView);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MutualApplication.getRequestQueue().cancelAll("addressList7");
+        MutualApplication.getRequestQueue().cancelAll("defaultAddress8");
+        MutualApplication.getRequestQueue().cancelAll("delectAddress9");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onRefresh();//刷新
+    }
+
+    /**
+     * 加载
+     */
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (s == 0 || s == 1) {
+                    s = 2;
+                    getAddressList(list.size() + "", "15", 1);
+                }
+            }
+        }, 1000);
+    }
+
+    /**
+     * 刷新
+     */
+    @Override
+    public void onRefresh() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getAddressList("0", "15", 0);
+            }
+        }, 1000);
+    }
+}

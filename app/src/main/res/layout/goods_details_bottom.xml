@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/llayout_details_bottom"
+    android:background="@color/color_f8"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.example.administrator.merchants.views.v.scroll.ListViewForScrollView
+        android:id="@+id/good_detail_img_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null" />
+
+    <TextView
+        android:id="@+id/zanwu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="该商品暂无图文详情!"
+        android:textColor="@color/color_yellow"
+        android:textSize="15sp"
+        android:visibility="gone" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:layout_toLeftOf="@+id/tv_good_detail_daodi"
+            android:background="@color/text_black" />
+
+        <TextView
+            android:id="@+id/tv_good_detail_daodi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="已经最到底啦!"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/tv_good_detail_daodi"
+            android:background="@color/text_black" />
+    </RelativeLayout>
+</LinearLayout>

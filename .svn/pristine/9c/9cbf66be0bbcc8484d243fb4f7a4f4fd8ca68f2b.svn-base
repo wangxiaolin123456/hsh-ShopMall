@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/head"/>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="库存:"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_marginLeft="5dp"
+            android:hint="请输入"
+            android:id="@+id/edt"
+            android:gravity="center"
+            android:textColorHint="#cfcece"
+            android:background="@null"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/jian"
+            android:text="件"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:background="#ededed"
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_marginTop="98dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/save"
+            android:textColor="#ffffff"
+            android:text="保存"
+            android:textSize="13sp"
+            android:background="@drawable/btn_make_sure"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,257 @@
+package com.example.administrator.merchants.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.GlideTest;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.dialog.DistTimeDialog;
+import com.example.administrator.merchants.dialog.BusinessTimeDialog;
+import com.example.administrator.merchants.dialog.EditDialog;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.StoreIdPostBean;
+import com.example.administrator.merchants.http.post.StoreSetMessagePostBean;
+import com.example.administrator.merchants.common.DateUtils;
+import com.example.administrator.merchants.common.toast.CustomToast;
+
+/**
+ * 作者：韩宇 on 2017/8/5 0005 10:57
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：商家信息管理
+ */
+public class StoreInformationManagementActivity extends BaseActivity {
+    private ToggleButton reserve;//是否支持预定
+    private ToggleButton invoice;//是否支持发票
+    private ToggleButton payAfter;//是否支持货到付款
+    private ToggleButton button_show_status;//是否在消费者版中显示
+    private LinearLayout linearLayoutStoreIntroduction;//商铺简介
+    private LinearLayout linearLayoutStoreAddress;//商铺地址
+    private LinearLayout linearLayoutBusinessTime;//营业时间
+    private LinearLayout deliveryRadius;//配送布局
+    private TextView deliveryRadiusStart, radius;//配送半径
+    private LinearLayout reserveTime;//预定时间
+    private LinearLayout reserveLinearLayout;//预定两个
+    private EditText storeName;//商铺名称
+    private EditText storePhone;//商铺联系电话
+    private TextView textViewStoreIntroduction;//商铺简介
+    private TextView textViewBusinessTimeBegin;//商铺开始营业时间
+    private TextView textViewBusinessTimeEnd;//营业结束时间
+    private EditText textViewOutSideStartPrice;//起送价
+    private EditText textViewOutSidePrice;//配送价
+    private EditText textViewMinFree;//满免配送费达额
+    private TextView textViewReserveTime;//预定时间
+    private LinearLayout out;//外卖
+    private LinearLayout cashOnDelivery;//货到付款 预定没有它
+    public static String city;//地址
+    public static String addressDetail;//详细地址
+    public static boolean stu = false;//是否有配送站
+    public static String showStatus;//该商家是否在消费者版里显示
+    public static String isReserve;//是否支持预定
+    public static String isDist;//是否支持配送
+    private ScrollView scrollView;
+    private ImageView anim;
+    public static int ifOut;//判读时候是外卖
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_information_management);
+        setTitles("商家信息管理");
+        anim = (ImageView) findViewById(R.id.image_loading);
+        GlideTest.imageGif(this, anim);
+        scrollView = (ScrollView) findViewById(R.id.scroll);
+        scrollView.setVisibility(View.GONE);
+        storeName = (EditText) findViewById(R.id.activity_information_management_storename);
+        storePhone = (EditText) findViewById(R.id.activity_information_management_storeaphone);
+        reserve = (ToggleButton) findViewById(R.id.activity_information_management_storeoutside);
+        invoice = (ToggleButton) findViewById(R.id.activity_information_management_storeinvoice);
+        payAfter = (ToggleButton) findViewById(R.id.activity_information_management_store_pay_after);
+        button_show_status = (ToggleButton) findViewById(R.id.button_show_status);
+        linearLayoutStoreIntroduction = (LinearLayout) findViewById(R.id.activity_information_management_store_introduction_update);
+        linearLayoutBusinessTime = (LinearLayout) findViewById(R.id.activity_information_management_store_businesstime);
+        linearLayoutStoreAddress = (LinearLayout) findViewById(R.id.activity_information_management_storeaddressupdate);
+        reserveTime = (LinearLayout) findViewById(R.id.activity_information_management_stor_outside_time_yuding);
+        deliveryRadius = (LinearLayout) findViewById(R.id.activity_information_peisong_r);
+        deliveryRadiusStart = (TextView) findViewById(R.id.activity_information_peisong_begin);
+        radius = (TextView) findViewById(R.id.activity_information_r);
+        reserveLinearLayout = (LinearLayout) findViewById(R.id.yuding_he);
+        textViewReserveTime = (TextView) findViewById(R.id.activity_information_management_storeaoutside_yudingtime);
+        textViewStoreIntroduction = (TextView) findViewById(R.id.activity_information_management_introduction);
+        textViewBusinessTimeBegin = (TextView) findViewById(R.id.activity_information_management_storebusinesstimeshow_begin);
+        textViewBusinessTimeEnd = (TextView) findViewById(R.id.activity_information_management_storebusinesstimeshow_end);
+        textViewOutSideStartPrice = (EditText) findViewById(R.id.activity_information_management_storeoutside_starpriceshow);
+        textViewOutSidePrice = (EditText) findViewById(R.id.activity_information_management_storeoutside_priceshow);
+        textViewMinFree = (EditText) findViewById(R.id.tv_minFree);
+        cashOnDelivery = (LinearLayout) findViewById(R.id.goodhere);
+        out = (LinearLayout) findViewById(R.id.waimai);
+        reserveTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DistTimeDialog distTimeDialog = new DistTimeDialog(StoreInformationManagementActivity.this, textViewReserveTime, "请输入配送时长", "小时");
+                distTimeDialog.show();
+            }
+        });
+        getStoreMessage();
+        Button button = (Button) findViewById(R.id.activity_information_management_store_save);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ("".equals(storeName.getText().toString())) {
+                    CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("店铺名不能为空！");
+                } else if ("".equals(textViewStoreIntroduction.getText().toString())) {
+                    CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("店铺描述不能为空！");
+                } else if (city == null || addressDetail == null) {
+                    CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("店铺所在区和详细地址不能为空！");
+                } else if (storePhone.getText().toString().length() > 11) {
+                    CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("店铺电话格式不对！");
+                } else if ("".equals(textViewBusinessTimeBegin.getText().toString()) || "".equals(textViewBusinessTimeEnd.getText().toString())) {
+                    CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("店铺营业时间必填！");
+                } else if ("0".equals(isDist) && "1".equals(isReserve) && "".equals(textViewReserveTime.getText().toString())) {
+                    CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("预定时间不能为空！");
+                } else { //判断是否是外卖
+                    if (ifOut == 1) {
+                        if ("".equals(textViewOutSideStartPrice.getText().toString())) {
+                            CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("起送价不能为空！");
+                        } else if ("".equals(textViewOutSidePrice.getText().toString())) {
+                            CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("配送价不能为空！");
+                        } else if ("".equals(textViewMinFree.getText().toString())) {
+                            CustomToast.getInstance(StoreInformationManagementActivity.this).setMessage("免费达额不能为空！");
+                        } else {
+                            setStoreMessage();
+                        }
+                    } else if (ifOut == 0) {
+                        setStoreMessage();
+                    }
+                }
+            }
+        });
+        setRules();
+        //店铺简介监听
+        linearLayoutStoreIntroduction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditDialog editDialog = new EditDialog(StoreInformationManagementActivity.this, textViewStoreIntroduction);
+                editDialog.show();
+            }
+        });
+        reserve.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    reserveTime.setVisibility(View.VISIBLE);
+                    isReserve = "1";
+                } else {
+                    reserveTime.setVisibility(View.GONE);
+                    isReserve = "0";
+                }
+            }
+        });
+        button_show_status.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    showStatus = "1";
+                } else {
+                    showStatus = "0";
+                }
+            }
+        });
+        //店铺地址监听
+        linearLayoutStoreAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("yuan_shi", city);
+                intent.putExtra("yuan_add_detail", addressDetail);
+                intent.setClass(StoreInformationManagementActivity.this, StoreAddressUpdateActivity.class);
+                startActivityForResult(intent, 1);//地址添加
+            }
+        });
+        //营业时间监听
+        linearLayoutBusinessTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BusinessTimeDialog businessTimeDialog = new BusinessTimeDialog(StoreInformationManagementActivity.this, textViewBusinessTimeBegin, textViewBusinessTimeEnd);
+                businessTimeDialog.show();
+            }
+        });
+    }
+
+    /**
+     * editText钱数输入规则
+     */
+    public void setRules() {
+        DateUtils.setPricePoint(textViewOutSideStartPrice);
+        DateUtils.setPricePoint(textViewOutSidePrice);
+        DateUtils.setPricePoint(textViewMinFree);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            city = data.getStringExtra("areaname");
+            addressDetail = data.getStringExtra("streetaddr");
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MutualApplication.getRequestQueue().cancelAll("getStoreMessage84");
+        MutualApplication.getRequestQueue().cancelAll("setStoreMessage85");
+    }
+
+    /**
+     * 商家信息详情获取
+     */
+    public void getStoreMessage() {
+        StoreIdPostBean storeIdPostBean = new StoreIdPostBean();
+        storeIdPostBean.setStoreid(UserInfo.getInstance().getUser(this).getStoreid());
+        Http.getStoreMessage(this, storeIdPostBean, deliveryRadiusStart, radius, deliveryRadius, reserve
+                , button_show_status, textViewStoreIntroduction, storePhone, storeName, textViewBusinessTimeBegin
+                , textViewBusinessTimeEnd, invoice, payAfter, out, cashOnDelivery
+                , textViewOutSideStartPrice, textViewOutSidePrice, textViewMinFree, reserveLinearLayout
+                , reserveTime, textViewReserveTime, scrollView, anim);
+    }
+
+    /**
+     * 商家信息修改
+     */
+    public void setStoreMessage() {
+        StoreSetMessagePostBean storeSetMessagePostBean = new StoreSetMessagePostBean();
+        storeSetMessagePostBean.setStoreid(UserInfo.getInstance().getUser(this).getStoreid());
+        storeSetMessagePostBean.setStorename(storeName.getText().toString());
+        storeSetMessagePostBean.setStoredescr(textViewStoreIntroduction.getText().toString());
+        storeSetMessagePostBean.setAreaname(city);
+        storeSetMessagePostBean.setStreetaddr(addressDetail);
+        storeSetMessagePostBean.setContactphone(storePhone.getText().toString());
+        storeSetMessagePostBean.setStu(stu);
+        storeSetMessagePostBean.setDistrange(deliveryRadiusStart.getText().toString() + "." + radius.getText().toString());
+        storeSetMessagePostBean.setIsinvoice(invoice.isChecked());
+        storeSetMessagePostBean.setShowstatus(button_show_status.isChecked());
+        storeSetMessagePostBean.setIsarrivepay(payAfter.isChecked());
+        storeSetMessagePostBean.setOpenbegintime(textViewBusinessTimeBegin.getText().toString());
+        storeSetMessagePostBean.setOpenendtime(textViewBusinessTimeEnd.getText().toString());
+        storeSetMessagePostBean.setIsDist(isDist);
+        storeSetMessagePostBean.setOrdminamt(textViewOutSideStartPrice.getText().toString());
+        storeSetMessagePostBean.setDistamt(textViewOutSidePrice.getText().toString());
+        storeSetMessagePostBean.setDistordamt(textViewMinFree.getText().toString());
+        storeSetMessagePostBean.setIsreserve(isReserve);
+        storeSetMessagePostBean.setReservehours(textViewReserveTime.getText().toString());
+        Http.setStoreMessage(this, storeSetMessagePostBean);
+    }
+}

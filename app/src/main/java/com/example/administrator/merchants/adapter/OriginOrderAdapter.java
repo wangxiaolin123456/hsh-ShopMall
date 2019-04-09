@@ -1,0 +1,193 @@
+package com.example.administrator.merchants.adapter;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.activity.PayOrderActivity;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.SendPostBean;
+import com.example.administrator.merchants.http.show.OriginOrderShowBean;
+
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：原产地订单适配器
+ */
+public class OriginOrderAdapter extends BaseAdapter {
+    private LayoutInflater inflater;
+    public static final int VALUE_ONE = 0;
+    public static final int VALUE_TWO = 1;
+    public static final int VALUE_THREE = 2;
+    public static final int VALUE_FOUR = 3;
+    private Context context;
+    private List<OriginOrderShowBean> myList;
+
+    public OriginOrderAdapter(Context context, List<OriginOrderShowBean> myList) {
+        this.context = context;
+        this.myList = myList;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    @Override
+    public int getCount() {
+        return myList == null ? 0 : myList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return myList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final OriginOrderShowBean originOrderShowBean = myList.get(position);//实例化工具类
+        int type = getItemViewType(position);//获取item类型
+        Holder holder;
+        if (convertView == null) {
+            holder = new Holder();
+            switch (type) {
+                case VALUE_ONE:
+                    //待确认
+                    convertView = inflater.inflate(R.layout.item_origin_order_unfinished, null);
+                    holder.orderId = (TextView) convertView.findViewById(R.id.item_fragment_unfinished_order_id);
+                    holder.orderYes = (TextView) convertView.findViewById(R.id.item_fragment_unfinished_order_yes);
+                    holder.orderImage = (ImageView) convertView.findViewById(R.id.item_fragment_unfinished_order_image);
+                    holder.orderTime = (TextView) convertView.findViewById(R.id.item_fragment_unfinished_order_time);
+                    holder.orderNews = (TextView) convertView.findViewById(R.id.item_fragment_unfinished_order_news);
+                    holder.orderMoney = (TextView) convertView.findViewById(R.id.item_fragment_unfinished_order_money);
+                    break;
+                case VALUE_TWO:
+                    //已完成
+                    convertView = inflater.inflate(R.layout.item_origin_order_finished, null);
+                    holder.orderId = (TextView) convertView.findViewById(R.id.item_fragment_finished_order_id);
+                    holder.orderYes = (TextView) convertView.findViewById(R.id.item_fragment_finished_order_yes);
+                    holder.orderImage = (ImageView) convertView.findViewById(R.id.item_fragment_finished_order_image);
+                    holder.orderTime = (TextView) convertView.findViewById(R.id.item_fragment_finished_order_time);
+                    holder.orderNews = (TextView) convertView.findViewById(R.id.item_fragment_finished_order_news);
+                    holder.orderMoney = (TextView) convertView.findViewById(R.id.item_fragment_finished_order_money);
+                    break;
+                case VALUE_THREE:
+                    //待付款
+                    convertView = inflater.inflate(R.layout.item_origin_order_non_payment, null);
+                    holder.orderId = (TextView) convertView.findViewById(R.id.item_fragment_non_payment_order_id);
+                    holder.orderImage = (ImageView) convertView.findViewById(R.id.item_fragment_non_payment_order_image);
+                    holder.orderTime = (TextView) convertView.findViewById(R.id.item_fragment_non_payment_order_time);
+                    holder.orderNews = (TextView) convertView.findViewById(R.id.item_fragment_non_payment_order_news);
+                    holder.orderMoney = (TextView) convertView.findViewById(R.id.item_fragment_non_payment_order_money);
+                    holder.orderCancel = (TextView) convertView.findViewById(R.id.item_fragment_non_payment_order_cancel);
+                    holder.orderPay = (TextView) convertView.findViewById(R.id.item_fragment_non_payment_order_pay);
+                    break;
+            }
+            convertView.setTag(holder);
+        } else {
+            holder = (Holder) convertView.getTag();
+        }
+        switch (type) {
+            case VALUE_ONE:
+                holder.orderId.setText(originOrderShowBean.getOrderId());
+                Glide.with(context.getApplicationContext()).load(originOrderShowBean.getOrderImage()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.image_loading).into(holder.orderImage);
+                holder.orderTime.setText(originOrderShowBean.getOrderTime());
+                holder.orderNews.setText(originOrderShowBean.getOrderNews());
+                holder.orderMoney.setText("￥" + originOrderShowBean.getOrderMoney());
+                break;
+            case VALUE_TWO:
+                holder.orderId.setText(originOrderShowBean.getOrderId());
+                Glide.with(context.getApplicationContext()).load(originOrderShowBean.getOrderImage()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.image_loading).into(holder.orderImage);
+                holder.orderTime.setText(originOrderShowBean.getOrderTime());
+                holder.orderNews.setText(originOrderShowBean.getOrderNews());
+                holder.orderMoney.setText("￥" + originOrderShowBean.getOrderMoney());
+                break;
+            case VALUE_THREE:
+                holder.orderId.setText(originOrderShowBean.getOrderId());
+                Glide.with(context.getApplicationContext()).load(originOrderShowBean.getOrderImage()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.image_loading).into(holder.orderImage);
+                holder.orderTime.setText(originOrderShowBean.getOrderTime());
+                holder.orderNews.setText(originOrderShowBean.getOrderNews());
+                holder.orderMoney.setText("￥" + originOrderShowBean.getOrderMoney());
+                holder.orderCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(context)
+                                .setMessage("是否确认取消订单？")
+                                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        getCancel(originOrderShowBean.getOrderId());
+                                        myList.remove(position);
+                                        notifyDataSetChanged();
+                                    }
+                                })
+                                .setNegativeButton("取消", null)
+                                .show();
+                    }
+                });
+                holder.orderPay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent();
+                        intent.putExtra("ordno", originOrderShowBean.getOrderId());
+                        intent.putExtra("money", originOrderShowBean.getOrderMoney());
+                        intent.putExtra("mername", myList.get(0).getOrdmername());//toDO 商品名
+                        intent.putExtra("merdescr", myList.get(0).getOrdmername());//toDO 商品名详情跟商品名一样  因为订单拿不到商品详情
+                        intent.putExtra("isSilver", originOrderShowBean.getIsSilver());
+                        intent.setClass(context, PayOrderActivity.class);
+                        context.startActivity(intent);
+
+                    }
+                });
+                break;
+        }
+        return convertView;
+    }
+
+    public int getViewTypeCount() {
+        return 4;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        OriginOrderShowBean activityBean = myList.get(position);
+        int type = activityBean.getType();//获取类型
+        return type;
+    }
+
+    /**
+     * 取消订单
+     *
+     * @param id
+     */
+    public void getCancel(String id) {
+        SendPostBean sendPostBean = new SendPostBean();
+        sendPostBean.setOrdno(id);
+        Http.cancelOrder(context, sendPostBean);
+    }
+
+    class Holder {
+        public TextView orderId;//订单编号
+        public TextView orderYes;//待确认
+        public ImageView orderImage;//商品图片
+        public TextView orderTime;//创建时间
+        public TextView orderNews;//商品名称和数量
+        public TextView orderMoney;//总钱数
+        public TextView orderCancel;//订单取消
+        public TextView orderPay;//立即支付
+    }
+}

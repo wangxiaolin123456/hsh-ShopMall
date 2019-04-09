@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.example.administrator.merchants.common.views.CustomerViewPage
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="175dp" />
+
+    <com.example.administrator.merchants.common.views.MyGridView
+        android:id="@+id/one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="@color/white"
+        android:paddingTop="16dp"
+        android:numColumns="4"
+        android:scrollbars="none"/>
+    <View
+        android:background="@color/color_f7"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+
+</LinearLayout>

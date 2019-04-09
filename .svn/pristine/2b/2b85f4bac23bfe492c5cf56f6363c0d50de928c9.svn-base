@@ -1,0 +1,339 @@
+package com.example.administrator.merchants.fragment;
+
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.activity.CommodityClassificationManagementActivity;
+import com.example.administrator.merchants.activity.EnterpriseDemandActivity;
+import com.example.administrator.merchants.activity.MyMessageListActivity;
+import com.example.administrator.merchants.activity.NoticeDetailsActivity;
+import com.example.administrator.merchants.activity.OriginalHomePageActivity;
+import com.example.administrator.merchants.activity.RecruitmentManagementActivity;
+import com.example.administrator.merchants.activity.ServiceActivity;
+import com.example.administrator.merchants.activity.ShoppingCarActivity;
+import com.example.administrator.merchants.activity.StatementAccountActivity;
+import com.example.administrator.merchants.activity.StoreInformationManagementActivity;
+import com.example.administrator.merchants.adapter.HomePageAdapter;
+import com.example.administrator.merchants.adapter.OriginalHomeMenuAdapter;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseFragment;
+import com.example.administrator.merchants.common.GlideTest;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.common.views.CustomerViewPage;
+import com.example.administrator.merchants.common.views.MyGridView;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.ListPostBean;
+import com.example.administrator.merchants.http.post.StoreIdPostBean;
+import com.example.administrator.merchants.http.show.CommodityShowBean;
+import com.example.administrator.merchants.http.show.PopupMenuShowBean;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/8/18 0018 09:05
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：首页
+ */
+public class HomePageFragment extends BaseFragment implements AdapterView.OnItemClickListener, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener, RefreshLayout.OnLoadListener {
+    private View footView;
+    private List<CommodityShowBean> list;
+    private MyGridView myGridView;
+    private View view;
+    private CustomerViewPage viewPage;
+    private ImageView imageView;
+    private ImageView message;
+    private ImageView anim;
+    private ListView myListView;//公告列表
+    private HomePageAdapter homePageAdapter;
+    private TextView messageRead;
+    private List<PopupMenuShowBean> popupMenuShowBeanList;
+    private OriginalHomeMenuAdapter originalHomeMenuAdapter;
+    private View header;
+    private RefreshLayout swipeLayout;
+    public static int s = 0;//是否加载
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_home_page, null);
+        footView = getActivity().getLayoutInflater().inflate(R.layout.no_more_date_footview, null);
+        popupMenuShowBeanList = new ArrayList<>();
+        anim = (ImageView) view.findViewById(R.id.image_loading);
+        messageRead = (TextView) view.findViewById(R.id.car_dot);
+        GlideTest.imageGif(getContext(), anim);
+        list = new ArrayList<>();
+        imageView = (ImageView) view.findViewById(R.id.shoppingcar);
+        imageView.setOnClickListener(this);
+        message = (ImageView) view.findViewById(R.id.iv_message);
+        message.setOnClickListener(this);
+        TextView textView = (TextView) view.findViewById(R.id.head_fragment_text);
+        textView.setText("首页");
+        originalHomeMenuAdapter = new OriginalHomeMenuAdapter(getActivity(), popupMenuShowBeanList);
+        myListView = (ListView) view.findViewById(R.id.homepage_enter_list);
+        myListView.setOnItemClickListener(this);//给首页的商品列表加每行的监听
+        if (getContext() != null) {
+            homePageAdapter = new HomePageAdapter(list, view.getContext());
+        }
+        //得有判断是中小企业还是商户啊
+        initView();//初始化布局
+        setListener();//设置监听
+        swipeLayout.post(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(true);
+            }
+        }));
+        return view;
+    }
+
+    /**
+     * 初始化布局
+     */
+    @SuppressLint({"InlinedApi", "InflateParams"})
+    private void initView() {
+        header = getActivity().getLayoutInflater().inflate(R.layout.view_home_headview, null);
+        myGridView = (MyGridView) header.findViewById(R.id.one);
+        myGridView.setAdapter(originalHomeMenuAdapter);
+        viewPage = (CustomerViewPage) header.findViewById(R.id.vp);
+        Http.pagerToServer(getActivity(), viewPage);
+        myGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("555", position + "点击"+popupMenuShowBeanList.get(position).getMenuid());
+                if ("message".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    startActivity(new Intent(getActivity(), StoreInformationManagementActivity.class));
+                } else if ("zhaopin".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    startActivity(new Intent(getActivity(), RecruitmentManagementActivity.class));
+                } else if ("jinrong".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    //贷款
+//                    Intent intent1 = new Intent();
+//                    intent1.setClass(getActivity(), LoanMainActivity.class);
+//                    startActivity(intent1);
+                    //原来金融服务
+                    Intent intent1 = new Intent();
+                    intent1.setClass(getActivity(), ServiceActivity.class);
+                    intent1.putExtra("servetype", "20");
+                    startActivity(intent1);
+                } else if ("yuan".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    startActivity(new Intent(getActivity(), OriginalHomePageActivity.class));
+                } else if ("bill".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    startActivity(new Intent(getActivity(), StatementAccountActivity.class));
+                } else if ("shangpin".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    startActivity(new Intent(getActivity(), CommodityClassificationManagementActivity.class));
+                } else if ("xuqiu".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    startActivity(new Intent(getActivity(), EnterpriseDemandActivity.class));
+                } else if ("fuwu".equals(popupMenuShowBeanList.get(position).getMenuid())) {
+                    Intent intent1 = new Intent();
+                    intent1.setClass(getActivity(), ServiceActivity.class);
+                    intent1.putExtra("servetype", "10");
+                    startActivity(intent1);
+                }
+            }
+        });
+        swipeLayout = (RefreshLayout) view.findViewById(R.id.swipe_container);
+        myListView.addHeaderView(header);
+    }
+
+    /**
+     * 设置监听
+     */
+    private void setListener() {
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Http.toGetText(getActivity());
+                StoreIdPostBean storeIdPostBean = new StoreIdPostBean();
+                storeIdPostBean.setStoreid(UserInfo.getInstance().getUser(getContext()).getStoreid());
+                Http.getMessageNumber(getActivity(), storeIdPostBean, messageRead);
+                enterToServer("0", "15", 0);//公告列表
+            }
+        }, 1000);
+    }
+
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (s == 0 || s == 1) {
+                    s = 2;
+                    enterToServer(list.size() + "", "15", 1);
+                }
+            }
+        }, 1000);
+    }
+
+    /**
+     * 商家类型决定模块多少
+     */
+    public void login() {
+        if ("1".equals(UserInfo.getInstance().getUser(getContext()).getLevelno()) || "2".equals(UserInfo.getInstance().getUser(getContext()).getLevelno())) {
+            //中小企业
+            popupMenuShowBeanList.clear();
+            PopupMenuShowBean funShowBean = new PopupMenuShowBean();
+            funShowBean.setMenuid("fuwu");
+            funShowBean.setPath(R.drawable.page_supporting_service);
+            funShowBean.setMenuname("配套服务");
+            funShowBean.setType(1);
+            popupMenuShowBeanList.add(funShowBean);
+            PopupMenuShowBean funShowBean1 = new PopupMenuShowBean();
+            funShowBean1.setMenuid("xuqiu");
+            funShowBean1.setPath(R.drawable.page_enterprise_demand);
+            funShowBean1.setMenuname("企业需求");
+            funShowBean1.setType(1);
+            popupMenuShowBeanList.add(funShowBean1);
+            PopupMenuShowBean funShowBean2 = new PopupMenuShowBean();
+            funShowBean2.setMenuid("jinrong");
+            funShowBean2.setPath(R.drawable.page_finance);
+            funShowBean2.setMenuname("金融助力");
+            funShowBean2.setType(1);
+            popupMenuShowBeanList.add(funShowBean2);
+            PopupMenuShowBean funShowBean3 = new PopupMenuShowBean();
+            funShowBean3.setMenuid("yuan");
+            funShowBean3.setPath(R.drawable.page_original);
+            funShowBean3.setMenuname("原产地采购");
+            funShowBean3.setType(1);
+            popupMenuShowBeanList.add(funShowBean3);
+            originalHomeMenuAdapter.notifyDataSetChanged();
+        } else {
+            popupMenuShowBeanList.clear();
+            PopupMenuShowBean funShowBean1 = new PopupMenuShowBean();
+            funShowBean1.setMenuid("message");
+            funShowBean1.setPath(R.drawable.page_message_manage);
+            funShowBean1.setMenuname("信息管理");
+            funShowBean1.setType(1);
+            popupMenuShowBeanList.add(funShowBean1);
+            PopupMenuShowBean funShowBean2 = new PopupMenuShowBean();
+            funShowBean2.setMenuid("zhaopin");
+            funShowBean2.setPath(R.drawable.page_recruit);
+            funShowBean2.setMenuname("招聘信息");
+            funShowBean2.setType(1);
+            popupMenuShowBeanList.add(funShowBean2);
+            PopupMenuShowBean funShowBean3 = new PopupMenuShowBean();
+            funShowBean3.setMenuid("jinrong");
+            funShowBean3.setPath(R.drawable.page_finance);
+            funShowBean3.setMenuname("金融助力");
+            funShowBean3.setType(1);
+            popupMenuShowBeanList.add(funShowBean3);
+            PopupMenuShowBean funShowBean4 = new PopupMenuShowBean();
+            funShowBean4.setMenuid("yuan");
+            funShowBean4.setPath(R.drawable.page_original);
+            funShowBean4.setMenuname("原产地采购");
+            funShowBean4.setType(1);
+            popupMenuShowBeanList.add(funShowBean4);
+            PopupMenuShowBean funShowBean5 = new PopupMenuShowBean();
+            funShowBean5.setMenuid("bill");
+            funShowBean5.setPath(R.drawable.page_account_statement);
+            funShowBean5.setMenuname("对账单");
+            funShowBean5.setType(1);
+            popupMenuShowBeanList.add(funShowBean5);
+            PopupMenuShowBean funShowBean6 = new PopupMenuShowBean();
+            funShowBean6.setMenuid("shangpin");
+            funShowBean6.setPath(R.drawable.page_goods_magager);
+            funShowBean6.setMenuname("商品管理");
+            funShowBean6.setType(1);
+            popupMenuShowBeanList.add(funShowBean6);
+            PopupMenuShowBean funShowBean7 = new PopupMenuShowBean();
+            funShowBean7.setMenuid("xuqiu");
+            funShowBean7.setPath(R.drawable.page_enterprise_demand);
+            funShowBean7.setMenuname("企业需求");
+            funShowBean7.setType(1);
+            popupMenuShowBeanList.add(funShowBean7);
+            PopupMenuShowBean funShowBean8 = new PopupMenuShowBean();
+            funShowBean8.setMenuid("fuwu");
+            funShowBean8.setPath(R.drawable.page_supporting_service);
+            funShowBean8.setMenuname("配套服务");
+            funShowBean8.setType(1);
+            popupMenuShowBeanList.add(funShowBean8);
+            originalHomeMenuAdapter.notifyDataSetChanged();
+        }
+    }
+
+    /**
+     * 公告列表
+     */
+    public void enterToServer(String offset, String limit, int type) {
+        ListPostBean listPostBean = new ListPostBean();
+        listPostBean.setOffset(offset);
+        listPostBean.setLimit(limit);
+        Http.enterToServer(getActivity(), listPostBean, type, list, anim, swipeLayout, myListView, footView, homePageAdapter, this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        MutualApplication.getRequestQueue().cancelAll("toGetText103");
+        MutualApplication.getRequestQueue().cancelAll("toMessageNumber104");
+        MutualApplication.getRequestQueue().cancelAll("pagerToServer105");
+        MutualApplication.getRequestQueue().cancelAll("enterToServer106");
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (position < (list.size() + 1)) {
+            Intent intent = new Intent();
+            intent.putExtra("noticeid", list.get(position - 1).getNoticeid());
+            intent.putExtra("image", list.get(position - 1).getImgsfile());
+            intent.putExtra("title", list.get(position - 1).getMername());
+            if (getActivity() != null) {
+                intent.setClass(getActivity(), NoticeDetailsActivity.class);
+            }
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.shoppingcar:
+                if (getActivity() != null) {
+                    startActivity(new Intent(getActivity(), ShoppingCarActivity.class));
+                }
+                break;
+            case R.id.iv_message:
+                if (getActivity() != null) {
+                    startActivity(new Intent(getActivity(), MyMessageListActivity.class));
+                }
+                break;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        onRefresh();
+        login();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden == false) {
+            onRefresh();
+            login();
+        }
+    }
+}
+

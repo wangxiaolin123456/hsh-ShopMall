@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head_fragment_home" />
+
+    <ListView
+        android:id="@+id/homepage_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head_home_fragment"
+        android:divider="@null" />
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/loding"
+        android:gravity="center|bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/image__loding"
+            android:background="@anim/wb_loading_frame"
+            android:layout_width="400dp"
+            android:layout_height="300dp"
+            android:text="加载中..."
+            android:gravity="center|bottom"
+            android:paddingBottom="50dp"
+            android:textSize="16dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

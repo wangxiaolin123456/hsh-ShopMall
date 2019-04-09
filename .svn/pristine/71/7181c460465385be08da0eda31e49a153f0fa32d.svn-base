@@ -1,0 +1,135 @@
+package com.example.administrator.merchants.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.adapter.ConfirmOrderAdapter;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.PossObject;
+import com.example.administrator.merchants.http.post.StoreIdPostBean;
+import com.example.administrator.merchants.http.post.ToSubOrderPostBean;
+
+import org.json.JSONException;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：提交订单
+ */
+public class ConfirmOrderActivity extends BaseActivity {
+    private ListView listView;
+    private TextView textViewTotal;//支付金额显示
+    private TextView areaNameTextView;//收货地址
+    private TextView contactTextView;//收货人电话
+    private TextView genderTextView;//收货人性别
+    private TextView receiverTextView;//收货人姓名
+    private TextView streetAddTextView;//详细地址
+    private TextView textViewSubOrder;//提交按钮
+    private LinearLayout plusAddress;//地址布局
+    private LinearLayout topLine;//上面额线
+    private RelativeLayout blowRel;//提交订单布局
+    public static String addressId;//地址编码
+    public static String gender;//地址使用者性别
+    private View headView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_confirm_order);
+        setTitles("确认订单");
+        headView = LayoutInflater.from(this).inflate(R.layout.header_to_sub_order, null);
+        topLine = (LinearLayout) findViewById(R.id.activity_confirm_order_top_line);
+        //提交订单
+        blowRel = (RelativeLayout) findViewById(R.id.activity_blow_rel);
+        listView = (ListView) findViewById(R.id.activity_confirm_order_list);
+        textViewTotal = (TextView) findViewById(R.id.confirm_zongqianshu);
+        textViewSubOrder = (TextView) findViewById(R.id.submit_order);
+        //----------------------------------------------------------------------------------------------------------------
+        //地址
+        plusAddress = (LinearLayout) headView.findViewById(R.id.activity_confirm_order_address);
+        plusAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ConfirmOrderActivity.this, AddressListActivity.class));
+            }
+        });
+        receiverTextView = (TextView) headView.findViewById(R.id.per_name);
+        genderTextView = (TextView) headView.findViewById(R.id.per_sex);
+        contactTextView = (TextView) headView.findViewById(R.id.per_phone);
+        areaNameTextView = (TextView) headView.findViewById(R.id.per_address);
+        streetAddTextView = (TextView) headView.findViewById(R.id.per_address_more);
+        //----------------------------------------------------------------------------------------------------------------
+        topLine.setVisibility(View.GONE);
+        blowRel.setVisibility(View.GONE);
+
+        textViewSubOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    toSubOrder();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        textViewTotal.setText(String.valueOf(MutualApplication.totalConfirm));
+        listView.setAdapter(new ConfirmOrderAdapter(this, MutualApplication.chooseList));
+        listView.addHeaderView(headView);
+        topLine.setVisibility(View.VISIBLE);
+        blowRel.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDefaultAddress();
+    }
+
+
+    /**
+     * 获取默认地址
+     */
+    public void getDefaultAddress() {
+        StoreIdPostBean storeIdPostBean = new StoreIdPostBean();
+        storeIdPostBean.setStoreid(UserInfo.getInstance().getUser(this).getStoreid());
+        Http.getDefaultAddress(ConfirmOrderActivity.this, storeIdPostBean, receiverTextView, genderTextView, contactTextView, areaNameTextView, streetAddTextView);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MutualApplication.getRequestQueue().cancelAll("getDefaultAddress29");
+        MutualApplication.getRequestQueue().cancelAll("toSubOrder30");
+    }
+
+    /**
+     * 提交订单到服务器
+     *
+     * @param
+     */
+    public void toSubOrder() throws JSONException {
+        ToSubOrderPostBean toSubOrderPostBean = new ToSubOrderPostBean();
+        toSubOrderPostBean.setMerList(PossObject.getMerList(ConfirmOrderActivity.this));
+        toSubOrderPostBean.setStoreid(UserInfo.getInstance().getUser(this).getStoreid());
+        toSubOrderPostBean.setStorename(UserInfo.getInstance().getUser(this).getStorename());
+        toSubOrderPostBean.setOrdamt(MutualApplication.totalConfirm);
+        toSubOrderPostBean.setAddressid(addressId);
+        toSubOrderPostBean.setReceiver(receiverTextView.getText().toString());
+        toSubOrderPostBean.setGender(gender);
+        toSubOrderPostBean.setContact(contactTextView.getText().toString());
+        toSubOrderPostBean.setAreaname(areaNameTextView.getText().toString());
+        toSubOrderPostBean.setStreetaddr(streetAddTextView.getText().toString());
+        Http.toSubOrder(ConfirmOrderActivity.this, toSubOrderPostBean, textViewTotal);
+    }
+}

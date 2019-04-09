@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"
+        android:text="热门搜索" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#CDCDCD" />
+
+    <com.example.administrator.merchants.view.OriginalGridView
+        android:id="@+id/gv_hot_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="5dp"
+        android:numColumns="3"
+        android:verticalSpacing="0dp"/>
+
+    <TextView
+        android:id="@+id/history_info"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="历史记录"
+        android:visibility="gone" />
+
+
+</LinearLayout>

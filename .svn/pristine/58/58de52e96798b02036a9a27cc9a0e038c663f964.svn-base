@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/head"/>
+    <LinearLayout
+        android:id="@+id/linear_profit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_profit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="利润计算"
+            android:textColor="#585858"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/img_profit"
+            android:layout_width="7dp"
+            android:layout_height="13dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/gotopage" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#66bebebe" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#f4f4f5" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#66bebebe" />
+    <LinearLayout
+        android:id="@+id/linear_day"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="利润日查询"
+            android:textColor="#585858"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/img_day"
+            android:layout_width="7dp"
+            android:layout_height="13dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/gotopage" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#66bebebe" />
+    <LinearLayout
+        android:id="@+id/linear_month"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_month"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="利润月查询"
+            android:textColor="#585858"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/img_month"
+            android:layout_width="7dp"
+            android:layout_height="13dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/gotopage" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#66bebebe" />
+</LinearLayout>

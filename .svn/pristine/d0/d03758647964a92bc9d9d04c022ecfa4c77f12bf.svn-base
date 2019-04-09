@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_reset_password_cellphone_wrong_relative"
+    android:background="@color/province_line_border"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:text="您的验证码错误，请重新输入"
+        android:id="@+id/dialog_reset_password_cellphone_wrong_text"
+        android:gravity="center"
+        android:textColor="#565656"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp" />
+    <View
+        android:id="@+id/dialog_reset_password_cellphone_wrong_view"
+        android:layout_below="@+id/dialog_reset_password_cellphone_wrong_text"
+        android:background="#999999"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"/>
+    <TextView
+        android:gravity="center"
+        android:id="@+id/dialog_reset_password_cellphone_wrong_buttonConfirm"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/dialog_reset_password_cellphone_wrong_view"
+        android:text="确认"
+        android:textColor="#565656"
+        android:textSize="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+</RelativeLayout>

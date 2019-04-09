@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:descendantFocusability="blocksDescendants">
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#cfcfcf"/>-->
+    <!--<View-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="7dp"-->
+        <!--android:background="#f2f2f2"/>-->
+    <!--<View-->
+
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#cfcfcf" />-->
+    <LinearLayout
+        android:id="@+id/activity_lines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/item_origin_order_detail_comm_checkBox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/activity_shopping_cart_chose_style"
+            android:button="@null"
+            android:paddingBottom="40dp"
+            android:paddingTop="40dp" />
+        <ImageView
+            android:id="@+id/item_origin_order_detail_comm_image"
+            android:layout_width="75dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="75dp"
+            android:layout_margin="15dp"
+            android:src="@drawable/imageloading" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:lines="2"
+                    android:id="@+id/item_origin_order_detail_comm_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="小肥羊火锅底料"
+                    android:textColor="#2d2d2d"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:textColor="#ff0d00"
+                    android:text="null"
+                    android:id="@+id/order_staus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+
+            <TextView
+
+                android:id="@+id/item_origin_order_detail_comm_beizhu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="#2d2d2d"
+                android:textSize="10dp" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="#fea02f" />
+
+                <TextView
+                    android:id="@+id/item_origin_order_detail_comm_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="80"
+                    android:textColor="#fea02f" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="x"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/item_origin_order_detail_comm_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_origin_order_detail_comm_time"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text=""
+                android:textColor="#dedede"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#cfcfcf" />
+</LinearLayout>

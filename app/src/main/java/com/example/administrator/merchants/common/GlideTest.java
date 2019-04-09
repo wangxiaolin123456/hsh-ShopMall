@@ -1,0 +1,150 @@
+package com.example.administrator.merchants.common;
+
+import android.content.Context;
+import android.os.Looper;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
+import com.diy.widget.CircularImage;
+import com.example.administrator.merchants.R;
+
+import java.io.File;
+
+/**
+ * 作者：韩宇 on 2017/6/26 0026 08:26
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：glide加载图片框架
+ */
+public class GlideTest {
+    /**
+     * imageView加载图片
+     *
+     * @param context
+     * @param url
+     * @param imageView
+     */
+    public static void image(Context context, String url, ImageView imageView,int path) {
+        Glide.with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(path)
+                .into(imageView);
+    }
+    /**
+     * CircularImage加载圆形头像
+     *
+     * @param context
+     * @param url
+     * @param imageView
+     */
+    public static void image(Context context, String url, CircularImage imageView) {
+        Glide.with(context)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.default_avatar)
+                .into(imageView);
+    }
+
+    /**
+     * 加载GIF动画
+     *
+     * @param context
+     * @param imageView
+     */
+    public static void imageGif(Context context, ImageView imageView) {
+        Glide.with(context)
+                .load(R.raw.pic)
+                .asGif()
+                .placeholder(R.raw.pic)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .error(R.raw.pic)
+                .into(imageView);
+    }
+
+    /**
+     * 取消GIF动画并附图片避免占内存
+     *
+     * @param imageView
+     */
+    public static void imageCancle(ImageView imageView) {
+        imageView.setImageResource(R.drawable.image_loading);
+        imageView.setVisibility(View.GONE);
+    }
+
+    public static void clearImageAllCache(Context context) {
+        clearImageDiskCache(context);
+        clearImageMemoryCache(context);
+        String ImageExternalCatchDir = context.getExternalCacheDir() + ExternalCacheDiskCacheFactory.DEFAULT_DISK_CACHE_DIR;
+        deleteFolderFile(ImageExternalCatchDir, true);
+    }
+
+    /**
+     * 删除指定目录下的文件，这里用于缓存的删除
+     *
+     * @param filePath       filePath
+     * @param deleteThisPath deleteThisPath
+     */
+    private static void deleteFolderFile(String filePath, boolean deleteThisPath) {
+        if (!TextUtils.isEmpty(filePath)) {
+            try {
+                File file = new File(filePath);
+                if (file.isDirectory()) {
+                    File files[] = file.listFiles();
+                    for (File file1 : files) {
+                        deleteFolderFile(file1.getAbsolutePath(), true);
+                    }
+                }
+                if (deleteThisPath) {
+                    if (!file.isDirectory()) {
+                        file.delete();
+                    } else {
+                        if (file.listFiles().length == 0) {
+                            file.delete();
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 清除图片内存缓存
+     */
+    public static void clearImageMemoryCache(Context context) {
+        try {
+            if (Looper.myLooper() == Looper.getMainLooper()) { //只能在主线程执行
+                Glide.get(context).clearMemory();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 清除图片磁盘缓存
+     */
+    public static void clearImageDiskCache(final Context context) {
+        try {
+            if (Looper.myLooper() == Looper.getMainLooper()) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.get(context).clearDiskCache();
+//                        BusUtil.getBus().post(new GlideCacheClearSuccessEvent());
+                    }
+                }).start();
+            } else {
+                Glide.get(context).clearDiskCache();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

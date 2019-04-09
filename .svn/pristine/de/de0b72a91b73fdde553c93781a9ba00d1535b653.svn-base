@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/head_back"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center_vertical"
+                android:onClick="onBack"
+                android:paddingBottom="15dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp"
+                android:src="@drawable/backtt" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activity_tm_goods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:text="商品"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/activity_tm_goods_line"
+                    android:layout_width="70dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="-6dp"
+                    android:background="@color/red" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activity_goods_tm_common"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:text="评价"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/activity_goods_tm_common_line"
+                    android:layout_width="70dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="-6dp"
+                    android:background="#00ffffff" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/activity_goods_details_tm_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

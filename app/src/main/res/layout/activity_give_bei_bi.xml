@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/all_bg_gray_color"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/edit_shape"
+        android:hint="输入好友的手机号"
+        android:inputType="number"
+        android:maxLength="11"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textColorHint="#cccccc"
+        android:textSize="16sp" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/rb1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/address_checkbox"
+            android:drawablePadding="10dp"
+            android:text="商户"
+            android:textColor="#555555"
+            android:textSize="15dp" />
+        <!--<RadioButton-->
+        <!--android:textSize="15dp"-->
+        <!--android:drawableLeft="@drawable/address_checkbox"-->
+        <!--android:background="@null"-->
+        <!--android:button="@null"-->
+        <!--android:id="@+id/rb2"-->
+        <!--android:text="特许加盟"-->
+        <!--android:textColor="#555555"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="wrap_content" />-->
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/address_checkbox"
+            android:drawablePadding="10dp"
+            android:text="消费者"
+            android:textColor="#555555"
+            android:textSize="15dp" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_shape"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/beibi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="输入要赠与贝币金额"
+            android:inputType="numberDecimal"
+            android:paddingLeft="6dp"
+            android:singleLine="true"
+            android:textColorHint="#cccccc"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/zy_beibei_yue_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="余额: 0"
+            android:visibility="gone"
+            android:textColor="@color/themeColor"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/zy_j_beibei_radiobtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/address_checkbox"
+            android:drawablePadding="10dp"
+            android:text="金贝币"
+            android:textColor="#555555"
+            android:textSize="15dp" />
+
+        <RadioButton
+            android:id="@+id/zy_y_beibei_radiobtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/address_checkbox"
+            android:drawablePadding="10dp"
+            android:text="银贝币"
+            android:textColor="#555555"
+            android:textSize="15dp" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/dialog_gray_white"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>

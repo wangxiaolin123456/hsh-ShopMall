@@ -1,0 +1,110 @@
+package com.example.administrator.merchants.http.listener;
+
+import android.app.Activity;
+import android.content.Context;
+
+import com.android.volley.Response;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.common.CommonUtil;
+import com.example.administrator.merchants.common.alipay.BabyPay;
+import com.example.administrator.merchants.http.Status;
+import com.example.administrator.merchants.common.toast.CustomToast;
+import com.tencent.mm.sdk.modelpay.PayReq;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.unionpay.UPPayAssistEx;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * 作者：韩宇 on 2017/7/21 0021 15:15
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：订单支付
+ */
+public class PayOrderListener implements Response.Listener<JSONObject> {
+    private Context context;
+    private String TN;
+    private String type;
+    private IWXAPI api;
+    private BabyPay babyPay;
+    private String merName, merDescribe, money;
+
+    public PayOrderListener(Context context, String type, String merName, String merDescribe, String money) {
+        this.context = context;
+        this.type = type;
+        this.merName = merName;
+        this.merDescribe = merDescribe;
+        this.money = money;
+    }
+
+    @Override
+    public void onResponse(JSONObject jsonObject) {
+        if (Status.status(jsonObject)) {
+            //返回成功
+            switch (type) {
+                case "unionpay":
+                    TN = new String();
+                    try {
+                        TN = jsonObject.getString("tn");
+                        UPPayAssistEx.startPay(context, null, null, TN, "00"); //TODO   调用银联支付
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "alipay":
+                    try {
+                        TN = jsonObject.getString("tn");
+                        String partnerPrivKey = jsonObject.getString("partnerPrivKey");
+                        babyPay = new BabyPay((Activity) context, context,
+                                merName + "等商品",
+                                merDescribe + "其他商品详情暂略！",
+                                money,
+                                TN,
+                                partnerPrivKey);
+                        babyPay.pay();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "wechat":
+                    api = WXAPIFactory.createWXAPI(context, CommonUtil.APP_ID);//toDo  秘钥
+                    try {
+                        if ("true".equals(jsonObject.getString("success"))) {
+                            TN = jsonObject.getString("tn");
+                            MutualApplication.mTN = TN;
+                            PayReq req = new PayReq();
+                            try {
+                                req.appId = jsonObject.getString("appid");
+                                req.partnerId = jsonObject.getString("partnerid");
+                                req.prepayId = jsonObject.getString("prepayid");
+                                req.nonceStr = jsonObject.getString("noncestr");
+                                req.timeStamp = jsonObject.getString("timestamp");
+                                req.packageValue = jsonObject.getString("package");
+                                req.sign = jsonObject.getString("sign");
+                                req.extData = "app data"; // optional
+                                api.registerApp(CommonUtil.APP_ID);
+                                api.sendReq(req);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                CustomToast.getInstance(context).setMessage("返回错误" + jsonObject.getString("retmsg"));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
+        } else {
+            //返回失败
+            Status.fail(context, jsonObject);
+        }
+    }
+}

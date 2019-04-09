@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        applicationId "com.example.administrator.merchants"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 21
+        versionName "2.8.4"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile files('libs/volly-1.0.11.jar')
+    compile files('libs/UPPayAssistEx.jar')
+    compile files('libs/UPPayPluginExPro.jar')
+    compile 'com.google.code.gson:gson:2.7'
+    compile files('libs/alipaySdk-20160516.jar')
+    compile 'org.apache.httpcomponents:httpcore:4.4.5'
+    compile files('libs/jpush-android-2.1.7.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/circular-image.jar')
+    compile files('libs/locSDK_6.13.jar')
+    compile files('libs/baidumapapi_base_v4_0_0.jar')
+    compile files('libs/baidumapapi_map_v4_0_0.jar')
+    compile files('libs/baidumapapi_search_v4_0_0.jar')
+    compile files('libs/httpmime-4.1.2.jar')
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.androidadvance:topsnackbar:0.0.8'
+    compile files('libs/universal-image-loader-1.9.4.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    //    compile files('libs/core-3.0.0.jar')
+    compile files('libs/zxing.jar')
+
+}

@@ -1,0 +1,116 @@
+package com.example.administrator.merchants.http.listener;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.view.View;
+import android.widget.RadioButton;
+
+import com.android.volley.Response;
+import com.example.administrator.merchants.activity.LoginActivity;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.http.show.StoreShowBean;
+import com.example.administrator.merchants.activity.test.MainActivity;
+import com.example.administrator.merchants.http.Status;
+import com.example.administrator.merchants.http.post.LoginPostBean;
+import com.example.administrator.merchants.utils.LogUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * 作者：韩宇 on 2017/6/21 0021 13:50
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：登录成功网络监听
+ */
+public class LoginListener implements Response.Listener<JSONObject> {
+    private Context context;
+    private LoginPostBean loginPostBean;
+    private ProgressDialog progressDialog;
+    private int type;
+    private RadioButton radioButtonTwo;
+
+    public LoginListener(Context context, LoginPostBean loginPostBean, ProgressDialog progressDialog, int type) {
+        this.context = context;
+        this.loginPostBean = loginPostBean;
+        this.progressDialog = progressDialog;
+        this.type = type;
+    }
+
+    public LoginListener(Context context, LoginPostBean loginPostBean, int type, RadioButton radioButtonTwo) {
+        this.context = context;
+        this.loginPostBean = loginPostBean;
+        this.type = type;
+        this.radioButtonTwo = radioButtonTwo;
+    }
+
+    @Override
+    public void onResponse(JSONObject jsonObject) {
+        //返回成功
+        if (Status.status(jsonObject)) {
+            if (type == 0) {
+                LogUtil.i("登陆返回" + jsonObject.toString());
+                //登录
+                StoreShowBean msg = new StoreShowBean();
+                try {
+                    msg.setStoreid(jsonObject.getString("storeid"));
+                    msg.setStorename(jsonObject.getString("storename"));
+                    msg.setStorepassword(loginPostBean.getStorepassword());
+                    msg.setStorephone(loginPostBean.getStorephone());
+                    msg.setTime(jsonObject.getString("createtime"));
+                    msg.setLevelno(jsonObject.getString("levelno"));
+                    UserInfo.getInstance().setUser(msg, context);
+                    progressDialog.dismiss();
+                    context.startActivity(new Intent(context, MainActivity.class));
+                    ((Activity) context).finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else if (type == 1) {
+                //隐性登录
+
+                StoreShowBean user = UserInfo.getInstance().getUser(context);
+                try {
+                    user.setStorename(jsonObject.getString("storename"));
+                    user.setImgfile(jsonObject.getString("imgpfile"));
+                    user.setLevelno(jsonObject.getString("levelno"));
+                    user.setTime(jsonObject.getString("createtime"));
+                    UserInfo.getInstance().setUser(user, context);
+                    if ("1".equals(jsonObject.getString("levelno")) || "2".equals(jsonObject.getString("levelno"))) {
+                        radioButtonTwo.setVisibility(View.GONE);
+                    } else {
+                        radioButtonTwo.setVisibility(View.VISIBLE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            //返回失败
+            if (type == 0) {
+                Status.fail(context, jsonObject, progressDialog);
+            } else if (type == 1) {
+                new android.app.AlertDialog.Builder(context)
+                        .setTitle("提示")
+                        .setMessage("您的身份验证已过期，请重新登录！")
+                        .setCancelable(false)
+                        .setPositiveButton("重新登录", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                UserInfo.getInstance().setUser(null, context);
+                                dialog.dismiss();
+                                Intent intent = new Intent();
+                                intent.putExtra("fromUpdatePasswordActivity", "changed");
+                                intent.setClass(context, LoginActivity.class);
+                                context.startActivity(intent);
+                            }
+                        })
+                        .show();
+            }
+
+        }
+    }
+}

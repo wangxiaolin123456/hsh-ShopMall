@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/dialog_white_top"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="还款金额(元)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_marginTop="10dp"
+                android:background="@color/all_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+            <TextView
+                android:id="@+id/loan_money"
+                android:layout_marginTop="10dp"
+                android:text="525.00"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="还款期数"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_marginTop="10dp"
+                android:background="@color/all_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+            <TextView
+                android:id="@+id/loan_stage"
+                android:layout_marginTop="10dp"
+                android:text="1期"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center|top"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/loan_stu"
+                android:text="未还"
+                android:textColor="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/circular_theme_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_marginTop="10dp"
+                android:background="@color/all_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/dialog_gray_bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <TextView
+            android:id="@+id/loan_date"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/text_gray_color"
+            android:text="最后还款日：2017-08-24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>

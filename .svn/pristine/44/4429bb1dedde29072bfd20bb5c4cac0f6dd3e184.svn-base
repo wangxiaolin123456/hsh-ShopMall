@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/head_home_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#E93441"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/iv_message"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:background="@drawable/message" />
+
+        <TextView
+            android:id="@+id/car_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="-9dp"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/image_goodsDetail_car"
+            android:background="@drawable/yuan"
+            android:gravity="center"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="0"
+            android:textColor="#ffffff"
+            android:textSize="10sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="8.5">
+
+        <TextView
+            android:id="@+id/head_fragment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffff"
+            android:textSize="19sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/shoppingcar"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/shopping_car_white" />
+</LinearLayout>

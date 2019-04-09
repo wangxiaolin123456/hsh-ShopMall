@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_merchant_shop_list_rel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    <!--android:background="@drawable/item_merchant_menu_list_bg"-->
+    <View
+        android:id="@+id/item_views_left"
+        android:layout_width="0.5dp"
+        android:layout_height="50dp"
+        android:background="#cccccc" />
+
+    <TextView
+        android:id="@+id/merchant_type_list_name"
+        android:layout_width="103dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/item_views_left"
+        android:background="@drawable/item_merchant_menu_list_bg"
+        android:gravity="center"
+        android:text="饭食"
+        android:textColor="@color/text_gray_color"
+        android:textSize="14sp" />
+   <!--在菜单列表中显示购买的数量-->
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_data"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="#fff"
+        android:textSize="10sp" />
+
+    <View
+        android:id="@+id/item_views_right"
+        android:layout_width="0.5dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/merchant_type_list_name"
+        android:background="#cccccc"
+        android:visibility="visible" />
+
+    <!--<View-->
+    <!--android:layout_below="@+id/merchant_type_list_name"-->
+    <!--android:background="#cccccc"-->
+    <!--android:layout_width="104dp"-->
+    <!--android:layout_height="0.5dp"/>-->
+</RelativeLayout>

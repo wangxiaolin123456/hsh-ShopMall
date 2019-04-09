@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_confirm_order_image"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:src="@drawable/imageloading"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="98dp"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/item_confirm_order_shop_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:lines="2"
+                android:text="火锅底料"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <!--<TextView-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:textColor="#d3d3d3"-->
+            <!--android:textSize="10sp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="11dp"-->
+            <!--android:text="商品预计2016.06.05到达"-->
+            <!--android:id="@+id/sentTime"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+            <EditText
+                android:id="@+id/item_confirm_order_edit_remark"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@+id/item_confirm_order_shop_name"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="备注"
+                android:textColor="#999999"
+                android:textCursorDrawable="@drawable/shape_cursor"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/item_confirm_order_fuhao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/yuan_rating"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="4dp"
+                android:text="¥"
+                android:textColor="#FF9D09"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/item_confirm_order_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/yuan_rating"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@+id/item_confirm_order_fuhao"
+                android:text="40"
+                android:textColor="#FF9D09"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/item_confirm_order_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="47dp"
+                android:gravity="center"
+                android:text="x2"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e4e4e4" />
+</LinearLayout>

@@ -1,0 +1,169 @@
+package com.example.administrator.merchants.http.show;
+
+
+
+import java.io.Serializable;
+
+/**
+ * 作者：韩宇 on 2017/6/21 0021 13:50
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：购物车
+ */
+public class ShoppingCarShowBean implements Serializable {
+    private String cartid;/*购物车编码*/
+    private int merqty;    /*商品数量*/
+    private String remark;
+    private boolean judge;//购物车里面的checkBox
+    /*配送天数*/
+    private int distdays;
+    private String merid;/*商品编码*/
+    private String storeid;/*商家编码*/
+    private String mername;/*商品名称*/
+    private String imgsfile;/*商品图片*/
+    private String merdescr;/*商品描述*/
+    private Double saleprice;/*商品销售价格*/
+    private Double storenum;/*商品库存数量*/
+    private Double monthsalenum;/*商品月销售数量*/
+    private double scoreavg;/*商品评分*/
+    private int type;
+    private String modelids;
+    private String modeldescr;
+    private double usedsilver;
+
+    public double getUsedsilver() {
+        return usedsilver;
+    }
+
+    public void setUsedsilver(double usedsilver) {
+        this.usedsilver = usedsilver;
+    }
+
+    public void setModeldescr(String modeldescr) {
+        this.modeldescr = modeldescr;
+    }
+    public String getModeldescr() {
+        return modeldescr;
+    }
+
+    public void setModelids(String modelids) {
+        this.modelids = modelids;
+    }
+
+    public String getModelids() {
+        return modelids;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+    public boolean isJudge() {
+        return judge;
+    }
+    public void setJudge(boolean judge) {
+        this.judge = judge;
+    }
+    public String getCartid() {
+        return cartid;
+    }
+    public void setCartid(String cartid) {
+        this.cartid = cartid;
+    }
+    public int getMerqty() {
+        return merqty;
+    }
+    public void setMerqty(int merqty) {
+        this.merqty = merqty;
+    }
+    public String getMerid() {
+        return merid;
+    }
+
+    public void setMerid(String merid) {
+        this.merid = merid;
+    }
+
+    public String getStoreid() {
+        return storeid;
+    }
+
+    public void setStoreid(String storeid) {
+        this.storeid = storeid;
+    }
+
+    public String getMername() {
+        return mername;
+    }
+
+    public void setMername(String mername) {
+        this.mername = mername;
+    }
+
+    public String getImgsfile() {
+        return imgsfile;
+    }
+
+    public void setImgsfile(String imgsfile) {
+        this.imgsfile = imgsfile;
+    }
+
+    public String getMerdescr() {
+        return merdescr;
+    }
+
+    public void setMerdescr(String merdescr) {
+        this.merdescr = merdescr;
+    }
+
+    public Double getSaleprice() {
+        return saleprice;
+    }
+
+    public void setSaleprice(Double saleprice) {
+        this.saleprice = saleprice;
+    }
+
+    public Double getStorenum() {
+        return storenum;
+    }
+
+    public void setStorenum(Double storenum) {
+        this.storenum = storenum;
+    }
+
+    public Double getMonthsalenum() {
+        return monthsalenum;
+    }
+
+    public void setMonthsalenum(Double monthsalenum) {
+        this.monthsalenum = monthsalenum;
+    }
+
+    public double getScoreavg() {
+        return scoreavg;
+    }
+
+    public void setScoreavg(double scoreavg) {
+        this.scoreavg = scoreavg;
+    }
+
+    public int getDistdays() {
+        return distdays;
+    }
+
+    public void setDistdays(int distdays) {
+        this.distdays = distdays;
+    }
+}

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+
+    <View
+        android:id="@+id/PopupWindowLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#E93441" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/main_activity_frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/main_activity_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/all_line_color" />
+
+        <RadioGroup
+            android:id="@+id/main_activity_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/main_radioOne"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/page_home_check"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="首页"
+                android:textColor="@drawable/page_text_check"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/main_radioTwo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/page_prove_check"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="验证"
+                android:textColor="@drawable/page_text_check"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/main_radioThree"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/page_order_check"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="订单"
+                android:textColor="@drawable/page_text_check"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/main_radioFour"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/page_my_check"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="我的"
+                android:textColor="@drawable/page_text_check"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:background="#70000000"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center|left"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColor="#E93441" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/rolling_announcement" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

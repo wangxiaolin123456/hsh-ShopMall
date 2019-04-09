@@ -1,0 +1,79 @@
+package com.example.administrator.merchants.loan.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.activity.BankCardActivity;
+import com.example.administrator.merchants.common.GlideTest;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.DefaultBankCardPostBean;
+import com.example.administrator.merchants.http.show.BankShowBean;
+
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/7/20 0020 14:33
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：贷款银行卡列表适配器
+ */
+public class LoanBankListAdapter extends BaseAdapter {
+    private Context context;
+    private List<BankShowBean> list;
+
+    public LoanBankListAdapter(Context context, List<BankShowBean> list) {
+        this.context = context;
+        this.list = list;
+    }
+
+    @Override
+    public int getCount() {
+        return list == null ? 0 : list.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return list.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        Holder holder;
+        if (convertView == null) {
+            holder = new Holder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_loan_bank_list, null);
+            holder.bankName = (TextView) convertView.findViewById(R.id.loan_bank_name);
+            holder.imageView =(ImageView) convertView.findViewById(R.id.item_background);
+            holder.bankNumber = (TextView) convertView.findViewById(R.id.loan_bank_number);
+            convertView.setTag(holder);
+        } else {
+            holder = (Holder) convertView.getTag();
+        }
+        holder.bankName.setText(list.get(position).getBankName());
+        holder.bankNumber.setText(list.get(position).getBankNumber());
+       holder.imageView.setBackgroundResource(list.get(position).getPath());
+        return convertView;
+    }
+
+    public class Holder {
+        public TextView bankName;//姓名
+        public TextView bankNumber;//地址
+        public ImageView imageView;
+    }
+}

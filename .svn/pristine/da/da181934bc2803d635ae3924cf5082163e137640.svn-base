@@ -1,0 +1,94 @@
+package com.example.administrator.merchants.loan.fragment;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.diy.widget.CircularImage;
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseFragment;
+import com.example.administrator.merchants.loan.activity.LoanBankCardListActivity;
+import com.example.administrator.merchants.loan.activity.NeedRepaymentRecordActivity;
+
+/**
+ * 作者：韩宇 on 2017/8/18 0018 09:05
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：贷款我的
+ */
+public class LoanMyFragment extends BaseFragment implements View.OnClickListener {
+    private View view;
+    private CircularImage loanHead;//头像
+    private TextView loanName, certification, loanPhone, loanIdCard,messageRead;//昵称，是否认证,注册电话,身份证号
+    private LinearLayout loanBankCard, loanPaymentHistory, loanMessageCenter, loanContactUs;//银行卡,还款记录,消息中心，联系我们
+    private ImageView back;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_loan_my, null);
+        loanHead = (CircularImage) view.findViewById(R.id.loan_head);
+        messageRead = (TextView) view.findViewById(R.id.car_dot);
+        loanName = (TextView) view.findViewById(R.id.loan_name);
+        certification = (TextView) view.findViewById(R.id.certification);
+        loanPhone = (TextView) view.findViewById(R.id.loan_phone);
+        loanIdCard = (TextView) view.findViewById(R.id.loan_Id_card);
+        loanBankCard = (LinearLayout) view.findViewById(R.id.loan_bank_card);
+        loanPaymentHistory = (LinearLayout) view.findViewById(R.id.loan_payment_history);
+        loanMessageCenter = (LinearLayout) view.findViewById(R.id.loan_message_center);
+        loanContactUs = (LinearLayout) view.findViewById(R.id.loan_contact_us);
+        back = (ImageView) view.findViewById(R.id.head_back);
+        click();
+        return view;
+    }
+
+    void click() {
+        loanBankCard.setOnClickListener(this);
+        loanPaymentHistory.setOnClickListener(this);
+        loanMessageCenter.setOnClickListener(this);
+        loanContactUs.setOnClickListener(this);
+        back.setOnClickListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden == false) {
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.loan_bank_card:
+                //银行卡
+                startActivity(new Intent(getActivity(), LoanBankCardListActivity.class));
+                break;
+            case R.id.loan_payment_history:
+                //还款记录
+                startActivity(new Intent(getActivity(), NeedRepaymentRecordActivity.class));
+                break;
+            case R.id.loan_message_center:
+                //消息中心
+                break;
+            case R.id.loan_contact_us:
+                //联系我们
+                break;
+            case R.id.head_back:
+                getActivity().finish();
+                break;
+        }
+
+    }
+}

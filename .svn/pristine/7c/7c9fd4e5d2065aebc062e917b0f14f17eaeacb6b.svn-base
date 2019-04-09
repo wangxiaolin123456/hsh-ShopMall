@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#cfcfcf" />-->
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="7dp"-->
+        <!--android:background="#f2f2f2"/>-->
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#cfcfcf" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_origin_order_detail_com_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/imageloading" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_origin_order_detail_com_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="小肥羊火锅底料"
+                    android:textColor="#2d2d2d"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/item_origin_order_detail_com_staus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/item_origin_order_detail_com_beizhu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="我要甜的是广东是广东韶关了的发后是公里上岛咖啡更何况的发是个好地方是规划的发上来看挂号费的是离开规划的发是规划的是立刻发家后的萨芬家后的是个好地方是规划的萨芬后kg的。"
+                android:textColor="#2d2d2d"
+                android:textSize="12dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="#fea02f" />
+
+                <TextView
+                    android:id="@+id/item_origin_order_detail_com_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="80"
+                    android:textColor="#fea02f" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="x"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/item_origin_order_detail_com_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_origin_order_detail_com_time"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text="收货时间：2016-07-01 17:50:49"
+                android:textColor="#dedede"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#cfcfcf" />
+</LinearLayout>

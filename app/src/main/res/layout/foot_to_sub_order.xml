@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/foot"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/discount" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="满减优惠"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/discountMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="16dp"
+            android:text=""
+            android:textColor="@color/themeColor"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+
+    <!--银贝币 和备注-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="银贝币"
+            android:textColor="@color/text_black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/no_beibi_used_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:text="无贝币可用"
+            android:textColor="@color/color_666"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/no_beibi_used_icon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/open"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/max_beibi_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*最多可用0贝币"
+            android:textColor="@color/text_gray_color"
+            android:textSize="12sp" />
+
+
+        <LinearLayout
+            android:id="@+id/have_beibi_line"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:paddingRight="16dp">
+
+
+            <ImageView
+                android:id="@+id/sub_icon"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_minus_nor" />
+
+            <EditText
+                android:id="@+id/input_beibi_num_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_input_num_bg"
+                android:text="0"
+                android:inputType="number|numberDecimal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="@color/text_black"
+                android:textColorHint="@color/text_black"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/add_icon"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_plus_nor" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/all_line_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备注:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/confirm_order_remark_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:background="@null"
+            android:hint="(限20个字)"
+            android:maxLength="20"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/all_line_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/open" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/all_line_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/confirm_order_total_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="共0件商品"
+            android:textColor="@color/text_black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小计:"
+            android:textColor="@color/text_black"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥"
+            android:textColor="@color/themeColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/confirm_order_total_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:text="0"
+            android:textColor="@color/themeColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/shop_total_unit_num_tv"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        android:layout_height="wrap_content"
+        android:text="()"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="16dp"
+        android:textColor="@color/themeColor"
+        android:textSize="12sp" />
+
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#E93441"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="登录"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_user_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/account_bills_gray_white"
+        android:hint="手机号码"
+        android:inputType="number"
+        android:paddingLeft="5dp"
+        android:phoneNumber="true"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/et_user_pwd"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/account_bills_gray_white"
+        android:digits="1234567890abcdefghijklmnopqrstuvw.xyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_forget_pwd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="6dp"
+        android:gravity="right|center_vertical"
+        android:text="忘记密码？"
+        android:textColor="#6899cc" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/dialog_theme"
+        android:text="登录"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
+</LinearLayout>

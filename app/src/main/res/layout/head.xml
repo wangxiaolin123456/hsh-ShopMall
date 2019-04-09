@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/head"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/themeColor"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/head_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:onClick="onBack"
+        android:padding="10dp"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:id="@+id/head_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/head_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/head_search"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="15dp"
+        android:padding="10dp"
+        android:src="@drawable/search_white"
+        android:visibility="gone" />
+
+</LinearLayout>

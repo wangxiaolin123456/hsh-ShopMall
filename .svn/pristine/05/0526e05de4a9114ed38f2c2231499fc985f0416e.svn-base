@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+android:id/background"
+        android:drawable="@drawable/room_select_ed">
+    </item>
+    <item
+        android:id="@+android:id/secondaryProgress"
+        android:drawable="@drawable/room_select_ed">
+    </item>
+    <item
+        android:id="@+android:id/progress"
+        android:drawable="@drawable/room_select">
+    </item>
+
+</layer-list>

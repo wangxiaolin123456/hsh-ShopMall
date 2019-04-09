@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.administrator.merchants"
+    android:versionCode="16"
+    android:versionName="2.6" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    //打电话权限
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+//设备权限
+    <!-- 第三方权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature android:name="android.hardware.nfc.hce" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+    <!-- 第三方权限 -->
+    <permission
+        android:name="com.example.administrator.merchants.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    - 
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="com.example.administrator.merchants.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    - 
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    - 
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于进行网络定位 -->
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!-- 来电消音 -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <application
+        android:name="com.example.administrator.merchants.application.MutualApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/heads"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <uses-library
+            android:name="org.simalliance.openmobileapi"
+            android:required="false" />
+
+        <activity
+            android:name="com.example.administrator.merchants.welcome.WelcomeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.administrator.merchants.activity.LoginActivity"
+            android:label="@string/login"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.example.administrator.merchants.adapter.MainActivity" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ForgetPasswordActivity"
+            android:label="@string/forget_password"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.MyMessageActivity"
+            android:label="@string/message"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.MessageActivity"
+            android:label="@string/message_content"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.UpdatePasswordActivity"
+            android:label="@string/update_password"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.AddressListActivity"
+            android:label="@string/address_list"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.UpdateAddressActivity"
+            android:label="@string/update_address"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.AddAddressActivity"
+            android:label="@string/add_address"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.BeiManagementActivity"
+            android:label="@string/beiManagement"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.BeiRechargeActivity"
+            android:label="@string/bei_recharge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.BeiRecordActivity"
+            android:label="@string/bei_record"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.AboutUsActivity"
+            android:label="@string/about_us"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.EvaluateActivity"
+            android:label="@string/evaluate"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.RecruitmentManagementActivity"
+            android:label="@string/recruitment_management"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.AddRecruitmentActivity"
+            android:label="@string/recruitment_adds"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.InformationManagementActivity"
+            android:label="@string/information_management"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.BankCardListActivity"
+            android:label="@string/bank_card_lists"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.AddBankCardActivity"
+            android:label="@string/add_bank"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.UpdateBankActivity"
+            android:label="@string/update_banks"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.BanlaceActivity"
+            android:label="@string/activity_balance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.UpdateBeiBipasswordActivity"
+            android:label="@string/update_beibi_password"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ForgetBeiBiPasswordActivity"
+            android:label="@string/forget_beibi_password"
+            android:screenOrientation="portrait" />
+        //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+        <activity
+            android:name="com.example.administrator.merchants.activity.MainActivity"
+            android:label="@string/main"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ShoppingCarActivity"
+            android:label="@string/shoppingcar"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ConfirmOrderActivity"
+            android:label="@string/confirmOrder"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.OriginalSearchActivity"
+            android:label="@string/OriginalSearch"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.OriginalHomePageActivity"
+            android:label="@string/OriginalHomePage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.OriginalSecondPageActivity"
+            android:label="@string/OriginalSecondPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.OriginalSearchResultActivity"
+            android:label="@string/OriginalSearchResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.PayOrderActivity"
+            android:label="@string/PayOrder"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- <data android:scheme="wxb4ba3c02aa476ea1"/> -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.administrator.merchants.activity.SingleConfirmOrderActivity"
+            android:label="@string/SingleConfirmOrder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.BeiBiGiveActivity"
+            android:label="@string/beibizengyu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.SelfSupportManageActivity"
+            android:label="@string/selfsupport"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsManageActivity"
+            android:label="@string/goodsmanage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsManageActivityNew"
+            android:label="@string/goodsmanage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsClassifyListNewActivity"
+            android:label="@string/goodsListNew"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsClassifyActivity"
+            android:label="@string/classify"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsListLianDongActivity"
+            android:label="@string/detailmessage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsDetailEditActivity"
+            android:label="@string/goodsedit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsDetailEditActivityAdd"
+            android:label="@string/goodsedit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.GoodsChooseClassifyActivity"
+            android:label="@string/chooseclassify"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ProfitCalculationActivity"
+            android:label="@string/profitcalculation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.SelfSupportPlatphomActivity"
+            android:label="@string/selfplat"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.MonthProfitActivity"
+            android:label="@string/monthprofit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.DayProfitActivity"
+            android:label="@string/dayprofit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.StockNumChangeActivity"
+            android:label="@string/detailmessage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.MerchantsOrderDetailActivity"
+            android:label="@string/merchantsorderdetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.NewMerchantServiceActivity"
+            android:label="@string/service"
+            android:screenOrientation="portrait" />
+        <!-- MerchantServiceActivity -->
+
+        <activity
+            android:name="com.example.administrator.merchants.activity.MerchantDetailsActivity"
+            android:label="@string/merchantdetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.BigImageActivity"
+            android:label="@string/big_image"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.NewGoodsDetailActivity"
+            android:label="@string/goods_details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ShowMerchantDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ShowGoodsDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.NewConfirmOrderActivity"
+            android:label="@string/confirmOrder"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.SearchActivity"
+            android:label="@string/Search"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.OutSearchResultActivity"
+            android:label="@string/searchResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.NewPayOrderActivity"
+            android:label="@string/pay_order"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.ServiceOrderDetailActivity"
+            android:label="@string/serviceorderdetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.NewEvaluateActivity"
+            android:label="@string/evaluate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.OriginalOrderDetailActivity"
+            android:label="@string/originOrderDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.MapActivity"
+            android:label="@string/baidumap"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.StockControlActivity"
+            android:label="@string/stockcontrol"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.AddressTwoLineActivity"
+            android:label="@string/addtwo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.SelectPictureActivity"
+            android:label="@string/picpic"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.administrator.merchants.activity.Two"
+            android:screenOrientation="portrait" />
+
+        <!-- 银联 -->
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="@string/PayActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.unionpay.UPPayWapActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/PayActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 银联 -->
+
+
+        <!-- 支付宝 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:label="@string/babypay"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:label="@string/babypay"
+            android:screenOrientation="behind" />
+        <!-- 支付宝 -->
+
+
+        <!-- 微信的 -->
+        <receiver android:name="com.example.administrator.merchants.util.AppRegister" >
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.example.administrator.merchants.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <!-- 微信的 -->
+
+
+        <!-- For test only 测试高级功能 -->
+        - 
+        <!-- For test only 测试状态通知栏，需要打开的Activity -->
+        <activity android:name="com.example.administrator.merchants.jpush.SecondActivity" />
+        -
+        <activity
+            android:name="com.example.administrator.merchants.jpush.TestActivity"
+            android:exported="false" >
+            -
+            <intent-filter>
+                <action android:name="jpush.testAction" />
+
+                <category android:name="jpush.testCategory" />
+            </intent-filter>
+        </activity>
+        - 
+        <!-- Rich push 核心功能 since 2.0.6 -->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle" />
+        - 
+        <!-- Required SDK核心功能 -->
+        -
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            -
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+        </activity>
+        <!-- Required  SDK核心功能 -->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" />
+        <!-- Required SDK 核心功能 -->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+        </service>
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter android:priority="1000" >
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <!-- Required SDK核心功能 -->
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name="com.example.administrator.merchants.jpush.MeReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.example.administrator.merchants" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required  . Enable it you can get statistics data with channel -->
+        <!-- public static final String appKey = "f0edd30617ab167a43bb0497"; -->
+        <!-- public static final String masterSecret = "496445fef2e505fac15a9ad8"; -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="3c6e5537958c333aa887a245" />
+
+        <!-- 百度地图定位功能 -->
+        <!-- 测试key -->
+        <!-- <meta-data -->
+        <!-- android:name="com.baidu.lbsapi.API_KEY" -->
+        <!-- android:value="fQ00KaD9XBuNqqq5k2NnEANXD24AMcuZ" /> -->
+        <!-- 正式key -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="1zrLKILwNx3nZV5ajYLGB9uMD7wyxmCB" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+    </application>
+
+</manifest>

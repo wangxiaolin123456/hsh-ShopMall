@@ -1,0 +1,246 @@
+package com.example.administrator.merchants.activity;
+
+import android.app.ActionBar;
+import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.adapter.AddressAdapter;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.AddressPossBean;
+import com.example.administrator.merchants.http.show.PopupMenuShowBean;
+import com.example.administrator.merchants.common.DateUtils;
+import com.example.administrator.merchants.common.toast.CustomToast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/6/21 0021 13:50
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：添加和修改地址
+ */
+public class AddressActivity extends BaseActivity {
+    private EditText addressName;//地址使用者姓名
+    private EditText addressTel;//地址使用者电话
+    private EditText addressStr;//详细地址
+    private RadioButton man;//男
+    private RadioButton woman;//女
+    private TextView city;//城市
+    private TextView area;//区
+    private PopupWindow cityPopupWindow;//城市选择
+    private PopupWindow areaPopupWindow;//地区选择
+    private View popupWindowView;//popupWindow布局
+    private AddressAdapter addressAdapter;
+    private List<PopupMenuShowBean> cityList;//城市集合
+    private List<PopupMenuShowBean> areaList;//地区集合
+    private Button commit;//保存
+    private String addressId;//地址编码
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_update_address);
+        //地址链接
+        addressName = (EditText) findViewById(R.id.activity_update_address_name);
+        man = (RadioButton) findViewById(R.id.activity_update_address_sex_man);
+        woman = (RadioButton) findViewById(R.id.activity_update_address_sex_woman);
+        addressTel = (EditText) findViewById(R.id.activity_update_address_tel);
+        addressStr = (EditText) findViewById(R.id.activity_update_address_str);
+        city = (TextView) findViewById(R.id.activity_update_address_city);
+        area = (TextView) findViewById(R.id.activity_update_address_area);
+        popupWindowView = LayoutInflater.from(this).inflate(R.layout.popup_address_list, null);
+        commit = (Button) findViewById(R.id.activity_update_address_commit);
+        final Intent intent = getIntent();
+        final String type = intent.getStringExtra("type");
+        if ("add".equals(type)) {
+            setTitles("添加收货地址");
+        } else {
+            setTitles("修改收货地址");
+            //传递取值
+            addressId = intent.getStringExtra("updateAddressId");
+            final String name = intent.getStringExtra("updateName");
+            String sex = intent.getStringExtra("updateSex");
+            final String tel = intent.getStringExtra("updateTel");
+            final String address = intent.getStringExtra("updateAddress");
+            String str = intent.getStringExtra("updateStr");
+            //赋值
+            addressName.setText(name);
+            addressTel.setText(tel);
+            addressStr.setText(str);
+            String[] a = address.split("市");
+            city.setText(a[0]);
+            area.setText(a[1].substring(0, a[1].length() - 1));
+            //性别赋值判断
+            if ("1".equals(sex)) {
+                man.setChecked(true);
+                woman.setChecked(false);
+            } else {
+                man.setChecked(false);
+                woman.setChecked(true);
+            }
+        }
+        //提交添加监听
+        commit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if ("".equals(city.getText().toString()) || "".equals(area.getText().toString()) || "".equals(addressTel.getText().toString()) || "".equals(addressStr.getText().toString())) {
+                    CustomToast.getInstance(AddressActivity.this).setMessage("基本信息不能为空！");
+                } else if (!DateUtils.gephonetzhenze(addressTel.getText().toString())) {
+                    CustomToast.getInstance(AddressActivity.this).setMessage("电话格式不对！");
+                } else if (man.isChecked() == false && woman.isChecked() == false) {
+                    CustomToast.getInstance(AddressActivity.this).setMessage("请选择性别！");
+                } else {
+                    if ("add".equals(type)) {
+                        getAdd();
+                    } else {
+                        getupdate();
+                    }
+
+                }
+            }
+        });
+
+        city.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cityInitPop();
+                cityPopupWindow.showAsDropDown(city);
+            }
+        });
+        area.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                areaInitPop();
+                areaPopupWindow.showAsDropDown(area);
+            }
+        });
+    }
+
+    /**
+     * 修改地址
+     */
+    public void getupdate() {
+        AddressPossBean addressPossBean = new AddressPossBean();
+        addressPossBean.setAddressid(addressId);
+        addressPossBean.setReceiver(addressName.getText().toString());
+        if (man.isChecked()) {
+            addressPossBean.setGender("1");
+        } else {
+            addressPossBean.setGender("0");
+        }
+        addressPossBean.setContact(addressTel.getText().toString());
+        addressPossBean.setAreaname(city.getText().toString() + "市" + area.getText().toString() + "区");
+        addressPossBean.setStreetaddr(addressStr.getText().toString());
+        Http.addressUpdate(AddressActivity.this, addressPossBean);
+    }
+
+    /**
+     * 添加地址接口
+     */
+    public void getAdd() {
+        AddressPossBean addressPossBean = new AddressPossBean();
+        addressPossBean.setStoreid(UserInfo.getInstance().getUser(this).getStoreid());
+        addressPossBean.setReceiver(addressName.getText().toString());
+        if (man.isChecked()) {
+            addressPossBean.setGender("1");
+        } else if (woman.isChecked()) {
+            addressPossBean.setGender("0");
+        } else {
+            addressPossBean.setGender("");
+        }
+        addressPossBean.setContact(addressTel.getText().toString());
+        addressPossBean.setAreaname(city.getText().toString() + "市" + area.getText().toString() + "区");
+        addressPossBean.setStreetaddr(addressStr.getText().toString());
+        Http.addressAdd(AddressActivity.this, addressPossBean);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MutualApplication.getRequestQueue().cancelAll("addressAdd2");
+        MutualApplication.getRequestQueue().cancelAll("addressUpdate3");
+    }
+
+    /**
+     * 城市popupWindow
+     */
+    private void cityInitPop() { //初始化popup
+        cityPopupWindow = new PopupWindow(popupWindowView,
+                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        cityPopupWindow.setOutsideTouchable(true);
+        cityPopupWindow.setFocusable(true);
+        cityPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+        cityList = new ArrayList<>();
+        ListView list_menu1 = (ListView) popupWindowView
+                .findViewById(R.id.list_menu1);
+
+        addressAdapter = new AddressAdapter(this, cityList);
+
+        PopupMenuShowBean popupMenuShowBean = new PopupMenuShowBean();
+        popupMenuShowBean.setMenuname("沈阳");
+        cityList.add(popupMenuShowBean);
+        list_menu1.setAdapter(addressAdapter);
+
+        list_menu1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                city.setText(cityList.get(position).getMenuname());
+                cityPopupWindow.dismiss();
+            }
+        });
+    }
+
+    /**
+     * 地区popupWindow
+     */
+    private void areaInitPop() { //初始化popup
+        areaPopupWindow = new PopupWindow(popupWindowView,
+                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        areaPopupWindow.setOutsideTouchable(true);
+        areaPopupWindow.setFocusable(true);
+        areaPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+        areaList = new ArrayList<>();
+        ListView list_menu1 = (ListView) popupWindowView
+                .findViewById(R.id.list_menu1);
+
+        addressAdapter = new AddressAdapter(this, areaList);
+
+        String[] areaArray = {"沈河", "大东", "皇姑", "铁西", "和平", "浑南新", "于洪", "沈北新", "苏家屯"};
+        for (int i = 0; i < areaArray.length; i++) {
+            PopupMenuShowBean popupMenuShowBean = new PopupMenuShowBean();
+            popupMenuShowBean.setMenuname(String.valueOf(areaArray[i]));
+            areaList.add(popupMenuShowBean);
+        }
+
+
+        list_menu1.setAdapter(addressAdapter);
+
+        list_menu1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                area.setText(areaList.get(position).getMenuname());
+                areaPopupWindow.dismiss();
+            }
+        });
+
+    }
+}

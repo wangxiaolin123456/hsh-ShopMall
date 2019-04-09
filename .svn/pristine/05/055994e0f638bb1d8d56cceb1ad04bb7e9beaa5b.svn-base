@@ -1,0 +1,123 @@
+package com.example.administrator.merchants.http.listener;
+
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.android.volley.Response;
+import com.example.administrator.merchants.adapter.OriginOrderAdapter;
+import com.example.administrator.merchants.common.GlideTest;
+import com.example.administrator.merchants.fragment.OriginOrderFragment;
+import com.example.administrator.merchants.http.HttpUrl;
+import com.example.administrator.merchants.http.Status;
+import com.example.administrator.merchants.http.show.OriginOrderShowBean;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/8/20 0020 10:18
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：原产地订单列表
+ */
+public class OriginOrderListListener implements Response.Listener<JSONObject> {
+    private Context context;
+    private int type;
+    private List<OriginOrderShowBean> list;
+    private ImageView anim;
+    private ListView listView;
+    private OriginOrderAdapter originOrderAdapter;
+    private RefreshLayout swipeLayout;
+    private View footView;
+    private RefreshLayout.OnLoadListener onLoadListener;
+
+    public OriginOrderListListener(Context context, int type, List<OriginOrderShowBean> list, ImageView anim, ListView listView, OriginOrderAdapter originOrderAdapter
+            , RefreshLayout swipeLayout, View footView, RefreshLayout.OnLoadListener onLoadListener) {
+        this.context = context;
+        this.type = type;
+        this.list = list;
+        this.anim = anim;
+        this.originOrderAdapter = originOrderAdapter;
+        this.listView = listView;
+        this.swipeLayout = swipeLayout;
+        this.footView = footView;
+        this.onLoadListener = onLoadListener;
+    }
+
+    @Override
+    public void onResponse(JSONObject jsonObject) {
+        if (Status.status(jsonObject)) {
+            //返回成功
+            try {
+                if (type == 0 || type == 2) {
+                    list.clear();
+                }
+                JSONArray jsonArray = jsonObject.getJSONArray("list");
+                List<JSONObject> jsonObjectList = new ArrayList<>();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    jsonObjectList.add((JSONObject) jsonArray.get(i));
+                }
+                for (int j = 0; j < jsonObjectList.size(); j++) {
+                    OriginOrderShowBean originOrderShowBean = new OriginOrderShowBean();
+                    if ("1".equals(jsonObjectList.get(j).getString("ordstatus")) && "1".equals(jsonObjectList.get(j).getString("paystatus"))) {
+                        originOrderShowBean.setType(OriginOrderAdapter.VALUE_TWO);
+                        originOrderShowBean.setOrderId(jsonObjectList.get(j).getString("ordno"));
+                        originOrderShowBean.setOrderImage(HttpUrl.BaseImageUrl + jsonObjectList.get(j).getString("ordimgsfile"));
+                        originOrderShowBean.setOrderTime(jsonObjectList.get(j).getString("createtimestr"));
+                        originOrderShowBean.setOrdmername(jsonObjectList.get(j).getString("ordmername"));
+                        originOrderShowBean.setOrderNews(jsonObjectList.get(j).getString("ordmername") + "等" + jsonObjectList.get(j).getString("ordmerqty") + "件商品");
+                        originOrderShowBean.setOrderMoney(jsonObjectList.get(j).getString("payamt"));
+                    } else if ("0".equals(jsonObjectList.get(j).getString("ordstatus")) && "1".equals(jsonObjectList.get(j).getString("paystatus"))) {
+                        originOrderShowBean.setType(OriginOrderAdapter.VALUE_ONE);
+                        originOrderShowBean.setOrderId(jsonObjectList.get(j).getString("ordno"));
+                        originOrderShowBean.setOrderImage(HttpUrl.BaseImageUrl + jsonObjectList.get(j).getString("ordimgsfile"));
+                        originOrderShowBean.setOrderTime(jsonObjectList.get(j).getString("createtimestr"));
+                        originOrderShowBean.setOrdmername(jsonObjectList.get(j).getString("ordmername"));
+                        originOrderShowBean.setOrderNews(jsonObjectList.get(j).getString("ordmername") + "等" + jsonObjectList.get(j).getString("ordmerqty") + "件商品");
+                        originOrderShowBean.setOrderMoney(jsonObjectList.get(j).getString("payamt"));
+                    } else {
+                        originOrderShowBean.setType(OriginOrderAdapter.VALUE_THREE);
+                        originOrderShowBean.setOrderId(jsonObjectList.get(j).getString("ordno"));
+                        originOrderShowBean.setOrderImage(HttpUrl.BaseImageUrl + jsonObjectList.get(j).getString("ordimgsfile"));
+                        originOrderShowBean.setOrderTime(jsonObjectList.get(j).getString("createtimestr"));
+                        originOrderShowBean.setOrdmername(jsonObjectList.get(j).getString("ordmername"));
+                        originOrderShowBean.setOrderNews(jsonObjectList.get(j).getString("ordmername") + "等" + jsonObjectList.get(j).getString("ordmerqty") + "件商品");
+                        originOrderShowBean.setOrderMoney(jsonObjectList.get(j).getString("payamt"));
+                    }
+                    list.add(originOrderShowBean);
+                }
+                if (type == 0) {
+                    GlideTest.imageCancle(anim);
+                    listView.setAdapter(originOrderAdapter);
+                    swipeLayout.setRefreshing(false);
+                } else if (type == 1) {
+                    originOrderAdapter.notifyDataSetChanged();
+                    OriginOrderFragment.s = 1;
+                    swipeLayout.setLoading(false);
+                } else if (type == 2) {
+                    originOrderAdapter.notifyDataSetChanged();
+                }
+                if (jsonObjectList.size() < 15) {
+                    swipeLayout.setOnLoadListener(null);
+                    listView.removeFooterView(footView);
+                    listView.addFooterView(footView);
+                } else {
+                    swipeLayout.setOnLoadListener(onLoadListener);
+                    listView.removeFooterView(footView);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            //返回失败
+            Status.fail(context, jsonObject);
+        }
+    }
+}

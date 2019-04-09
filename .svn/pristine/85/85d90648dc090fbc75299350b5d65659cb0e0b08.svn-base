@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.example.administrator.merchants.view.MyListView
+        android:id="@+id/fragment_order_origin_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null" />
+    <!--#e4e4e4-->
+    <!--android:dividerHeight="1dp"-->
+</LinearLayout>

@@ -1,0 +1,325 @@
+package com.example.administrator.merchants.loan.activity;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.toast.CustomToast;
+import com.example.administrator.merchants.dialog.MineAvatarDialog;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * 作者：韩宇 on 2017/8/31 0031 09:30
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：资料认证
+ */
+public class DateAuthenticationActivity extends BaseActivity implements View.OnClickListener, MineAvatarDialog.BackChoose {
+    //通用部分
+    private TextView workText, contactText, accountText;//工作信息,联系信息，账户信息（蓝灰之间字体变换）
+    private ImageView titleImage,status;//标题图标变换,图片变化
+    private TextView title;//标题变换
+    //身份信息模块
+    private LinearLayout identityAuthentication, uploadIdCard, map, educationClick, maritalStatusClick;//身份模块是否隐藏,点击上传手持身份证照,地图跳转，学历点击,婚姻状况点击
+    private EditText userName, userIdCard;//姓名,身份证号
+    private ImageView idCardImage;//手持身份证照
+    private TextView address, education, maritalStatus, identityAuthenticationCommit;//地址,学历,婚姻状况,提交
+    //工作信息模块
+    private LinearLayout workAuthentication, incomeStatusClick;//工作模块是否隐藏,收入状况选择点击
+    private EditText corporateName, corporateTel;//公司名称,公司联系电话
+    private TextView incomeStatus, workAuthenticationCommit;//收入状况,提交
+    //联系信息模块
+    private LinearLayout conntactAuthentication, relationshipClick;//联系模块是否隐藏,关系点击选择
+    private EditText kinName, kinTel, contactName1, contactName2, contactTel1, contactTel2;//亲属姓名,亲属电话,紧急联系人1，紧急联系人2，紧急联系人1电话，紧急联系人2电话
+    private TextView relationship, conntactAuthenticationCommit;//关系,提交
+    //账户信息模块
+    private LinearLayout accountAuthentication, uploadBank;//账户模块是否隐藏,上传手持银行卡照片
+    private EditText bankNumber;//借记卡号
+    private ImageView bankImage;//手持身份证照
+    private TextView accountAuthenticationCommit;//提交
+    private static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
+    private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
+
+    /* 头像名称 */
+//    private static final String PHOTO_FILE_NAME = "temp_photo.jpg";
+    private File tempFile;
+
+
+
+
+
+//    /*
+//      * 剪切图片
+//      */
+//    private void crop(Uri uri) {
+//        Intent intent = new Intent("com.android.camera.action.CROP");
+//        intent.setDataAndType(uri, "image/*");
+//        intent.putExtra("crop", "true");
+//        intent.putExtra("aspectX", 1);
+//        intent.putExtra("aspectY", 1);
+//        intent.putExtra("outputX", 250);
+//        intent.putExtra("outputY", 250);
+//        intent.putExtra("scale", true);
+//        intent.putExtra("return-data", false);
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+//        intent.putExtra("noFaceDetection", false); // no face detection
+//        startActivityForResult(intent, PHOTO_REQUEST_CUT);
+//    }
+//    private Uri imageUri=Uri.parse("file:///sdcard/temp.jpg");
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PHOTO_REQUEST_GALLERY) {
+            // 从相册返回的数据
+            if (data != null) {
+                // 得到图片的全路径
+                Uri uri = data.getData();
+//                File file=new File(imageUri.toString());
+//                if (file.exists()){
+//                    file.delete();
+//                }
+//                crop(uri);
+                idCardImage.setImageURI(uri);
+            }
+        } else if (requestCode == PHOTO_REQUEST_CAREMA) {
+            // 从相机返回的数据
+            if (hasSdcard()) {
+                Log.d("IIIII....", Uri.fromFile(tempFile) + "");
+//                File file=new File(imageUri.toString());
+//                if (file.exists()){
+//                    file.delete();
+//                }
+//                crop(Uri.fromFile(tempFile));
+                idCardImage.setImageURI(Uri.fromFile(tempFile));
+            } else {
+                CustomToast.getInstance(DateAuthenticationActivity.this).setMessage("未找到存储卡，无法存储照片！");
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /*
+    * 判断sdcard是否被挂载
+    */
+    private boolean hasSdcard() {
+        if (Environment.getExternalStorageState().equals(
+                Environment.MEDIA_MOUNTED)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    @Override
+    public void isChoose(boolean choose) {
+        if (choose) {
+            gallery();
+        } else {
+            camera();
+        }
+    }
+
+    /*
+        * 从相册获取
+        */
+    public void gallery() {
+        // 激活系统图库，选择一张图片
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_GALLERY
+        startActivityForResult(intent, PHOTO_REQUEST_GALLERY);
+    }
+
+    /*
+    * 从相机获取
+    */
+    public void camera() {
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMdd_hhmmss");
+        final String date = sDateFormat.format(new java.util.Date());
+        tempFile = new File(Environment.getExternalStorageDirectory(),date+"_"+ ".png"
+                );
+        // 激活相机
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        // 判断存储卡是否可以用，可用进行存储
+        if (hasSdcard()) {
+            // 从文件中创建uri
+            Uri uri = Uri.fromFile(tempFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+        }
+        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CAREMA
+        startActivityForResult(intent, PHOTO_REQUEST_CAREMA);
+    }
+
+
+
+
+
+
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loan_date_authentication);
+        setTitles("资料认证");
+        workText = (TextView) findViewById(R.id.work_message);
+        contactText = (TextView) findViewById(R.id.contact_message);
+        accountText = (TextView) findViewById(R.id.account_message);
+        titleImage = (ImageView) findViewById(R.id.title_image);
+        status= (ImageView) findViewById(R.id.status);
+        title = (TextView) findViewById(R.id.title);
+        identityAuthentication = (LinearLayout) findViewById(R.id.identity_authentication);
+        userName = (EditText) findViewById(R.id.user_name);
+        userIdCard = (EditText) findViewById(R.id.user_id_cord);
+        idCardImage = (ImageView) findViewById(R.id.id_card_image);
+        uploadIdCard = (LinearLayout) findViewById(R.id.upload_id_card);
+        map = (LinearLayout) findViewById(R.id.map);
+        address = (TextView) findViewById(R.id.address);
+        education = (TextView) findViewById(R.id.education);
+        educationClick = (LinearLayout) findViewById(R.id.education_click);
+        maritalStatus = (TextView) findViewById(R.id.marital_status);
+        maritalStatusClick = (LinearLayout) findViewById(R.id.marital_status_click);
+        identityAuthenticationCommit = (TextView) findViewById(R.id.identity_authentication_commit);
+        workAuthentication = (LinearLayout) findViewById(R.id.work_authentication);
+        corporateName = (EditText) findViewById(R.id.corporate_name);
+        incomeStatusClick = (LinearLayout) findViewById(R.id.income_status_click);
+        incomeStatus = (TextView) findViewById(R.id.income_status);
+        corporateTel = (EditText) findViewById(R.id.corporate_tel);
+        workAuthenticationCommit = (TextView) findViewById(R.id.work_authentication_commit);
+        conntactAuthentication = (LinearLayout) findViewById(R.id.contact_authentication);
+        kinName = (EditText) findViewById(R.id.kin_name);
+        relationship = (TextView) findViewById(R.id.relationship);
+        relationshipClick = (LinearLayout) findViewById(R.id.relationship_click);
+        kinTel = (EditText) findViewById(R.id.kin_tel);
+        contactName1 = (EditText) findViewById(R.id.contact_name1);
+        contactName2 = (EditText) findViewById(R.id.contact_name2);
+        contactTel1 = (EditText) findViewById(R.id.contact_tel1);
+        contactTel2 = (EditText) findViewById(R.id.contact_tel2);
+        conntactAuthenticationCommit = (TextView) findViewById(R.id.contact_authentication_commit);
+        accountAuthentication = (LinearLayout) findViewById(R.id.account_authentication);
+        bankNumber = (EditText) findViewById(R.id.bank_number);
+        bankImage = (ImageView) findViewById(R.id.bank_image);
+        uploadBank = (LinearLayout) findViewById(R.id.upload_bank);
+        accountAuthenticationCommit = (TextView) findViewById(R.id.account_authentication_commit);
+        click();
+        identityAuthentication.setVisibility(View.VISIBLE);
+        workAuthentication.setVisibility(View.GONE);
+        conntactAuthentication.setVisibility(View.GONE);
+        accountAuthentication.setVisibility(View.GONE);
+        workText.setTextColor(this.getResources().getColor(R.color.text_gray_color));
+        contactText.setTextColor(this.getResources().getColor(R.color.text_gray_color));
+        accountText.setTextColor(this.getResources().getColor(R.color.text_gray_color));
+        status.setImageResource(R.drawable.authentication);
+        titleImage.setImageResource(R.drawable.idcard);
+        title.setText("身份信息");
+    }
+    void click(){
+        uploadIdCard.setOnClickListener(this);
+        map.setOnClickListener(this);
+        educationClick.setOnClickListener(this);
+        maritalStatusClick.setOnClickListener(this);
+        identityAuthenticationCommit.setOnClickListener(this);
+        incomeStatusClick.setOnClickListener(this);
+        workAuthenticationCommit.setOnClickListener(this);
+        relationshipClick.setOnClickListener(this);
+        conntactAuthenticationCommit.setOnClickListener(this);
+        uploadBank.setOnClickListener(this);
+        accountAuthenticationCommit.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.upload_id_card:
+                //上传手持身份证照片
+                MineAvatarDialog dialog = new MineAvatarDialog(this, R.style.Dialog);
+                Window window = dialog.getWindow();
+                window.setGravity(Gravity.CENTER);
+                dialog.show();
+                dialog.getChoose(this);
+                break;
+            case R.id.map:
+                //地图跳转
+                break;
+            case R.id.education_click:
+                //学历点击选择
+                break;
+            case R.id.marital_status_click:
+                //婚姻状况点击选择
+                break;
+            case R.id.identity_authentication_commit:
+                identityAuthentication.setVisibility(View.GONE);
+                workAuthentication.setVisibility(View.VISIBLE);
+                conntactAuthentication.setVisibility(View.GONE);
+                accountAuthentication.setVisibility(View.GONE);
+                workText.setTextColor(this.getResources().getColor(R.color.themeBlueColor));
+                contactText.setTextColor(this.getResources().getColor(R.color.text_gray_color));
+                accountText.setTextColor(this.getResources().getColor(R.color.text_gray_color));
+                status.setImageResource(R.drawable.authentication2);
+                titleImage.setImageResource(R.drawable.human);
+                title.setText("工作信息");
+                break;
+            case R.id.income_status_click:
+                //收入选择点击
+                break;
+            case R.id.work_authentication_commit:
+                identityAuthentication.setVisibility(View.GONE);
+                workAuthentication.setVisibility(View.GONE);
+                conntactAuthentication.setVisibility(View.VISIBLE);
+                accountAuthentication.setVisibility(View.GONE);
+                workText.setTextColor(this.getResources().getColor(R.color.themeBlueColor));
+                contactText.setTextColor(this.getResources().getColor(R.color.themeBlueColor));
+                accountText.setTextColor(this.getResources().getColor(R.color.text_gray_color));
+                status.setImageResource(R.drawable.authentication3);
+                titleImage.setImageResource(R.drawable.phone);
+                title.setText("联系信息");
+                break;
+            case R.id.relationship_click:
+                //关系选择点击
+                break;
+            case R.id.contact_authentication_commit:
+                identityAuthentication.setVisibility(View.GONE);
+                workAuthentication.setVisibility(View.GONE);
+                conntactAuthentication.setVisibility(View.GONE);
+                accountAuthentication.setVisibility(View.VISIBLE);
+                workText.setTextColor(this.getResources().getColor(R.color.themeBlueColor));
+                contactText.setTextColor(this.getResources().getColor(R.color.themeBlueColor));
+                accountText.setTextColor(this.getResources().getColor(R.color.themeBlueColor));
+                status.setImageResource(R.drawable.authentication4);
+                titleImage.setImageResource(R.drawable.idcard);
+                title.setText("账户信息");
+                break;
+            case R.id.upload_bank:
+                //上传手持银行卡照片
+                MineAvatarDialog dialog1 = new MineAvatarDialog(this, R.style.Dialog);
+                Window window1 = dialog1.getWindow();
+                window1.setGravity(Gravity.CENTER);
+                dialog1.show();
+                dialog1.getChoose(this);
+                break;
+            case R.id.account_authentication_commit:
+                //最后的提交
+                finish();
+                break;
+        }
+
+    }
+}

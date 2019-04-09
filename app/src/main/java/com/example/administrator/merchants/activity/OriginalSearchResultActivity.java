@@ -1,0 +1,372 @@
+package com.example.administrator.merchants.activity;
+
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.adapter.MenuAdapter;
+import com.example.administrator.merchants.adapter.OriginalHomeYouLikeListAdapter;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.CommonUtil;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.MenuPostBean;
+import com.example.administrator.merchants.http.post.OriginalSearchResultPostBean;
+import com.example.administrator.merchants.http.show.CommodityShowBean;
+import com.example.administrator.merchants.http.show.PopupMenuShowBean;
+import com.example.administrator.merchants.common.toast.CustomToast;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+
+import org.apache.http.util.TextUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：原产地商品搜索结果
+ */
+public class OriginalSearchResultActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener,
+        RefreshLayout.OnLoadListener {
+    private PopupWindow popupWindow;
+    private View popupWindowView;
+    private List<CommodityShowBean> commodityShowBeanList;
+    private ListView aftSearchListView;
+    private OriginalHomeYouLikeListAdapter originalHomeYouLikeListAdapter;
+    private ImageView back;
+    private TextView search;//搜索二字
+    private EditText editText;
+    private List<PopupMenuShowBean> listOne;
+    private List<PopupMenuShowBean> listTwo;
+    private MenuAdapter firstMenuAdapter, secondMenuAdapter;
+    private TextView all, good, price, sales;
+    private View viewLine;//一条线
+    private ListView list_menu2;
+    private View header;
+    private String type = "null";
+    private RefreshLayout swipeLayout;
+    public static int s = 0;
+    private View footView;
+    private String searchText,menuid;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search_result);
+        searchText = getIntent().getStringExtra("searchkey");
+        menuid=getIntent().getStringExtra("menuid");
+        listOne = new ArrayList<>();
+        listTwo = new ArrayList<>();
+        viewLine = findViewById(R.id.viewOriginal);
+        all = (TextView) findViewById(R.id.tv_all);//全部分类
+        good = (TextView) findViewById(R.id.tv_typegood);//好评排行
+        price = (TextView) findViewById(R.id.tv_price);//价格排行
+        sales = (TextView) findViewById(R.id.tv_count);//销量排行
+        editText = (EditText) findViewById(R.id.editText_search);
+        back = (ImageView) findViewById(R.id.backleft);
+        search = (TextView) findViewById(R.id.search);
+        commodityShowBeanList = new ArrayList<>();
+        aftSearchListView = (ListView) findViewById(R.id.aftSearchListView);
+        footView = getLayoutInflater().inflate(R.layout.no_more_date_footview, null);
+        originalHomeYouLikeListAdapter = new OriginalHomeYouLikeListAdapter(this, commodityShowBeanList);
+        toGetMenuOne();
+        LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        popupWindowView = layoutInflater.inflate(R.layout.view_popu_two_list, null);
+        list_menu2 = (ListView) popupWindowView
+                .findViewById(R.id.list_menu2);
+        initView();
+        setListener();
+        swipeLayout.post(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(true);
+            }
+        }));
+        onRefresh();
+        click();
+    }
+
+    /**
+     * 点击处理
+     */
+    public void click() {
+        all.setOnClickListener(this);
+        good.setOnClickListener(this);
+        price.setOnClickListener(this);
+        sales.setOnClickListener(this);
+        back.setOnClickListener(this);
+        search.setOnClickListener(this);
+        aftSearchListView.setOnItemClickListener(this);
+    }
+
+    /**
+     * 初始化布局
+     */
+    @SuppressLint({"InlinedApi", "InflateParams"})
+    private void initView() {
+        header = getLayoutInflater().inflate(R.layout.loding_header, null);
+        swipeLayout = (RefreshLayout) findViewById(R.id.swipe_container);
+        aftSearchListView.addHeaderView(header);
+    }
+
+    /**
+     * 设置监听
+     */
+    private void setListener() {
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+
+    /**
+     * 上拉刷新
+     */
+    @Override
+    public void onRefresh() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getList("0", "15", 0); //toDO 调用请求
+            }
+        }, 1000);
+
+    }
+
+    /**
+     * 加载更多
+     */
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // 更新数据
+                // 更新完后调用该方法结束刷新
+                if (s == 0 || s == 1) {
+                    s = 2;
+                    getList(commodityShowBeanList.size() + "", "15", 1); //toDO 调用请求
+                }
+            }
+        }, 1000);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MutualApplication.getRequestQueue().cancelAll("searchOneMenu64");
+        MutualApplication.getRequestQueue().cancelAll("searchTwoMenu65");
+        MutualApplication.getRequestQueue().cancelAll("searchResultList66");
+        MutualApplication.getRequestQueue().cancelAll("discountText120");
+    }
+
+    /**
+     * 商品分类popupWindow
+     */
+    private void initPop() {//初始化popup
+        popupWindow = new PopupWindow(popupWindowView,
+                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        ListView list_menu1 = (ListView) popupWindowView
+                .findViewById(R.id.list_menu1);
+        firstMenuAdapter = new MenuAdapter(this, listOne);
+        secondMenuAdapter = new MenuAdapter(this, listTwo);
+        list_menu1.setAdapter(firstMenuAdapter);
+        list_menu1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for (PopupMenuShowBean o : listOne) {
+                    o.setColor(0);
+                }
+                listOne.get(position).setColor(1);
+                firstMenuAdapter.notifyDataSetChanged();
+                listTwo.clear();
+                toGetMenuTwo(listOne.get(position).getMenuid());//去拿二级菜单
+                getList("0", "15", 0);
+            }
+        });
+        list_menu2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for (PopupMenuShowBean o : listTwo) {
+                    o.setColor(0);
+                }
+                listTwo.get(position).setColor(1);
+                secondMenuAdapter.notifyDataSetChanged();
+                getList("0", "15", 0);
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.backleft:
+                finish();
+                break;
+            case R.id.search:
+                String key = editText.getText().toString().trim();
+                if (TextUtils.isEmpty(key)) {
+                    CustomToast.getInstance(OriginalSearchResultActivity.this).setMessage("输入商品");
+                } else {
+                    if (CommonUtil.compileExChar(editText.getText().toString())){
+                        CustomToast.getInstance(this).setMessage("不能含有特殊字符'和#！");
+                    }else {
+                        commodityShowBeanList.clear();
+                        getList("0", "15", 0);
+                        toGetMenuOne();
+                    }
+
+                }
+                break;
+            case R.id.tv_all:
+                setColor(1);
+                type = "all";
+                if (popupWindow == null) {
+                    initPop();
+                }
+                popupWindow.showAsDropDown(viewLine);
+                break;
+            case R.id.tv_typegood:
+                type = "score";
+                setColor(2);
+                getList("0", "15", 0);
+                break;
+            case R.id.tv_price:
+                type = "price";
+                setColor(3);
+                getList("0", "15", 0);
+                break;
+            case R.id.tv_count:
+                type = "sale";
+                setColor(4);
+                getList("0", "15", 0);
+                break;
+            default:
+        }
+    }
+
+    /**
+     * 排序按钮字体颜色变化
+     *
+     * @param type
+     */
+    private void setColor(int type) {
+        if (type == 1) {
+            all.setTextColor(Color.parseColor("#fc0404"));
+            good.setTextColor(Color.parseColor("#000000"));
+            price.setTextColor(Color.parseColor("#000000"));
+            sales.setTextColor(Color.parseColor("#000000"));
+        } else if (type == 2) {
+            all.setTextColor(Color.parseColor("#000000"));
+            good.setTextColor(Color.parseColor("#fc0404"));
+            price.setTextColor(Color.parseColor("#000000"));
+            sales.setTextColor(Color.parseColor("#000000"));
+        } else if (type == 3) {
+            all.setTextColor(Color.parseColor("#000000"));
+            good.setTextColor(Color.parseColor("#000000"));
+            price.setTextColor(Color.parseColor("#fc0404"));
+            sales.setTextColor(Color.parseColor("#000000"));
+        } else if (type == 4) {
+            all.setTextColor(Color.parseColor("#000000"));
+            good.setTextColor(Color.parseColor("#000000"));
+            price.setTextColor(Color.parseColor("#000000"));
+            sales.setTextColor(Color.parseColor("#fc0404"));
+        }
+    }
+
+    /**
+     * 搜索商品一级菜单
+     */
+    public void toGetMenuOne() {
+        MenuPostBean menuPostBean = new MenuPostBean();
+        if (!"".equals(editText.getText().toString())) {
+            menuPostBean.setKeyword(editText.getText().toString());
+        } else {
+            menuPostBean.setKeyword(searchText);
+        }
+        Http.searchOneMenu(OriginalSearchResultActivity.this, menuPostBean, listOne);
+    }
+
+    /**
+     * 搜索商品二级菜单
+     *
+     * @param pmenuid
+     */
+    public void toGetMenuTwo(String pmenuid) {//拿到含有搜索商品的  二级菜单
+        MenuPostBean menuPostBean = new MenuPostBean();
+        menuPostBean.setPmenuid(pmenuid);
+        if (!"".equals(editText.getText().toString())) {
+            menuPostBean.setKeyword(editText.getText().toString());
+        } else {
+            menuPostBean.setKeyword(searchText);
+        }
+        Http.searchTwoMenu(OriginalSearchResultActivity.this, menuPostBean, listTwo, list_menu2, secondMenuAdapter);
+    }
+
+    /**
+     * 搜索出来的商品价格排序
+     *
+     * @param offset
+     * @param limit
+     * @param Type
+     */
+    public void getList(String offset, String limit, int Type) {//价格排行
+        OriginalSearchResultPostBean originalSearchResultPostBean = new OriginalSearchResultPostBean();
+        if (!"".equals(editText.getText().toString())) {
+            originalSearchResultPostBean.setKeyword(editText.getText().toString());
+        } else {
+            originalSearchResultPostBean.setKeyword(searchText);
+        }
+        String id2 = "menuid";
+        String paramsId2 = menuid;
+        for (int i = 0; i < listOne.size(); i++) {
+            if (listOne.get(i).getColor() == 1) {
+                id2 = "menuid";
+                paramsId2 = listOne.get(i).getMenuid();
+
+                if (listOne.get(i).getMenuid().equals("all")) {//toDo 如果一级菜单点的是全部分类的话
+                    id2 = "pmenuid";
+                }
+                for (int j = 0; j < listTwo.size(); j++) {//toDo 如果一级菜单被点了   就遍历二级菜单
+                    if (listTwo.get(j).getColor() == 1) {
+                        id2 = "submenuid";
+                        paramsId2 = listTwo.get(j).getMenuid();
+                    }
+                }
+            }
+        }
+        originalSearchResultPostBean.setId2(id2);
+        originalSearchResultPostBean.setParamsId2(paramsId2);
+        originalSearchResultPostBean.setType(type);
+        originalSearchResultPostBean.setOffset(offset);
+        originalSearchResultPostBean.setLimit(limit);
+        Http.searchResultList(OriginalSearchResultActivity.this, originalSearchResultPostBean, Type, commodityShowBeanList, aftSearchListView, originalHomeYouLikeListAdapter, swipeLayout, footView);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent();
+        intent.putExtra("merid", commodityShowBeanList.get(position - 1).getMerid());
+        intent.setClass(this, GoodsDetailsActivity.class);//CommodityDetailsActivity
+        this.startActivity(intent);
+    }
+}
+
+

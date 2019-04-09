@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="#EAEAEA">
+
+            <TextView
+                android:id="@+id/dialog_view_all_cancel"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="#999999"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/dialog_view_all_sure"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="#E93441"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/dialog_view_all_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/account_bills_gray_white"
+                android:gravity="top"
+                android:hint="请输入配送时长"
+                android:lines="1"
+                android:padding="5dp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/dialog_view_all_danwei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:padding="5dp"
+                android:text="分钟"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

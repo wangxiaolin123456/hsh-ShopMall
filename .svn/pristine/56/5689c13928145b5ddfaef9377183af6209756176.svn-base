@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+
+    <LinearLayout
+        android:id="@+id/linear_checkall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/item_shopping_check_all"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="9dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/activity_shopping_cart_chose_style"
+                android:button="@null" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="3dp"
+                android:text="全选"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e4e4e4" />
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/shoppingcar_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/rmb_car"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="¥"
+            android:textColor="#ed0a0a"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/zongqianshu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/rmb_car"
+            android:gravity="center"
+            android:text="0.00"
+            android:singleLine="true"
+            android:textColor="#ed0a0a"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/gotoaccount"
+            android:layout_width="122dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="#ed0a0a"
+            android:gravity="center"
+            android:text="去结算"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+</LinearLayout>

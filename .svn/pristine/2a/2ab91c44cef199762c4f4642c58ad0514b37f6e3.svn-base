@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/down_item_img"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/someone" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="17dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/down_content_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="45dffedf"
+                android:textColor="#5c5c5c" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_marginTop="9dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:id="@+id/down_yuan_rating"
+                    style="@style/roomRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="4.2" />
+
+                <TextView
+                    android:id="@+id/down_content_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="13dp"
+                    android:text="kdjfkjre"
+                    android:textColor="#bebebe"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+
+            android:id="@+id/goodsDetail_comments"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center|left"
+            android:lineSpacingMultiplier="1.5"
+            android:maxLines="2"
+            android:singleLine="false"
+            android:text="dfdfdf"
+            android:textSize="11dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#f1f1f1" />
+
+</LinearLayout>

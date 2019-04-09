@@ -1,0 +1,99 @@
+package com.example.administrator.merchants.loan.fragment;
+
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseFragment;
+import com.example.administrator.merchants.loan.activity.AuditProgressQueryActivity;
+import com.example.administrator.merchants.loan.activity.DateAuthenticationActivity;
+import com.example.administrator.merchants.loan.activity.LoanNeedActivity;
+import com.example.administrator.merchants.loan.activity.LoanNeedRepaymentListActivity;
+
+/**
+ * 作者：韩宇 on 2017/8/18 0018 09:05
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：贷款首页
+ */
+public class LoanHomePageFragment extends BaseFragment implements View.OnClickListener {
+    private View view;
+    private ImageView  loan_progress_query_button, loan_need_button, loan_need_repayment_button,back;
+    private LinearLayout linearLayout;
+    private TextView application_limit;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_loan_home_page, null);
+        loan_progress_query_button = (ImageView) view.findViewById(R.id.loan_progress_query_button);
+        loan_need_button = (ImageView) view.findViewById(R.id.loan_need_button);
+        loan_need_repayment_button = (ImageView) view.findViewById(R.id.loan_need_repayment_button);
+        linearLayout = (LinearLayout) view.findViewById(R.id.line);
+        back= (ImageView) view.findViewById(R.id.head_back);
+        application_limit = (TextView) view.findViewById(R.id.application_limit);
+        click();
+        return view;
+    }
+
+    /**
+     * 点击时间
+     */
+    void click() {
+        application_limit.setOnClickListener(this);
+        loan_progress_query_button.setOnClickListener(this);
+        loan_need_repayment_button.setOnClickListener(this);
+        loan_need_button.setOnClickListener(this);
+        back.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.application_limit:
+                //申请额度
+                startActivity(new Intent(getActivity(), DateAuthenticationActivity.class));
+                break;
+            case R.id.loan_progress_query_button:
+                //查看进度
+                startActivity(new Intent(getActivity(), AuditProgressQueryActivity.class));
+                break;
+            case R.id.loan_need_repayment_button:
+                //还款
+                startActivity(new Intent(getActivity(), LoanNeedRepaymentListActivity.class));
+                break;
+            case R.id.loan_need_button:
+                //借款
+                startActivity(new Intent(getActivity(), LoanNeedActivity.class));
+                break;
+            case R.id.head_back:
+                //返回
+                getActivity().finish();
+                break;
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden == false) {
+
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+}
+

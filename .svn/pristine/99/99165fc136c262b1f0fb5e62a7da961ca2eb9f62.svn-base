@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="115dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_yuan"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:descendantFocusability="beforeDescendants">
+
+            <LinearLayout
+                android:id="@+id/line_one"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/guess_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:lines="2"
+                    android:text="unknow"
+                    android:textColor="#000000"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/detail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_below="@+id/line_one"
+                android:layout_marginRight="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_yuan_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="unknow"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/img_down"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/rmb"
+                android:layout_below="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:id="@+id/fuhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/yuan_rating"
+                    android:text="¥"
+                    android:textColor="#FF9D09"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/danjia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/yuan_rating"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/fuhao"
+                    android:text="null"
+                    android:textColor="#FF9D09"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#e4e4e4" />
+
+    <LinearLayout
+        android:id="@+id/line_down"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/linear_classify"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_del"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="删除商品"
+                android:textColor="#585858"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_change"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:text="null"
+                android:textColor="#585858"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#66bebebe" />
+
+    </LinearLayout>
+
+</LinearLayout>

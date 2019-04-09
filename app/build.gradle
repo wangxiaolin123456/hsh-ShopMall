@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+
+    defaultConfig {
+        applicationId "com.example.administrator.merchants"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 23
+        versionName "2.8.6"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    //noinspection GradleCompatible
+    compile 'com.android.support:appcompat-v7:25.1.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    compile files('libs/volly-1.0.11.jar')
+    compile files('libs/UPPayAssistEx.jar')
+    compile files('libs/UPPayPluginExPro.jar')
+    compile 'com.google.code.gson:gson:2.7'
+    compile files('libs/alipaySdk-20160516.jar')
+    compile 'org.apache.httpcomponents:httpcore:4.4.5'
+    compile files('libs/jpush-android-2.1.7.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/circular-image.jar')
+    compile files('libs/locSDK_6.13.jar')
+    compile files('libs/baidumapapi_base_v4_0_0.jar')
+    compile files('libs/baidumapapi_map_v4_0_0.jar')
+    compile files('libs/baidumapapi_search_v4_0_0.jar')
+    compile files('libs/httpmime-4.1.2.jar')
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.androidadvance:topsnackbar:0.0.8'
+    compile files('libs/universal-image-loader-1.9.4.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    //        compile files('libs/core-3.0.0.jar')
+    compile files('libs/zxing.jar')
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    compile project(':library')
+    compile 'com.youth.banner:banner:1.4.9'
+//    适配器
+    compile 'com.joanzapata.android:base-adapter-helper:1.1.11'
+    //刷新和加载
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+}

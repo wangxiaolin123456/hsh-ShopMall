@@ -1,0 +1,83 @@
+package com.example.administrator.merchants.http.listener;
+
+import android.content.Context;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
+import com.android.volley.Response;
+import com.example.administrator.merchants.common.BeiBiDialog;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.common.MD5;
+import com.example.administrator.merchants.http.Status;
+import com.example.administrator.merchants.http.post.ConfirmBeiBiPasswordPostBean;
+import com.example.administrator.merchants.http.show.BeiBiDialogShowBean;
+import com.example.administrator.merchants.common.toast.CustomToast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * 作者：韩宇 on 2017/7/21 0021 15:43
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：贝币支付订单
+ */
+public class PayToBeiBiListener implements Response.Listener<JSONObject> {
+    private Context context;
+    private BeiBiDialogShowBean beiBiDialogShowBean;
+    private String money, orderNo;
+
+    public PayToBeiBiListener(Context context, String money, String orderNo) {
+        this.context = context;
+        this.money = money;
+        this.orderNo = orderNo;
+    }
+
+    @Override
+    public void onResponse(JSONObject jsonObject) {
+        if (Status.status(jsonObject)) {
+            //返回成功
+            try {
+                String beiBiAmt = jsonObject.getString("beibiamt");
+                Double d = Double.parseDouble(beiBiAmt);
+                if (d < Double.parseDouble(money)) {
+                    CustomToast.getInstance(context).setMessage("贝币余额不足！");
+                } else {
+                    payBeiBiDialog();
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            //返回失败
+            Status.fail(context, jsonObject);
+        }
+
+    }
+
+    private void payBeiBiDialog() {  //toDo  dialog-输入贝币密码
+        beiBiDialogShowBean = BeiBiDialog.BeiBei(context);
+        beiBiDialogShowBean.getConfirm().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkBeiBiPassword();//密码确认 请求网络
+                beiBiDialogShowBean.getDialog().dismiss();
+                InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        });
+    }
+
+    /**
+     * 确认支付密码
+     */
+    private void checkBeiBiPassword() {//toDO 跟后台的密码比对
+        ConfirmBeiBiPasswordPostBean confirmBeiBiPasswordPostBean = new ConfirmBeiBiPasswordPostBean();
+        confirmBeiBiPasswordPostBean.setStoreid(UserInfo.getInstance().getUser(context).getStoreid());
+        confirmBeiBiPasswordPostBean.setPaypassword(MD5.toMD5(beiBiDialogShowBean.getPassword().getText().toString()));
+        Http.confirmPayOrderPassword(context, confirmBeiBiPasswordPostBean, money, orderNo);
+    }
+
+}

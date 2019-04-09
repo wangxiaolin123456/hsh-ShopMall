@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#00000000" >
+
+    <ListView
+        android:descendantFocusability="blocksDescendants"
+        android:id="@+id/list_menu1"
+        android:layout_width="91dp"
+        android:scrollbars="none"
+        android:layout_height="wrap_content"
+        android:divider="@null">
+    </ListView>
+
+
+    <ListView
+        android:id="@+id/list_menu2"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:divider="@null">
+    </ListView>
+
+</LinearLayout>

@@ -1,0 +1,183 @@
+package com.example.administrator.merchants.loan.activity;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.adapter.EstimatedEarningsDetailsAdapter;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.UserInfo;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.post.ListPostBean;
+import com.example.administrator.merchants.http.post.StoreIdPostBean;
+import com.example.administrator.merchants.http.show.EstimatedEarningsDetailsShowBean;
+import com.example.administrator.merchants.http.show.NeedRepaymentRecordShowBean;
+import com.example.administrator.merchants.http.show.NeedRepaymentShowBean;
+import com.example.administrator.merchants.loan.adapter.NeedRepaymentRecordAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：预估收益详情
+ */
+public class NeedRepaymentRecordActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener,
+        RefreshLayout.OnLoadListener {
+    private ListView listView;
+    private List<NeedRepaymentRecordShowBean> list;
+    private NeedRepaymentRecordAdapter needRepaymentRecordAdapter;
+    public static int s = 0;
+    private View header;
+    private RefreshLayout swipeLayout;
+    private View footView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loan_bank_card_list);
+        setTitles("还款记录");
+        footView = getLayoutInflater().inflate(R.layout.no_more_date_footview, null);
+        list = new ArrayList<>();//返利订单明细集合
+        listView = (ListView) findViewById(R.id.loan_bank_list);
+        needRepaymentRecordAdapter = new NeedRepaymentRecordAdapter(this, list);
+        initView();
+        setListener();
+        swipeLayout.post(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(true);
+            }
+        }));
+        onRefresh();
+    }
+
+    /**
+     * 初始化布局
+     */
+    @SuppressLint({"InlinedApi", "InflateParams"})
+    private void initView() {
+        header = getLayoutInflater().inflate(R.layout.loding_header, null);
+        swipeLayout = (RefreshLayout) findViewById(R.id.swipe_container);
+        listView.addHeaderView(header);
+    }
+
+
+    /**
+     * 设置监听
+     */
+    private void setListener() {
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+
+    /**
+     * 上拉刷新
+     */
+    @Override
+    public void onRefresh() {
+        swipeLayout.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+               list.clear();
+                NeedRepaymentRecordShowBean needRepaymentRecordShowBean = new NeedRepaymentRecordShowBean();
+                needRepaymentRecordShowBean.setType(1);
+                needRepaymentRecordShowBean.setDateAll("2017-08");
+                list.add(needRepaymentRecordShowBean);
+                NeedRepaymentRecordShowBean needRepaymentShowBean1 = new NeedRepaymentRecordShowBean();
+                needRepaymentShowBean1.setType(2);
+                needRepaymentShowBean1.setMoney("￥575");
+                needRepaymentShowBean1.setImage(R.drawable.pay_unionpay);
+                needRepaymentShowBean1.setPayType("银联");
+                needRepaymentShowBean1.setDate("08-24 13:11");
+                list.add(needRepaymentShowBean1);
+                NeedRepaymentRecordShowBean needRepaymentShowBean2 = new NeedRepaymentRecordShowBean();
+                needRepaymentShowBean2.setType(2);
+                needRepaymentShowBean2.setMoney("￥575");
+                needRepaymentShowBean2.setImage(R.drawable.pay_wechat);
+                needRepaymentShowBean2.setPayType("微信");
+                needRepaymentShowBean2.setDate("08-24 13:11");
+                list.add(needRepaymentShowBean2);
+                NeedRepaymentRecordShowBean needRepaymentShowBean3 = new NeedRepaymentRecordShowBean();
+                needRepaymentShowBean3.setType(1);
+                needRepaymentShowBean3.setDateAll("2017-07");
+                list.add(needRepaymentShowBean3);
+                NeedRepaymentRecordShowBean needRepaymentShowBean4 = new NeedRepaymentRecordShowBean();
+                needRepaymentShowBean4.setType(2);
+                needRepaymentShowBean4.setMoney("￥575");
+                needRepaymentShowBean4.setImage(R.drawable.pay_alipay);
+                needRepaymentShowBean4.setPayType("支付宝");
+                needRepaymentShowBean4.setDate("08-24 13:11");
+                list.add(needRepaymentShowBean4);
+                listView.setAdapter(needRepaymentRecordAdapter);
+                swipeLayout.setRefreshing(false);
+
+            }
+        }, 1000);
+
+    }
+
+    /**
+     * 加载更多
+     */
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                if (s == 0 || s == 1) {
+                    s = 2;
+                    NeedRepaymentRecordShowBean needRepaymentRecordShowBean = new NeedRepaymentRecordShowBean();
+                    needRepaymentRecordShowBean.setType(1);
+                    needRepaymentRecordShowBean.setDateAll("2017-08");
+                    list.add(needRepaymentRecordShowBean);
+                    NeedRepaymentRecordShowBean needRepaymentShowBean1 = new NeedRepaymentRecordShowBean();
+                    needRepaymentShowBean1.setType(2);
+                    needRepaymentShowBean1.setMoney("￥575");
+                    needRepaymentShowBean1.setImage(R.drawable.pay_unionpay);
+                    needRepaymentShowBean1.setPayType("银联");
+                    needRepaymentShowBean1.setDate("08-24 13:11");
+                    list.add(needRepaymentShowBean1);
+                    NeedRepaymentRecordShowBean needRepaymentShowBean2 = new NeedRepaymentRecordShowBean();
+                    needRepaymentShowBean2.setType(2);
+                    needRepaymentShowBean2.setMoney("￥575");
+                    needRepaymentShowBean2.setImage(R.drawable.pay_wechat);
+                    needRepaymentShowBean2.setPayType("微信");
+                    needRepaymentShowBean2.setDate("08-24 13:11");
+                    list.add(needRepaymentShowBean2);
+                    NeedRepaymentRecordShowBean needRepaymentShowBean3 = new NeedRepaymentRecordShowBean();
+                    needRepaymentShowBean3.setType(1);
+                    needRepaymentShowBean3.setDateAll("2017-07");
+                    list.add(needRepaymentShowBean3);
+                    NeedRepaymentRecordShowBean needRepaymentShowBean4 = new NeedRepaymentRecordShowBean();
+                    needRepaymentShowBean4.setType(2);
+                    needRepaymentShowBean4.setMoney("￥575");
+                    needRepaymentShowBean4.setImage(R.drawable.pay_alipay);
+                    needRepaymentShowBean4.setPayType("支付宝");
+                    needRepaymentShowBean4.setDate("08-24 13:11");
+                    list.add(needRepaymentShowBean4);
+                    needRepaymentRecordAdapter.notifyDataSetChanged();
+                    swipeLayout.setLoading(false);
+                    if (list.size() < 15) {
+                        swipeLayout.setOnLoadListener(null);
+                        listView.removeFooterView(footView);
+                        listView.addFooterView(footView);
+                    } else {
+                        swipeLayout.setOnLoadListener(NeedRepaymentRecordActivity.this);
+                        listView.removeFooterView(footView);
+                    }
+                }
+            }
+        }, 1000);
+    }
+}

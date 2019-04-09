@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f1f5f5"
+            android:orientation="vertical">
+
+            <com.example.administrator.merchants.util.CustomerViewPage
+                android:id="@+id/activity_goods_header_imageViewPage"
+                android:layout_width="match_parent"
+                android:layout_height="350dp" />
+            <!--android:background="@drawable/merchant"-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/goods_detail_shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:text="商品名称"
+                    android:textColor="#565656"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/month_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_toLeftOf="@+id/goods_detail_textView_month_sale"
+                    android:text="月售:"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/goods_detail_textView_month_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:text="99"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/month_sale"
+                    android:layout_marginTop="10dp"
+                    android:layout_toLeftOf="@+id/goods_detail_textView_month_stock"
+                    android:text="库存:"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/goods_detail_textView_month_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/goods_detail_textView_month_sale"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:text="99"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/money_fuHao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/goods_detail_shop_name"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="25dp"
+                    android:text="￥"
+                    android:textColor="#ff9d09"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/goods_detail_textView_sale_prices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goods_detail_shop_name"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@+id/money_fuHao"
+                    android:text="40"
+                    android:textColor="#ff9d09"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView_beibi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goods_detail_shop_name"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@+id/goods_detail_textView_sale_prices"
+                    android:textColor="#999999"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/goods_detail_reduce_images"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_below="@+id/goods_detail_textView_month_stock"
+                    android:layout_marginTop="12dp"
+                    android:layout_toLeftOf="@+id/goods_detail_textView_select_nums"
+                    android:src="@drawable/buy_jian"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/goods_detail_textView_select_nums"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/goods_detail_textView_month_stock"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_toLeftOf="@+id/goods_detail_add_images"
+                    android:gravity="center_vertical"
+                    android:text="0"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/goods_detail_add_images"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/goods_detail_textView_month_stock"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/add_shop_into"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_color" />
+
+            <TextView
+                android:id="@+id/goods_detail_shop_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:lineSpacingExtra="8dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="23dp"
+                android:paddingTop="16dp"
+                android:text=""
+                android:textColor="#616161"
+                android:textSize="11sp" />
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0.5dp"-->
+                <!--android:layout_marginTop="10dp" />-->
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/passby"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/head_back"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:onClick="onBack"
+                android:paddingBottom="15dp"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/head_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/head_button"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

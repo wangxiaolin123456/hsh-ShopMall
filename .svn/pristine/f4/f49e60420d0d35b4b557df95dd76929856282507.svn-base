@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical">
+
+    <include layout="@layout/head_blue" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loan_need_bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="初审额度（元）"
+                        android:textColor="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/wenhao"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/loan_rule" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/edu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="500.00"
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="我要借(元):"
+                    android:textColor="@color/text_black" />
+
+                <TextView
+                    android:id="@+id/needmoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="0.00"
+                    android:textColor="@color/text_yellow"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:max="4999"
+                android:minHeight="10dp"
+                android:maxHeight="10dp"
+                android:progress="0"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/thumb" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00"
+                    android:textColor="@color/themeBlueColor" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/maxedu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500.00"
+                    android:textColor="@color/themeBlueColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="借款周期:"
+                    android:textColor="@color/text_black" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="21天(1期)  - -( - - )"
+                    android:textColor="@color/text_yellow"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <com.example.administrator.merchants.common.views.MyGridView
+                android:id="@+id/one"
+                android:layout_marginTop="20dp"
+                android:verticalSpacing="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:scrollbars="none"></com.example.administrator.merchants.common.views.MyGridView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="点击立即提现即视为同意"
+                    android:textColor="@color/text_black" />
+
+                <TextView
+                    android:id="@+id/xieyi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="《互实盟借款协议》"
+                    android:textColor="@color/themeBlueColor" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/commit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/circular_theme_blue"
+                android:gravity="center"
+                android:text="立即提现"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

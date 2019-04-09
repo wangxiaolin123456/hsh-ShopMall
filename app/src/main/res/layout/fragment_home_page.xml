@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head_fragment_home" />
+
+
+    <!--<com.example.administrator.merchants.common.views.RefreshLayout-->
+    <!--android:id="@+id/swipe_container"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@+id/head_home_fragment">-->
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head_home_fragment">
+
+        <ListView
+            android:id="@+id/homepage_enter_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:scrollbars="none" />
+        <!--</com.example.administrator.merchants.common.views.RefreshLayout>-->
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <include layout="@layout/loading_gif" />
+</RelativeLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/goodsDetail_listview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@null" />
+
+        <LinearLayout
+            android:id="@+id/bottom_goods_detail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/goodsDetail_car_left_down"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="#ffffff">
+
+                <ImageView
+                    android:id="@+id/image_goodsDetail_car"
+                    android:layout_width="38dp"
+                    android:layout_height="36dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/huishoppingcar" />
+
+                <TextView
+                    android:id="@+id/car_dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-9dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/image_goodsDetail_car"
+                    android:background="@drawable/yuan"
+                    android:gravity="center"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/goodsDetail_joinCar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#fe9d09"
+                android:gravity="center"
+                android:text="加入购物车"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/instantBuy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#ea3541"
+                android:gravity="center"
+                android:text="立即购买"
+                android:textColor="#ffffff"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/passby"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/head_back"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:onClick="onBack"
+                android:paddingBottom="15dp"
+                android:paddingRight="25dp"
+                android:paddingTop="15dp"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/head_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/head_button"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+</RelativeLayout>

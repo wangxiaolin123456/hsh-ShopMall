@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="120" android:drawable="@drawable/wb_loading_frame1" />
+    <item android:duration="120" android:drawable="@drawable/wb_loading_frame2" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame3" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame4" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame5" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame6" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame7" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame8" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame9" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame10" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame11" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame12" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame13" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame14" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame15" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame16" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame17" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame18" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame19" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame20" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame21" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame22" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame23" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame24" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame25" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame26" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame27" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame28" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame29" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame30" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame31" />
+  <item android:duration="120" android:drawable="@drawable/wb_loading_frame32" />
+
+</animation-list>

@@ -1,0 +1,551 @@
+//package com.example.administrator.merchants.fragment;
+//
+//import android.app.ActionBar;
+//import android.content.Context;
+//import android.content.Intent;
+//import android.graphics.drawable.BitmapDrawable;
+//import android.os.Bundle;
+//import android.support.annotation.Nullable;
+//import android.util.DisplayMetrics;
+//import android.view.Gravity;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.view.WindowManager;
+//import android.widget.ImageView;
+//import android.widget.LinearLayout;
+//import android.widget.ListView;
+//import android.widget.PopupWindow;
+//import android.widget.RelativeLayout;
+//import android.widget.TextView;
+//
+//import com.bumptech.glide.Glide;
+//import com.bumptech.glide.load.engine.DiskCacheStrategy;
+//import com.example.administrator.merchants.R;
+//import com.example.administrator.merchants.activity.EnlargePictureActivity;
+//import com.example.administrator.merchants.activity.LoginActivity;
+//import com.example.administrator.merchants.activity.ShoppingCarActivity;
+//import com.example.administrator.merchants.application.MutualApplication;
+//import com.example.administrator.merchants.base.BaseFragment;
+//import com.example.administrator.merchants.common.GlideTest;
+//import com.example.administrator.merchants.common.UserInfo;
+//import com.example.administrator.merchants.http.Http;
+//import com.example.administrator.merchants.http.post.ChangeCarCountPostBean;
+//import com.example.administrator.merchants.http.post.MerIdPostBean;
+//import com.example.administrator.merchants.http.post.StoreIdPostBean;
+//import com.example.administrator.merchants.http.show.CarouselShowBean;
+//import com.example.administrator.merchants.http.show.GoodsDetailShowBean;
+//import com.example.administrator.merchants.http.show.ModeListShowBean;
+//import com.example.administrator.merchants.http.show.ModeShowBean;
+//import com.example.administrator.merchants.common.toast.CustomToast;
+//import com.example.administrator.merchants.common.views.CustomerViewPage;
+//import com.example.administrator.merchants.common.views.GroupSix;
+//import com.example.administrator.merchants.common.MyMath;
+//
+//import java.util.ArrayList;
+//import java.util.List;
+//
+///**
+// * 作者：韩宇 on 2017/6/21 0021 13:50
+// * 邮箱：18698802347@163.com
+// * QQ：1760010478
+// * 功能：商品详情
+// */
+//public class GoodsDetailsFragment extends BaseFragment {
+//    private View view;
+//    private String merid;
+//    private ListView listView;
+//    private List<GoodsDetailShowBean> list;
+//    private View headView;
+//    private CustomerViewPage viewPage;
+//    private TextView addShoppingCar;
+//    private TextView textViewDotCar;
+//    private RelativeLayout relativeLayoutShoppingCar;
+//    private TextView shopName;
+//    private TextView goodsDetail_monNo;
+//    private TextView goodsDetail_storeNo;
+//    private TextView textView_sale_price;
+//    private TextView goodsDetail_info, discount;
+//    private List<String> listImage;
+//    private TextView noHave;
+//    public static String isModel;
+//    private View popupWindowView;
+//    private PopupWindow popupWindow;
+//    private ImageView shopImage;//商品图片
+//    private TextView shopNamePop;//商品名称
+//    private TextView shopPrice;//价钱--单价
+//    private TextView addShopCarText;//加入购物车
+//    private RelativeLayout addShopCarRel;//购物车
+//    private TextView shopCarBuyNumber;//加入购物车中商品的数量
+//    private TextView buyAllPrice;//购买的总价
+//    private ImageView addImage;//加号
+//    private ImageView reduceImage;//减号
+//    private TextView buyNumber;//数量
+//    private GroupSix goodsViewGroupOne;
+//    private GroupSix goodsViewGroupTwo;
+//    private GroupSix goodsViewGroupThree;
+//    private GroupSix goodsViewGroupFour;
+//    private GroupSix goodsViewGroupFive;
+//    private GroupSix goodsViewGroupSix;
+//    private TextView standardOne;//规格A
+//    private TextView standardTwo;//规格B
+//    private TextView standardThree;//规格C
+//    private TextView standardFour;//规格D
+//    private TextView standardFive;//规格E
+//    private TextView standardSix;//规格F
+//    private LinearLayout modeLineOne;
+//    private LinearLayout modeLineTwo;
+//    private LinearLayout modeLineThree;
+//    private LinearLayout modeLineFour;
+//    private LinearLayout modeLineFive;
+//    private LinearLayout modeLineSix;
+//    private List<ModeShowBean> modeList;
+//    private ArrayList<String> viewTexts = new ArrayList<>();
+//    private ArrayList<String> viewTextTwo = new ArrayList<>();
+//    private ArrayList<String> viewTextThree = new ArrayList<>();
+//    private ArrayList<String> viewTextFour = new ArrayList<>();
+//    private ArrayList<String> viewTextFive = new ArrayList<>();
+//    private ArrayList<String> viewTextSix = new ArrayList<>();
+//    private List<CarouselShowBean> listCarouselShowBean;
+//    public static int chooseID = -1;
+//    public static int chooseIDs = -1;
+//    public static int chooseIDss = -1;
+//    public static int chooseIDFour = -1;
+//    public static int chooseIDFive = -1;
+//    public static int chooseIDSix = -1;
+//    public static int loding = 0;
+//    public static String chooseText;
+//    public static String chooseTextTwo;
+//    public static String chooseTextThree;
+//    public static String chooseTextFour;
+//    public static String chooseTextFive;
+//    public static String chooseTextSix;
+//    private List<ModeListShowBean> modeListShowBeanList;
+//    private ImageView anim;
+//
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        view = inflater.inflate(R.layout.fragment_goods_details, null);
+//        listCarouselShowBean = new ArrayList<>();
+//        modeListShowBeanList = new ArrayList<>();
+//        anim = (ImageView) view.findViewById(R.id.image_loading);
+//        GlideTest.imageGif(getContext(), anim);
+//        merid = getActivity().getIntent().getStringExtra("merid");
+//        addShoppingCar = (TextView) view.findViewById(R.id.goodsDetail_joinCar);
+//        listView = (ListView) view.findViewById(R.id.goodsDetail_listview);
+//        list = new ArrayList<>();
+//        textViewDotCar = (TextView) view.findViewById(R.id.car_dot);
+//        relativeLayoutShoppingCar = (RelativeLayout) view.findViewById(R.id.goodsDetail_car_left_down);
+//        listImage = new ArrayList<>();
+//        headView = LayoutInflater.from(getActivity()).inflate(R.layout.view_goods_detail_headview, null);
+//        viewPage = (CustomerViewPage) headView.findViewById(R.id.vp);
+//        LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) viewPage.getLayoutParams(); //取控件textView当前的布局参数
+//        WindowManager wm = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+//        int width = wm.getDefaultDisplay().getWidth();
+//        linearParams.width = width;// 控件的宽强制设成30
+//        linearParams.height = width;// 控件的高强制设成20
+//        viewPage.setLayoutParams(linearParams);
+//        shopName = (TextView) headView.findViewById(R.id.shopname);
+//        goodsDetail_monNo = (TextView) headView.findViewById(R.id.goodsDetail_monNo);
+//        goodsDetail_storeNo = (TextView) headView.findViewById(R.id.goodsDetail_storeNo);
+//        textView_sale_price = (TextView) headView.findViewById(R.id.textview_sale_price);
+//        noHave = (TextView) headView.findViewById(R.id.zanwu);
+//        goodsDetail_info = (TextView) headView.findViewById(R.id.goodsDetail_info);
+//        discount = (TextView) headView.findViewById(R.id.goodsDetail_discount);
+//        Http.discount(getContext(), discount);
+//        relativeLayoutShoppingCar.setOnClickListener(new View.OnClickListener() {//进入购物车
+//            @Override
+//            public void onClick(View v) {
+//                if (getActivity() != null) {
+//                    if (UserInfo.getInstance().getUser(getActivity()) == null) {
+//                        Intent intent = new Intent();
+//                        if (getContext() != null) {
+//                            intent.setClass(getContext(), LoginActivity.class);
+//                        }
+//                        startActivity(intent);
+//                        getActivity().finish();
+//                    } else {
+//                        startActivity(new Intent(getActivity(), ShoppingCarActivity.class));
+//                        getActivity().finish();
+//                    }
+//                }
+//            }
+//        });
+//        addShoppingCar.setOnClickListener(new View.OnClickListener() { //加入购物车的监听
+//            @Override
+//            public void onClick(View v) {
+//                if (getActivity() != null) {
+//                    if (UserInfo.getInstance().getUser(getActivity()) == null) {
+//                        Intent intent = new Intent();
+//                        intent.setClass(getActivity(), LoginActivity.class);
+//                        startActivity(intent);
+//                    } else {
+//                        if (loding == 1) {
+//                            if (Integer.parseInt(goodsDetail_storeNo.getText().toString()) <= 0) {
+//                                CustomToast.getInstance(getActivity()).setMessage("不能加入购物车，库存已不足！");
+//                            } else {
+//                                if (isModel.equals("1")) {
+//                                    initPop(v, 0);
+//                                } else if (isModel.equals("0")) {
+//                                    toAddShoppingCars();//加入购物车的接口-不支持多型号的加入购物车
+//                                    int y = Integer.parseInt(textViewDotCar.getText().toString()) + 1;
+//                                    textViewDotCar.setText(String.valueOf(y));
+//                                }
+//                            }
+//                        } else {
+//                            CustomToast.getInstance(getActivity()).setMessage("还没加载完，稍等！");
+//                        }
+//                    }
+//                }
+//            }
+//        });
+////        toGetGoodsDetailUp();//商品详情上
+//        return view;
+//    }
+//
+//    /**
+//     * 弹出规格的popupWindow
+//     * 你说规格能有超过5条
+//     *
+//     * @param parent
+//     * @param i
+//     */
+//    private void initPop(View parent, int i) { //初始化popup
+//        modeList = new ArrayList<>();
+//        DisplayMetrics dm = new DisplayMetrics();
+//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+//        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(getActivity().LAYOUT_INFLATER_SERVICE);
+//        popupWindowView = inflater.inflate(R.layout.popup_view_standard, null);
+//        popupWindow = new PopupWindow(popupWindowView, ActionBar.LayoutParams.MATCH_PARENT,
+//                ActionBar.LayoutParams.WRAP_CONTENT, true);//height
+//        WindowManager.LayoutParams params = getActivity().getWindow().getAttributes();
+//        params.alpha = 0.3f;
+//        getActivity().getWindow().setAttributes(params);
+//        popupWindow.setOutsideTouchable(true);
+//        popupWindow.setFocusable(true);
+//        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+//        popupWindow.showAtLocation(parent, Gravity.BOTTOM, 0, 0);
+//        //初始化控件
+//        shopImage = (ImageView) popupWindowView.findViewById(R.id.choose_goods_standard_image);//商品图片
+//        shopNamePop = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_name);//商品名称
+//        shopPrice = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_money_text);//商品价格
+//        addShopCarText = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_joinCar);//加入购物车的字样
+//        addShopCarRel = (RelativeLayout) popupWindowView.findViewById(R.id.choose_goods_standard_left_down);//加入购物车的Rel
+//        shopCarBuyNumber = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_car_dot);//购物车中的购买商品的数量
+//        buyAllPrice = (TextView) popupWindowView.findViewById(R.id.choose_goods_price_two);//变化的总价格
+//        addImage = (ImageView) popupWindowView.findViewById(R.id.choose_goods_buy_add);//加号
+//        reduceImage = (ImageView) popupWindowView.findViewById(R.id.choose_goods_buy_jian);//减号
+//        buyNumber = (TextView) popupWindowView.findViewById(R.id.choose_goods_buy_num);//购买商品的数量
+//        goodsViewGroupOne = (GroupSix) popupWindowView.findViewById(R.id.choose_goods_goodsViewGroup_one);
+//        goodsViewGroupTwo = (GroupSix) popupWindowView.findViewById(R.id.choose_goods_goodsViewGroup_two);
+//        goodsViewGroupThree = (GroupSix) popupWindowView.findViewById(R.id.choose_goods_goodsViewGroup_three);
+//        goodsViewGroupFour = (GroupSix) popupWindowView.findViewById(R.id.choose_goods_goodsViewGroup_four);
+//        goodsViewGroupFive = (GroupSix) popupWindowView.findViewById(R.id.choose_goods_goodsViewGroup_five);
+//        goodsViewGroupSix = (GroupSix) popupWindowView.findViewById(R.id.choose_goods_goodsViewGroup_six);
+//        standardOne = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_text_one);
+//        standardTwo = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_text_two);
+//        standardThree = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_text_three);
+//        standardFour = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_text_four);
+//        standardFive = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_text_five);
+//        standardSix = (TextView) popupWindowView.findViewById(R.id.choose_goods_standard_text_six);
+//        modeLineOne = (LinearLayout) popupWindowView.findViewById(R.id.one_mode_line);
+//        modeLineTwo = (LinearLayout) popupWindowView.findViewById(R.id.two_mode_line);
+//        modeLineThree = (LinearLayout) popupWindowView.findViewById(R.id.three_mode_line);
+//        modeLineFour = (LinearLayout) popupWindowView.findViewById(R.id.four_mode_line);
+//        modeLineFive = (LinearLayout) popupWindowView.findViewById(R.id.five_mode_line);
+//        modeLineSix = (LinearLayout) popupWindowView.findViewById(R.id.six_mode_line);
+//        modeList = new ArrayList<>();
+//        viewTexts.clear();
+//        viewTextTwo.clear();
+//        viewTextThree.clear();
+//        viewTextFour.clear();
+//        viewTextFive.clear();
+//        viewTextSix.clear();
+//        shopDetails();
+//        shopNamePop.setText(shopName.getText().toString());
+//        shopPrice.setText(textView_sale_price.getText().toString());
+//        shopCarBuyNumber.setText(textViewDotCar.getText().toString());
+//        buyAllPrice.setText(textView_sale_price.getText().toString());
+//        buyNumber.setText("1");
+//        reduceImage.setImageResource(R.drawable.sub_goods_gary_image);
+//        Glide.with(getActivity().getApplicationContext()).load(listCarouselShowBean.get(0).getImgpfile()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.image_loading).into(shopImage);
+//        addShopCarRel.setOnClickListener(new View.OnClickListener() {//进入购物车
+//            @Override
+//            public void onClick(View v) {
+//                if (UserInfo.getInstance().getUser(getActivity()) == null) {
+//                    Intent intent = new Intent();
+//                    intent.setClass(getActivity(), LoginActivity.class);
+//                    startActivity(intent);
+//                    getActivity().finish();
+//                } else {
+//                    startActivity(new Intent(getActivity(), ShoppingCarActivity.class));
+//                    getActivity().finish();
+//                }
+//            }
+//        });
+//        //图片的监听  点击放大
+//        shopImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.putExtra("bigimage", listCarouselShowBean.get(0).getImgpfile());
+//                if (getActivity() != null) {
+//                    intent.setClass(getActivity(), EnlargePictureActivity.class);
+//                    getActivity().startActivity(intent);
+//                }
+//            }
+//        });
+//        //加号的监听
+//        addImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                reduceImage.setImageResource(R.drawable.sub_goods_image);
+//                int x = Integer.parseInt(buyNumber.getText().toString());
+//                x++;
+//                buyNumber.setText(String.valueOf(x));
+//                double result1 = MyMath.mul(textView_sale_price.getText().toString(), String.valueOf(x));
+//                buyAllPrice.setText(result1 + "");
+//            }
+//        });
+//        //减号的监听
+//        reduceImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int y = Integer.parseInt(buyNumber.getText().toString());
+//                if (y <= 0) {
+//                } else {
+//                    y--;
+//                    if (y <= 1) {
+//                        reduceImage.setImageResource(R.drawable.sub_goods_gary_image);
+//                        buyNumber.setText("1");
+//                        buyAllPrice.setText((Double.parseDouble(textView_sale_price.getText().toString())) + "");
+//                    } else {
+//                        reduceImage.setImageResource(R.drawable.sub_goods_image);
+//                        buyNumber.setText(String.valueOf(y));
+//                        double result1 = MyMath.mul(textView_sale_price.getText().toString(), String.valueOf(y));
+//                        buyAllPrice.setText(result1 + "");
+//                    }
+//                }
+//            }
+//        });
+//        //加入购物车的监听
+//        addShopCarText.setOnClickListener(new View.OnClickListener() {
+//                                              @Override
+//                                              public void onClick(View v) {
+//                                                  if (modeList.size() == 1) {
+//                                                      if (chooseID >= 0) {
+//                                                          popupWindow.dismiss();
+//                                                          toAddShoppingCar();//加入购物车的接口
+//                                                          int y = Integer.parseInt(textViewDotCar.getText().toString()) + Integer.parseInt(buyNumber.getText().toString());
+//                                                          textViewDotCar.setText(String.valueOf(y));
+//                                                      } else {
+//                                                          if (getActivity() != null) {
+//                                                              CustomToast.getInstance(getActivity()).setMessage("请选择规格！");
+//                                                          }
+//                                                      }
+//                                                  } else if (modeList.size() == 2) {
+//                                                      if (chooseID >= 0 && chooseIDs >= 0) {
+//                                                          popupWindow.dismiss();
+//                                                          toAddShoppingCar();//加入购物车的接口
+//                                                          int y = Integer.parseInt(textViewDotCar.getText().toString()) + Integer.parseInt(buyNumber.getText().toString());
+//                                                          textViewDotCar.setText(String.valueOf(y));
+//                                                      } else {
+//                                                          if (getActivity() != null) {
+//                                                              if (chooseID < 0 && chooseIDs < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择规格！");
+//                                                              } else if (chooseID < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(0).getModelname() + "！");
+//                                                              } else if (chooseIDs < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(1).getModelname() + "！");
+//                                                              }
+//                                                          }
+//                                                      }
+//                                                  } else if (modeList.size() == 3) {
+//                                                      if (chooseID >= 0 && chooseIDs >= 0 && chooseIDss >= 0) {
+//                                                          popupWindow.dismiss();
+//                                                          toAddShoppingCar();//加入购物车的接口
+//                                                          int y = Integer.parseInt(textViewDotCar.getText().toString()) + Integer.parseInt(buyNumber.getText().toString());
+//                                                          textViewDotCar.setText(String.valueOf(y));
+//                                                      } else {
+//                                                          if (getActivity() != null) {
+//                                                              if (chooseID < 0 && chooseIDs < 0 && chooseIDss < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择规格！");
+//                                                              } else if (chooseID < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(0).getModelname() + "！");
+//                                                              } else if (chooseIDs < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(1).getModelname() + "！");
+//                                                              } else if (chooseIDss < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(2).getModelname() + "！");
+//                                                              }
+//                                                          }
+//                                                      }
+//                                                  } else if (modeList.size() == 4) {
+//                                                      if (chooseID >= 0 && chooseIDs >= 0 && chooseIDss >= 0 && chooseIDFour >= 0) {
+//                                                          popupWindow.dismiss();
+//                                                          toAddShoppingCar();//加入购物车的接口
+//                                                          int y = Integer.parseInt(textViewDotCar.getText().toString()) + Integer.parseInt(buyNumber.getText().toString());
+//                                                          textViewDotCar.setText(String.valueOf(y));
+//                                                      } else {
+//                                                          if (getActivity() != null) {
+//                                                              if (chooseID < 0 && chooseIDs < 0 && chooseIDss < 0 && chooseIDFour < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择规格！");
+//                                                              } else if (chooseID < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(0).getModelname() + "！");
+//                                                              } else if (chooseIDs < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(1).getModelname() + "！");
+//                                                              } else if (chooseIDss < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(2).getModelname() + "！");
+//                                                              } else if (chooseIDFour < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(3).getModelname() + "！");
+//                                                              }
+//                                                          }
+//                                                      }
+//                                                  } else if (modeList.size() == 5) {
+//                                                      if (chooseID >= 0 && chooseIDs >= 0 && chooseIDss >= 0 && chooseIDFour >= 0 && chooseIDFive >= 0) {
+//                                                          popupWindow.dismiss();
+//                                                          toAddShoppingCar();//加入购物车的接口
+//                                                          int y = Integer.parseInt(textViewDotCar.getText().toString()) + Integer.parseInt(buyNumber.getText().toString());
+//                                                          textViewDotCar.setText(String.valueOf(y));
+//                                                      } else {
+//                                                          if (getActivity() != null) {
+//                                                              if (chooseID < 0 && chooseIDs < 0 && chooseIDss < 0 && chooseIDFour < 0 && chooseIDFive < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择规格！");
+//                                                              } else if (chooseID < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(0).getModelname() + "！");
+//                                                              } else if (chooseIDs < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(1).getModelname() + "！");
+//                                                              } else if (chooseIDss < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(2).getModelname() + "！");
+//                                                              } else if (chooseIDFour < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(3).getModelname() + "！");
+//                                                              } else if (chooseIDFive < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(4).getModelname() + "！");
+//                                                              }
+//                                                          }
+//                                                      }
+//                                                  } else if (modeList.size() == 6) {
+//                                                      if (chooseID >= 0 && chooseIDs >= 0 && chooseIDss >= 0 && chooseIDFour >= 0 && chooseIDFive >= 0 && chooseIDSix >= 0) {
+//                                                          popupWindow.dismiss();
+//                                                          toAddShoppingCar();//加入购物车的接口
+//                                                          int y = Integer.parseInt(textViewDotCar.getText().toString()) + Integer.parseInt(buyNumber.getText().toString());
+//                                                          textViewDotCar.setText(String.valueOf(y));
+//                                                      } else {
+//                                                          if (getActivity() != null) {
+//                                                              if (chooseID < 0 && chooseIDs < 0 && chooseIDss < 0 && chooseIDFour < 0 && chooseIDFive < 0 && chooseIDSix < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择规格！");
+//                                                              } else if (chooseID < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(0).getModelname() + "！");
+//                                                              } else if (chooseIDs < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(1).getModelname() + "！");
+//                                                              } else if (chooseIDss < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(2).getModelname() + "！");
+//                                                              } else if (chooseIDFour < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(3).getModelname() + "！");
+//                                                              } else if (chooseIDFive < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(4).getModelname() + "！");
+//                                                              } else if (chooseIDSix < 0) {
+//                                                                  CustomToast.getInstance(getActivity()).setMessage("请选择" + modeList.get(5).getModelname() + "！");
+//                                                              }
+//                                                          }
+//                                                      }
+//                                                  }
+//                                              }
+//                                          }
+//        );
+//        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                backgroundAlpha(1f);
+//                chooseID = -1;
+//                chooseIDs = -1;
+//                chooseIDss = -1;
+//                chooseIDFour = -1;
+//                chooseIDFive = -1;
+//                chooseIDSix = -1;
+//            }
+//        });
+//
+//    }
+//
+//    /**
+//     * 规格列表请求
+//     */
+//    public void shopDetails() {
+//        MerIdPostBean merIdPostBean = new MerIdPostBean();
+//        merIdPostBean.setMerid(merid);
+//        Http.getModeList(getActivity(), merIdPostBean, modeLineOne, modeLineTwo, modeLineThree, modeLineFour, modeLineFive, modeLineSix
+//                , modeList, standardOne, standardTwo, standardThree, standardFour, standardFive, standardSix
+//                , modeListShowBeanList, viewTexts, viewTextTwo, viewTextThree, viewTextFour, viewTextFive, viewTextSix, goodsViewGroupOne
+//                , goodsViewGroupTwo, goodsViewGroupThree, goodsViewGroupFour, goodsViewGroupFive, goodsViewGroupSix);
+//    }
+//
+//    /**
+//     * 多规格商品添加购物车
+//     */
+//    public void toAddShoppingCar() {//添加到购物车的请求
+//        ChangeCarCountPostBean changeCarCountPostBean = new ChangeCarCountPostBean();
+//        changeCarCountPostBean.setStoreid(UserInfo.getInstance().getUser(getActivity()).getStoreid());
+//        changeCarCountPostBean.setMerid(merid);
+//        changeCarCountPostBean.setMerqty(buyNumber.getText().toString());
+//        Http.addShopCar(getActivity(), changeCarCountPostBean, modeList, modeListShowBeanList, chooseText, chooseTextTwo, chooseTextThree, chooseTextFour, chooseTextFive, chooseTextSix);
+//    }
+//
+//    /**
+//     * 设置添加屏幕的背景透明度  1,：全透明；0.5：半透明  0~1，取自己想到的透明度
+//     *
+//     * @param bgAlpha
+//     */
+//    public void backgroundAlpha(float bgAlpha) {
+//        if (getActivity() != null) {
+//            WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
+//            lp.alpha = bgAlpha; //0.0-1.0
+//            getActivity().getWindow().setAttributes(lp);
+//        }
+//    }
+//
+//    /**
+//     * 获取原厂地商品详情信息
+//     */
+////    public void toGetGoodsDetailUp() {//头部请求
+////        MerIdPostBean merIdPostBean = new MerIdPostBean();
+////        merIdPostBean.setMerid(merid);
+////        Http.getGoodsDetail(getActivity(), merIdPostBean, shopName, goodsDetail_monNo, goodsDetail_storeNo, textView_sale_price, goodsDetail_info, listCarouselShowBean, viewPage, listView, headView, listImage, noHave, anim);
+////    }
+//
+//    /**
+//     * 普通商品添加购物车
+//     */
+//    public void toAddShoppingCars() {//添加到购物车的请求
+//        ChangeCarCountPostBean changeCarCountPostBean = new ChangeCarCountPostBean();
+//        changeCarCountPostBean.setStoreid(UserInfo.getInstance().getUser(getActivity()).getStoreid());
+//        changeCarCountPostBean.setMerid(merid);
+//        Http.addShopCar(getActivity(), changeCarCountPostBean);
+//    }
+//
+//    /**
+//     * 购物车商品数量
+//     */
+//    public void getShoppingCarCount() {
+//        StoreIdPostBean storeIdPostBean = new StoreIdPostBean();
+//        storeIdPostBean.setStoreid(UserInfo.getInstance().getUser(getActivity()).getStoreid());
+//        Http.getShoppingCarCount(getActivity(), storeIdPostBean, textViewDotCar);
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        getShoppingCarCount();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        MutualApplication.getRequestQueue().cancelAll("addShopCar98");
+//        MutualApplication.getRequestQueue().cancelAll("addShopCar99");
+//        MutualApplication.getRequestQueue().cancelAll("getShoppingCarCount100");
+//        MutualApplication.getRequestQueue().cancelAll("getGoodsDetail101");
+//        MutualApplication.getRequestQueue().cancelAll("getModeList102");
+//        MutualApplication.getRequestQueue().cancelAll("discount118");
+//    }
+//}

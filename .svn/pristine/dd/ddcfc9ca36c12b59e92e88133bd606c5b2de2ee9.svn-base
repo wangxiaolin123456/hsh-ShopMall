@@ -1,0 +1,202 @@
+package com.example.administrator.merchants.http.show;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：预估收益
+ */
+public class EstimatedEarningsDetailsShowBean {
+    //这个是首页猜你喜欢的httpbean
+    private CommodityShowBean commodityShowBean;
+
+    private String inouttype;
+    private String priodid;
+
+    public void setPriodid(String priodid) {
+        this.priodid = priodid;
+    }
+
+    public String getPriodid() {
+        return priodid;
+    }
+
+    public String getInouttype() {
+        return inouttype;
+    }
+
+    public void setInouttype(String inouttype) {
+        this.inouttype = inouttype;
+    }
+
+    private int type;
+    private int imageEightCircleOne;
+    private int imageEightCircleTwo;
+    private int imageEightCircleThree;
+    private int imageEightCircleFour;
+    private int imageEightCircleFive;
+    private int imageEightCircleSix;
+    private int imageEightCircleSeven;
+    private int imageEightCircleEight;
+    private String textEightCircleOne;
+    private String textEightCircleTwo;
+    private String textEightCircleThree;
+    private String textEightCircleFour;
+    private String textEightCircleFive;
+    private String textEightCircleSix;
+    private String textEightCircleSeven;
+    private String textEightCircleEight;
+    private String circularImage;//收益管理中的
+
+    public String getCircularImage() {
+        return circularImage;
+    }
+
+    public void setCircularImage(String circularImage) {
+        this.circularImage = circularImage;
+    }
+
+    public CommodityShowBean getCommodityShowBean() {
+
+        return commodityShowBean;
+    }
+    public void setCommodityShowBean(CommodityShowBean commodityShowBean) {
+        this.commodityShowBean = commodityShowBean;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getImageEightCircleOne() {
+        return imageEightCircleOne;
+    }
+
+    public void setImageEightCircleOne(int imageEightCircleOne) {
+        this.imageEightCircleOne = imageEightCircleOne;
+    }
+
+    public int getImageEightCircleTwo() {
+        return imageEightCircleTwo;
+    }
+
+    public void setImageEightCircleTwo(int imageEightCircleTwo) {
+        this.imageEightCircleTwo = imageEightCircleTwo;
+    }
+
+    public int getImageEightCircleThree() {
+        return imageEightCircleThree;
+    }
+
+    public void setImageEightCircleThree(int imageEightCircleThree) {
+        this.imageEightCircleThree = imageEightCircleThree;
+    }
+
+    public int getImageEightCircleFour() {
+        return imageEightCircleFour;
+    }
+
+    public void setImageEightCircleFour(int imageEightCircleFour) {
+        this.imageEightCircleFour = imageEightCircleFour;
+    }
+
+    public int getImageEightCircleFive() {
+        return imageEightCircleFive;
+    }
+
+    public void setImageEightCircleFive(int imageEightCircleFive) {
+        this.imageEightCircleFive = imageEightCircleFive;
+    }
+
+    public int getImageEightCircleSix() {
+        return imageEightCircleSix;
+    }
+
+    public void setImageEightCircleSix(int imageEightCircleSix) {
+        this.imageEightCircleSix = imageEightCircleSix;
+    }
+
+    public int getImageEightCircleSeven() {
+        return imageEightCircleSeven;
+    }
+
+    public void setImageEightCircleSeven(int imageEightCircleSeven) {
+        this.imageEightCircleSeven = imageEightCircleSeven;
+    }
+
+    public int getImageEightCircleEight() {
+        return imageEightCircleEight;
+    }
+
+    public void setImageEightCircleEight(int imageEightCircleEight) {
+        this.imageEightCircleEight = imageEightCircleEight;
+    }
+
+    public String getTextEightCircleOne() {
+        return textEightCircleOne;
+    }
+
+    public void setTextEightCircleOne(String textEightCircleOne) {
+        this.textEightCircleOne = textEightCircleOne;
+    }
+
+    public String getTextEightCircleTwo() {
+        return textEightCircleTwo;
+    }
+
+    public void setTextEightCircleTwo(String textEightCircleTwo) {
+        this.textEightCircleTwo = textEightCircleTwo;
+    }
+
+    public String getTextEightCircleThree() {
+        return textEightCircleThree;
+    }
+
+    public void setTextEightCircleThree(String textEightCircleThree) {
+        this.textEightCircleThree = textEightCircleThree;
+    }
+
+    public String getTextEightCircleFour() {
+        return textEightCircleFour;
+    }
+
+    public void setTextEightCircleFour(String textEightCircleFour) {
+        this.textEightCircleFour = textEightCircleFour;
+    }
+
+    public String getTextEightCircleFive() {
+        return textEightCircleFive;
+    }
+
+    public void setTextEightCircleFive(String textEightCircleFive) {
+        this.textEightCircleFive = textEightCircleFive;
+    }
+
+    public String getTextEightCircleSix() {
+        return textEightCircleSix;
+    }
+
+    public void setTextEightCircleSix(String textEightCircleSix) {
+        this.textEightCircleSix = textEightCircleSix;
+    }
+
+    public String getTextEightCircleSeven() {
+        return textEightCircleSeven;
+    }
+
+    public void setTextEightCircleSeven(String textEightCircleSeven) {
+        this.textEightCircleSeven = textEightCircleSeven;
+    }
+
+    public String getTextEightCircleEight() {
+        return textEightCircleEight;
+    }
+
+    public void setTextEightCircleEight(String textEightCircleEight) {
+        this.textEightCircleEight = textEightCircleEight;
+    }
+}

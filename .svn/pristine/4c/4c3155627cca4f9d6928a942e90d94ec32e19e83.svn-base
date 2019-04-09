@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <!--style颜色之浅蓝-->
+    <color name="colorPrimaryDark">#303F9F</color>
+    <!--style颜色之深蓝-->
+    <color name="colorAccent">#FF4081</color>
+    <!--style颜色之浅红-->
+    <color name="themeColor">#E93441</color>
+    <!-- 主题色-->
+    <color name="text_gray_color">#999999</color>
+    <!-- 文字灰色-->
+    <color name="text_black">#333333</color>
+    <!-- 文字黑色 -->
+    <color name="text_yellow">#ff9966</color>
+    <!-- 文字黄色 -->
+    <color name="all_line_color">#cccccc</color>
+    <!-- 线颜色 -->
+    <color name="white">#FFFFFF</color>
+    <!--白色-->
+    <color name="black">#000000</color>
+    <!--黑色-->
+    <color name="viewfinder_mask">#30000000</color>
+    <!--扫一扫半透明背景-->
+    <color name="all_bg_gray_color">#f2f5f5</color>
+    <!--浅灰色背景-->
+</resources>

@@ -1,0 +1,154 @@
+package com.example.administrator.merchants.loan.activity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.DateUtils;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+import com.example.administrator.merchants.http.show.BankShowBean;
+import com.example.administrator.merchants.loan.adapter.LoanBankListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/8/28 0028 16:27
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：银行卡列表
+ */
+public class LoanBankCardListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener,
+        RefreshLayout.OnLoadListener {
+    private ListView listView;
+    private List<BankShowBean>list;
+    private LoanBankListAdapter loanBankListAdapter;
+    private View header;
+    private RefreshLayout swipeLayout;
+    private View footView;
+    public static int s = 0;//是否加载
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loan_bank_card_list);
+        View view=findViewById(R.id.distance);
+        view.setVisibility(View.VISIBLE);
+        TextView textView= (TextView) findViewById(R.id.rule);
+        textView.setVisibility(View.VISIBLE);
+        TextView add= (TextView) findViewById(R.id.add);
+        add.setText("添加收款银行卡");
+        add.setVisibility(View.VISIBLE);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //添加银行卡
+            }
+        });
+        footView = getLayoutInflater().inflate(R.layout.no_more_date_footview, null);
+        setTitles("银行卡");
+        listView= (ListView) findViewById(R.id.loan_bank_list);
+        list=new ArrayList<>();
+        loanBankListAdapter=new LoanBankListAdapter(LoanBankCardListActivity.this,list);
+        initView();//初始化布局
+        setListener();//设置监听
+        swipeLayout.post(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(true);
+            }
+        }));
+        onRefresh();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent();
+                intent.putExtra("type","0");
+                intent.setClass(LoanBankCardListActivity.this,LoanNeedToActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    /**
+     * 初始化布局
+     */
+    @SuppressLint({"InlinedApi", "InflateParams"})
+    private void initView() {
+        header = getLayoutInflater().inflate(R.layout.loding_header, null);
+        swipeLayout = (RefreshLayout) findViewById(R.id.swipe_container);
+        listView.addHeaderView(header);
+
+    }
+
+    /**
+     * 设置监听
+     */
+    private void setListener() {
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (s == 0 || s == 1) {
+                    s = 2;
+                    BankShowBean bankShowBean=new BankShowBean();
+                    bankShowBean.setBankName("建设银行");
+                    bankShowBean.setPath(R.drawable.jianshebank);
+                    bankShowBean.setBankid("1");
+                    bankShowBean.setBankNumber(DateUtils.getBankNumber("6210810620001000045"));
+                    list.add(bankShowBean);
+                    BankShowBean bankShowBean1=new BankShowBean();
+                    bankShowBean1.setBankName("建设银行");
+                    bankShowBean1.setPath(R.drawable.jianshebank);
+                    bankShowBean1.setBankid("1");
+                    bankShowBean1.setBankNumber(DateUtils.getBankNumber("6210810620001000045"));
+                    list.add(bankShowBean1);
+                    loanBankListAdapter.notifyDataSetChanged();
+                    swipeLayout.setLoading(false);
+                    if (list.size() < 15) {
+                        swipeLayout.setOnLoadListener(null);
+                        listView.removeFooterView(footView);
+                        listView.addFooterView(footView);
+                    } else {
+                        swipeLayout.setOnLoadListener(LoanBankCardListActivity.this);
+                        listView.removeFooterView(footView);
+                    }
+                }
+            }
+        }, 1000);
+    }
+
+    @Override
+    public void onRefresh() {
+
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                list.clear();
+                BankShowBean bankShowBean=new BankShowBean();
+                bankShowBean.setBankName("建设银行");
+                bankShowBean.setPath(R.drawable.jianshebank);
+                bankShowBean.setBankid("1");
+                bankShowBean.setBankNumber(DateUtils.getBankNumber("6210810620001000045"));
+                list.add(bankShowBean);
+                BankShowBean bankShowBean1=new BankShowBean();
+                bankShowBean1.setBankName("招商银行");
+                bankShowBean1.setPath(R.drawable.zhaoshangbank);
+                bankShowBean1.setBankid("1");
+                bankShowBean1.setBankNumber(DateUtils.getBankNumber("6210810620001000045"));
+                list.add(bankShowBean1);
+                listView.setAdapter(loanBankListAdapter);
+                swipeLayout.setRefreshing(false);
+            }
+        }, 1000);
+    }
+}

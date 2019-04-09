@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/anniu" android:state_pressed="true"/><!-- 是否被按下 -->
+    <item android:drawable="@drawable/anniu" android:state_focused="true"/><!-- 是否取得焦点 -->
+    <item android:drawable="@drawable/anniu" android:state_selected="true"/><!-- 是否被选中 -->
+    <item android:drawable="@drawable/anniu"/>
+</selector>

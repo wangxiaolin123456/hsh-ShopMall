@@ -1,0 +1,77 @@
+package com.example.administrator.merchants.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.adapter.BeiManagementAdapter;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.http.show.BeiManagementShowBean;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/6/22 0022 10:09
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：贝币管理
+ */
+public class BeiBiManagementActivity extends BaseActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bei_management);
+        setTitles("贝币管理");
+        ListView listView = (ListView) findViewById(R.id.activity_bei_management);
+        List<BeiManagementShowBean> list = new ArrayList<>();
+        String[] str = {"充值", "余额提取",  "修改兑换密码", "忘记兑换密码", "贝币赠予"};
+        for (int i = 0; i < str.length; i++) {
+            BeiManagementShowBean beiManagementShowBean = new BeiManagementShowBean();
+            beiManagementShowBean.setText(str[i]);
+            list.add(beiManagementShowBean);
+        }
+        listView.setAdapter(new BeiManagementAdapter(BeiBiManagementActivity.this, list));
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        //跳转充值
+                        startActivity(new Intent(BeiBiManagementActivity.this, BeiBiRechargeActivity.class));
+                        break;
+                    case 1:
+                        //跳转余额提取
+                        startActivity(new Intent(BeiBiManagementActivity.this, BalanceActivity.class));
+                        break;
+//                    case 2:
+//                        //跳转贝比记录
+//                        startActivity(new Intent(BeiBiManagementActivity.this, BeiBiRecordActivity.class));
+//                        break;
+                    case 2:
+                        //跳转修改兑换密码
+                        Intent intentPassword = new Intent();
+                        intentPassword.putExtra("type", "beibi");
+                        intentPassword.setClass(BeiBiManagementActivity.this, UpdatePasswordActivity.class);
+                        startActivity(intentPassword);
+                        break;
+                    case 3:
+                        //跳转忘记兑换密码
+                        Intent intent = new Intent();
+                        intent.putExtra("type", "beibi");
+                        intent.setClass(BeiBiManagementActivity.this, ForgetPasswordActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 4:
+                        //跳转贝币赠与
+                        startActivity(new Intent(BeiBiManagementActivity.this, BeiBiGiveActivity.class));
+                        break;
+
+                }
+            }
+        });
+    }
+}

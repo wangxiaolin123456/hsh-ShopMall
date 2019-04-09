@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f8"
+    android:orientation="vertical">
+    <include layout="@layout/head"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <Button
+            android:id="@+id/item_goods_details_tm_all_btn"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/pj_check_bg"
+            android:text="全部0"
+            android:textColor="@color/themeColor"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/item_goods_details_tm_good_reputation_btn"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/pj_no_check_bg"
+            android:text="好评0"
+            android:textColor="@color/text_gray_color"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/item_goods_details_tm_middle_reputation_btn"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/pj_no_check_bg"
+            android:text="中评0"
+            android:textColor="@color/text_gray_color"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/item_goods_details_tm_negative_comment_btn"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/pj_no_check_bg"
+            android:text="差评0"
+            android:textColor="@color/text_gray_color"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/item_goods_details_tm_blueprint_btn"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/pj_no_check_bg"
+            android:text="晒图0"
+            android:textColor="@color/text_gray_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+
+
+    <com.example.administrator.merchants.common.views.RefreshLayout
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/item_goods_details_tm_common_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:divider="@null"
+            android:scrollbars="none" />
+    </com.example.administrator.merchants.common.views.RefreshLayout>
+
+</LinearLayout>

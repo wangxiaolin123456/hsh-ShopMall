@@ -1,0 +1,174 @@
+package com.example.administrator.merchants.loan.activity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.common.DateUtils;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+import com.example.administrator.merchants.http.show.BankShowBean;
+import com.example.administrator.merchants.http.show.NeedRepaymentShowBean;
+import com.example.administrator.merchants.loan.adapter.LoanBankListAdapter;
+import com.example.administrator.merchants.loan.adapter.LoanNeedRepaymentListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/8/28 0028 16:27
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：我要还款
+ */
+public class LoanNeedRepaymentListActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener,
+        RefreshLayout.OnLoadListener {
+    private ListView listView;
+    private List<NeedRepaymentShowBean>list;
+    private LoanNeedRepaymentListAdapter loanNeedRepaymentListAdapter;
+    private View header;
+    private RefreshLayout swipeLayout;
+    private View footView;
+    public static int s = 0;//是否加载
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loan_bank_card_list);
+        footView = getLayoutInflater().inflate(R.layout.no_more_date_footview, null);
+        setTitles("我要还款");
+        View view=findViewById(R.id.distance);
+        view.setVisibility(View.VISIBLE);
+        listView= (ListView) findViewById(R.id.loan_bank_list);
+        list=new ArrayList<>();
+        loanNeedRepaymentListAdapter=new LoanNeedRepaymentListAdapter(LoanNeedRepaymentListActivity.this,list);
+        initView();//初始化布局
+        setListener();//设置监听
+        swipeLayout.post(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(true);
+            }
+        }));
+        onRefresh();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent();
+                intent.putExtra("type",list.get(position-1).getType());
+                intent.setClass(LoanNeedRepaymentListActivity.this,LoanNeedToActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+    /**
+     * 初始化布局
+     */
+    @SuppressLint({"InlinedApi", "InflateParams"})
+    private void initView() {
+        header = getLayoutInflater().inflate(R.layout.loding_header, null);
+        swipeLayout = (RefreshLayout) findViewById(R.id.swipe_container);
+        listView.addHeaderView(header);
+
+    }
+
+    /**
+     * 设置监听
+     */
+    private void setListener() {
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (s == 0 || s == 1) {
+                    s = 2;
+                    for (int i=0;i<9;i++){
+                        NeedRepaymentShowBean needRepaymentShowBean=new NeedRepaymentShowBean();
+                        needRepaymentShowBean.setMoney("525.00");
+                        needRepaymentShowBean.setType("1");
+                        needRepaymentShowBean.setStage("1期");
+                        needRepaymentShowBean.setStuText("未还");
+                        needRepaymentShowBean.setStu(R.drawable.circular_theme_blue);
+                        needRepaymentShowBean.setDate("最后还款日：2017-08-24");
+                        list.add(needRepaymentShowBean);
+                        NeedRepaymentShowBean needRepaymentShowBean1=new NeedRepaymentShowBean();
+                        needRepaymentShowBean1.setMoney("525.00");
+                        needRepaymentShowBean1.setStage("1期");
+                        needRepaymentShowBean1.setType("3");
+                        needRepaymentShowBean1.setStuText("已还清");
+                        needRepaymentShowBean1.setStu(R.drawable.circular_green);
+                        needRepaymentShowBean1.setDate("还款日：2017-08-24");
+                        list.add(needRepaymentShowBean1);
+                        NeedRepaymentShowBean needRepaymentShowBean2=new NeedRepaymentShowBean();
+                        needRepaymentShowBean2.setMoney("525.00");
+                        needRepaymentShowBean2.setStage("1期");
+                        needRepaymentShowBean2.setType("2");
+                        needRepaymentShowBean2.setStuText("逾期");
+                        needRepaymentShowBean2.setStu(R.drawable.circular_theme);
+                        needRepaymentShowBean2.setDate("逾期：3天");
+                        list.add(needRepaymentShowBean2);
+
+
+                    }
+                    s=1;
+                    loanNeedRepaymentListAdapter.notifyDataSetChanged();
+                    swipeLayout.setLoading(false);
+                    if (list.size() < 15) {
+                        swipeLayout.setOnLoadListener(null);
+                        listView.removeFooterView(footView);
+                        listView.addFooterView(footView);
+                    } else {
+                        swipeLayout.setOnLoadListener(LoanNeedRepaymentListActivity.this);
+                        listView.removeFooterView(footView);
+                    }
+                }
+            }
+        }, 1000);
+    }
+
+    @Override
+    public void onRefresh() {
+
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                list.clear();
+                NeedRepaymentShowBean needRepaymentShowBean=new NeedRepaymentShowBean();
+                needRepaymentShowBean.setMoney("525.00");
+                needRepaymentShowBean.setType("1");
+                needRepaymentShowBean.setStage("1期");
+                needRepaymentShowBean.setStuText("未还");
+                needRepaymentShowBean.setStu(R.drawable.circular_theme_blue);
+                needRepaymentShowBean.setDate("最后还款日：2017-08-24");
+                list.add(needRepaymentShowBean);
+                NeedRepaymentShowBean needRepaymentShowBean1=new NeedRepaymentShowBean();
+                needRepaymentShowBean1.setMoney("525.00");
+                needRepaymentShowBean1.setStage("1期");
+                needRepaymentShowBean1.setType("3");
+                needRepaymentShowBean1.setStuText("已还清");
+                needRepaymentShowBean1.setStu(R.drawable.circular_green);
+                needRepaymentShowBean1.setDate("还款日：2017-08-24");
+                list.add(needRepaymentShowBean1);
+                NeedRepaymentShowBean needRepaymentShowBean2=new NeedRepaymentShowBean();
+                needRepaymentShowBean2.setMoney("525.00");
+                needRepaymentShowBean2.setStage("1期");
+                needRepaymentShowBean2.setType("2");
+                needRepaymentShowBean2.setStuText("逾期");
+                needRepaymentShowBean2.setStu(R.drawable.circular_theme);
+                needRepaymentShowBean2.setDate("逾期：3天");
+                list.add(needRepaymentShowBean2);
+                listView.setAdapter(loanNeedRepaymentListAdapter);
+                swipeLayout.setRefreshing(false);
+            }
+        }, 1000);
+    }
+}

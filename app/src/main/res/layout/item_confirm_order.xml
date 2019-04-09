@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_f8"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_yuan_confirm"
+            android:layout_width="114dp"
+            android:layout_height="102dp"
+            android:layout_marginLeft="16dp"
+            android:scaleType="fitXY" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="98dp"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/confirm_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:lines="2"
+                android:text="原产地商品名称"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+
+            <!--<EditText-->
+                <!--android:id="@+id/edi_beizhu"-->
+                <!--android:layout_width="220dp"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_below="@+id/confirm_title"-->
+                <!--android:background="@null"-->
+                <!--android:gravity="start"-->
+                <!--android:hint="备注"-->
+                <!--android:textColor="#999999"-->
+                <!--android:textSize="10sp" />-->
+
+            <TextView
+                android:id="@+id/item_confirm_order_mode_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/confirm_title"
+                android:layout_marginRight="15dp"
+                android:text=""
+                android:textColor="@color/text_gray_color"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/fuhao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/yuan_rating"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="4dp"
+                android:text="¥"
+                android:textColor="@color/themeColor"
+                android:textSize="16sp"  />
+
+            <TextView
+                android:id="@+id/confirm_danjia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/yuan_rating"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_toRightOf="@+id/fuhao"
+                android:text="0"
+                android:textColor="@color/themeColor"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginRight="47dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="数量:  "
+                    android:textColor="@color/color_666"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/number_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="@color/color_666"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备注:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/edi_beizhu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:background="@null"
+            android:hint="(限20个字)"
+            android:maxLength="20"
+            android:textColor="@color/text_black"
+            android:textColorHint="@color/all_line_color"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/open" />
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/all_bg_gray_color" />
+
+</LinearLayout>

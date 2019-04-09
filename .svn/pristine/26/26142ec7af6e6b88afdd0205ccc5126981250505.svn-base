@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="127dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iv_yuan_confirm"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="98dp"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/confirm_title"
+                android:text="unknow"
+                android:layout_width="match_parent"
+                android:lines="2"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+            <!--<TextView-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="#d3d3d3"-->
+                <!--android:textSize="10sp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginRight="11dp"-->
+                <!--android:text="商品预计2016.06.05到达"-->
+                <!--android:id="@+id/sentTime"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+            <EditText
+                android:background="@null"
+                android:hint="备注"
+                android:gravity="start"
+                android:id="@+id/edi_beizhu"
+                android:layout_width="220dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/confirm_title"
+                android:textSize="10sp"
+                android:textCursorDrawable="@drawable/shape_cursor"
+                android:textColor="#999999" />
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:layout_above="@+id/yuan_rating"
+                android:id="@+id/fuhao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="4dp"
+                android:textSize="13sp"
+                android:text="¥"
+                android:textColor="#FF9D09" />
+            <TextView
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/fuhao"
+                android:layout_above="@+id/yuan_rating"
+                android:id="@+id/confirm_danjia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="4dp"
+                android:textSize="13sp"
+                android:text="null"
+                android:textColor="#FF9D09" />
+            <LinearLayout
+                android:layout_marginBottom="7dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:layout_marginRight="47dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="数量:  "
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/number_confirm"
+                    android:text="1"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_marginBottom="7dp"-->
+                <!--android:id="@+id/number_confirm"-->
+                <!--android:layout_marginRight="47dp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:text="null"-->
+                <!--android:textSize="12sp"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:background="#e4e4e4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+</LinearLayout>

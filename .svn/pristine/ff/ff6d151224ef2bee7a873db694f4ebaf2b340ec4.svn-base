@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical">
+    <include layout="@layout/head_blue"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/rule"
+                android:textColor="@color/white"
+                android:text="选择银行卡作为收款卡"
+                android:background="#f5a278"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:visibility="gone"
+                android:id="@+id/distance"/>
+            <com.example.administrator.merchants.common.views.RefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/swipe_container">
+                <ListView
+                    android:id="@+id/loan_bank_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@null" />
+            </com.example.administrator.merchants.common.views.RefreshLayout>
+            <TextView
+                android:id="@+id/add"
+                android:background="@color/themeBlueColor"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:visibility="gone"/>
+        </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:orientation="vertical">
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#cfcfcf"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="115dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/item_evaluate_image"
+                android:src="@drawable/imageloading"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="10dp"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/item_evaluate_text"
+                    android:hint="感谢您评价~~~"
+                    android:gravity="left|top"
+                    android:padding="5dp"
+                    android:textSize="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/textviewback"
+                    android:layout_marginRight="15dp"
+                    android:textCursorDrawable="@drawable/shape_cursor"
+                    android:layout_height="80dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="匿名评论"
+                        android:gravity="right|center"
+                        android:layout_height="wrap_content" />
+                    <CheckBox
+                        android:id="@+id/item_evaluate_checkBox"
+                        style="@style/CustomCheckboxTheme"
+                        android:layout_marginRight="23dp"
+                        android:checked="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="宝贝评分"
+                android:padding="10dp"
+                android:gravity="center|left"
+                android:layout_height="match_parent" />
+            <RatingBar
+                android:layout_gravity="center_vertical"
+                android:id="@+id/item_evaluate_grade"
+                style="@style/MyRatingBar"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:stepSize="1"
+                android:rating="5" />
+
+
+    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#cfcfcf"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/hotel_uploading_text_picture"
+            android:textColor="@color/uploading_edt_text"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/activity_hotel_details_linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"></LinearLayout>
+
+            <ImageView
+                android:id="@+id/add_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/addpicture"
+                android:scaleType="centerCrop" />
+
+            <GridView
+                android:id="@+id/gridviews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:numColumns="4"></GridView>
+        </LinearLayout>
+
+
+        <!--android:background="@drawable/addpicture"-->
+        <!--android:scaleType="centerCrop" />-->
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,135 @@
+package com.example.administrator.merchants.loan.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.http.show.AuditShowBean;
+import com.example.administrator.merchants.http.show.NeedRepaymentRecordShowBean;
+import com.example.administrator.merchants.loan.activity.AuditDetailsActivity;
+
+import java.util.List;
+
+
+/**
+ * 作者：韩宇 on 2017/7/20 0020 14:33
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：还款记录适配器
+ */
+public class AuditAdapter extends BaseAdapter {
+    private Holder holder;
+    private List<AuditShowBean> list;
+    private Context context;
+
+    public AuditAdapter(Context context, List<AuditShowBean> list) {
+        this.context = context;
+        this.list = list;
+    }
+
+    @Override
+    public int getCount() {
+        return list.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return list.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 4;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return list.get(position).getType();
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        int type = getItemViewType(position);
+        switch (type) {
+            case 1://提交审核
+                if (convertView == null) {
+                    holder = new Holder();
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_loan_audit_progress_query_commit, null);
+                    holder.message = (TextView) convertView.findViewById(R.id.message);
+                    holder.date= (TextView) convertView.findViewById(R.id.date);
+                    convertView.setTag(holder);
+                } else {
+                    holder = (Holder) convertView.getTag();
+                }
+                holder.message.setText(list.get(position).getMessagecommit());
+                holder.date.setText(list.get(position).getDatecommit());
+                break;
+            case 2://审核成功
+                if (convertView == null) {
+                    holder = new Holder();
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_loan_audit_progress_query_true, null);
+                    holder.message = (TextView) convertView.findViewById(R.id.message);
+                    holder.date= (TextView) convertView.findViewById(R.id.date);
+                    holder.messagetrue = (TextView) convertView.findViewById(R.id.messagetrue);
+                    holder.datetrue= (TextView) convertView.findViewById(R.id.datetrue);
+                    convertView.setTag(holder);
+                } else {
+                    holder = (Holder) convertView.getTag();
+                }
+                holder.messagetrue.setText(list.get(position).getMessagetrue());
+                holder.datetrue.setText(list.get(position).getDatetrue());
+                holder.message.setText(list.get(position).getMessagecommit());
+                holder.date.setText(list.get(position).getDatecommit());
+
+                break;
+            case 3://审核失败
+                if (convertView == null) {
+                    holder = new Holder();
+                    convertView = LayoutInflater.from(context).inflate(R.layout.item_loan_audit_progress_query_false, null);
+                    holder.message = (TextView) convertView.findViewById(R.id.message);
+                    holder.date= (TextView) convertView.findViewById(R.id.date);
+                    holder.messagefalse = (TextView) convertView.findViewById(R.id.messagefalse);
+                    holder.datefalse= (TextView) convertView.findViewById(R.id.datefalse);
+                    holder.click = (TextView) convertView.findViewById(R.id.click);
+                    convertView.setTag(holder);
+                } else {
+                    holder = (Holder) convertView.getTag();
+                }
+
+                holder.message.setText(list.get(position).getMessagecommit());
+                holder.date.setText(list.get(position).getDatecommit());
+                holder.messagefalse.setText(list.get(position).getMessagefalse());
+                holder.datefalse.setText(list.get(position).getDatefalse());
+                holder.click.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //点击查看详情
+                        context.startActivity(new Intent(context, AuditDetailsActivity.class));
+                    }
+                });
+                break;
+        }
+        return convertView;
+    }
+
+    public class Holder {
+        public TextView message;
+        public TextView date;
+        public TextView messagetrue;
+        public TextView datetrue;
+        public TextView messagefalse;
+        public TextView datefalse;
+        public TextView click;
+    }
+}

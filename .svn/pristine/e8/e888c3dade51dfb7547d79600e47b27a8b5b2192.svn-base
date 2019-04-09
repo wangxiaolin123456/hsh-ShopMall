@@ -1,0 +1,106 @@
+package com.example.administrator.merchants.http.listener;
+
+import android.content.Context;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.android.volley.Response;
+import com.example.administrator.merchants.http.show.ShoppingCarShowBean;
+import com.example.administrator.merchants.adapter.ShoppingCarAdapter;
+import com.example.administrator.merchants.http.show.TempShoppingCarShowBean;
+import com.example.administrator.merchants.http.HttpUrl;
+import com.example.administrator.merchants.http.Status;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/8/4 0004 09:18
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：购物车列表
+ */
+public class ShoppingCarListener implements Response.Listener<JSONObject> {
+    private Context context;
+    private List<ShoppingCarShowBean> shoppingCarList;
+    public List<TempShoppingCarShowBean> tempShoppingCarShowBeans;
+    private LinearLayout linearCheckAll;
+    public ListView listView;
+    private ShoppingCarAdapter shoppingCarAdapter;
+    private CheckBox checkAll;
+    private TextView textViewTotal;
+
+    public ShoppingCarListener(Context context, List<ShoppingCarShowBean> shoppingCarList, List<TempShoppingCarShowBean> tempShoppingCarShowBeans
+            , LinearLayout linearCheckAll, ListView listView, ShoppingCarAdapter shoppingCarAdapter, CheckBox checkAll, TextView textViewTotal) {
+        this.context = context;
+        this.shoppingCarList = shoppingCarList;
+        this.tempShoppingCarShowBeans = tempShoppingCarShowBeans;
+        this.linearCheckAll = linearCheckAll;
+        this.listView = listView;
+        this.shoppingCarAdapter = shoppingCarAdapter;
+        this.checkAll = checkAll;
+        this.textViewTotal = textViewTotal;
+    }
+
+    @Override
+    public void onResponse(JSONObject jsonObject) {
+        if (Status.status(jsonObject)) {
+            //返回成功
+            try {
+                JSONArray jsonArray = jsonObject.getJSONArray("list");
+                List<JSONObject> jsonObjectList = new ArrayList<>();
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = (JSONObject) jsonArray.get(i);
+                    jsonObjectList.add(object);
+                }
+                for (int j = 0; j < jsonObjectList.size(); j++) {
+                    ShoppingCarShowBean shoppingCarShowBean = new ShoppingCarShowBean();
+                    TempShoppingCarShowBean tempShoppingCarShowBean = new TempShoppingCarShowBean();
+                    shoppingCarShowBean.setCartid(jsonObjectList.get(j).getString("cartid"));
+                    shoppingCarShowBean.setDistdays(jsonObjectList.get(j).getInt("distdays"));
+                    shoppingCarShowBean.setImgsfile(HttpUrl.BaseImageUrl + jsonObjectList.get(j).getString("imgsfile"));
+                    shoppingCarShowBean.setMerdescr(jsonObjectList.get(j).getString("merdescr"));
+                    shoppingCarShowBean.setMerid(jsonObjectList.get(j).getString("merid"));
+                    shoppingCarShowBean.setMername(jsonObjectList.get(j).getString("mername"));
+                    shoppingCarShowBean.setMerqty(jsonObjectList.get(j).getInt("merqty"));
+                    shoppingCarShowBean.setMonthsalenum(jsonObjectList.get(j).getDouble("monthsalenum"));
+                    shoppingCarShowBean.setSaleprice(jsonObjectList.get(j).getDouble("saleprice"));
+                    shoppingCarShowBean.setScoreavg(jsonObjectList.get(j).getDouble("scoreavg"));
+                    shoppingCarShowBean.setStoreid(jsonObjectList.get(j).getString("storeid"));
+                    shoppingCarShowBean.setStorenum(jsonObjectList.get(j).getDouble("storenum"));
+                    if (jsonObjectList.get(j).getString("modelids").equals("") && jsonObjectList.get(j).getString("modeldescr").equals("")) {
+                        shoppingCarShowBean.setType(0);
+                    } else {
+                        shoppingCarShowBean.setType(1);
+                    }
+                    shoppingCarShowBean.setModelids(jsonObjectList.get(j).getString("modelids"));//型号编码
+                    shoppingCarShowBean.setModeldescr(jsonObjectList.get(j).getString("modeldescr"));//型号描述
+                    shoppingCarList.add(shoppingCarShowBean);
+                    tempShoppingCarShowBean.count = String.valueOf(jsonObjectList.get(j).getInt("merqty"));
+                    tempShoppingCarShowBeans.add(tempShoppingCarShowBean);
+                }
+                if (!(shoppingCarList.size() == 0)) {
+                    linearCheckAll.setVisibility(View.VISIBLE);
+                } else {
+                    linearCheckAll.setVisibility(View.INVISIBLE);
+                }
+                listView.setAdapter(shoppingCarAdapter);
+                checkAll.setChecked(false);// TODO: 为了返回时的原始状态加的这两行
+                textViewTotal.setText("0.00");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            //返回失败
+            Status.fail(context, jsonObject);
+        }
+
+    }
+}

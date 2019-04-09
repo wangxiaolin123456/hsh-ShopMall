@@ -1,0 +1,76 @@
+package com.example.administrator.merchants.activity;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseFragmentActivity;
+import com.example.administrator.merchants.fragment.CommentFragment;
+import com.example.administrator.merchants.fragment.GoodsDetailsFragment;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：商品详情
+ */
+public class CommodityDetailsActivity extends BaseFragmentActivity implements View.OnClickListener {
+    private FragmentTransaction transaction;
+    private CommentFragment commentFragment;
+    private GoodsDetailsFragment goodsDetailsFragment;
+    private TextView goods;//商品
+    private TextView common;//评价
+    private View goodsLine;//商品下面的线
+    private View commonLine;//评价下面的线
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_goods_details);
+        goods = (TextView) findViewById(R.id.activity_tm_goods);
+        common = (TextView) findViewById(R.id.activity_goods_tm_common);
+        goodsLine = findViewById(R.id.activity_tm_goods_line);
+        commonLine = findViewById(R.id.activity_goods_tm_common_line);
+        goodsLine.setBackgroundColor(Color.parseColor("#ffffff"));
+        commonLine.setBackgroundColor(Color.parseColor("#00ffffff"));
+        FragmentManager manager = getSupportFragmentManager();
+        transaction = manager.beginTransaction();
+        commentFragment = new CommentFragment();
+        goodsDetailsFragment = new GoodsDetailsFragment();
+        transaction.replace(R.id.activity_goods_details_tm_fragment, goodsDetailsFragment);
+        transaction.commit();
+        goods.setOnClickListener(this);
+        common.setOnClickListener(this);
+    }
+    public void onBack(View view) {
+        finish();//返回键的监听
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+    @Override
+    public void onClick(View v) {
+        FragmentManager manager = getSupportFragmentManager();
+        transaction = manager.beginTransaction();
+        goodsDetailsFragment = new GoodsDetailsFragment();
+        commentFragment = new CommentFragment();
+        switch (v.getId()) {
+            case R.id.activity_tm_goods://商品
+                goodsLine.setBackgroundColor(Color.parseColor("#ffffff"));
+                commonLine.setBackgroundColor(Color.parseColor("#00ffffff"));
+                transaction.replace(R.id.activity_goods_details_tm_fragment, goodsDetailsFragment, "goodsDetailsFragment");
+                break;
+            case R.id.activity_goods_tm_common://评论
+                goodsLine.setBackgroundColor(Color.parseColor("#00ffffff"));
+                commonLine.setBackgroundColor(Color.parseColor("#ffffff"));
+                transaction.replace(R.id.activity_goods_details_tm_fragment, commentFragment, "commentFragment");
+                break;
+        }
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+}

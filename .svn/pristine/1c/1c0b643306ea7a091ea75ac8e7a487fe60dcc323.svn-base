@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#E93441"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/head_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
+            android:onClick="onBack"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/fragment_merchant_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="配套服务"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <!--<ImageView-->
+            <!--android:id="@+id/fragment_merchant_location"-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:src="@drawable/maplocal" />-->
+
+            <ImageView
+                android:id="@+id/fragment_merchant_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <!--<TextView-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="0.5dp"-->
+    <!--android:background="#b3b3b3" />-->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+        <!--全部分类-->
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="#bebebe" />
+
+        <TextView
+            android:id="@+id/tv_type_good"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+        <!--好评排序-->
+        <!--<TextView-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:background="#bebebe" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_min"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:text="离我最近"-->
+        <!--android:textColor="#333333"-->
+        <!--android:textSize="14sp" />-->
+ <!--注释的-->
+        <!--<TextView-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="#bebebe" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_sale"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="销量最高"-->
+            <!--android:textColor="#333333"-->
+            <!--android:textSize="14sp" />-->
+    </LinearLayout>
+
+    <View
+        android:id="@+id/fragment_merchant_main_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#bebebe" />
+
+    <LinearLayout
+        android:id="@+id/search_yes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <com.example.administrator.merchants.view.MyListView
+                android:id="@+id/type_listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_no"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/saerch_no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:text="抱歉，该分类暂无商家。"
+                android:textSize="19dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

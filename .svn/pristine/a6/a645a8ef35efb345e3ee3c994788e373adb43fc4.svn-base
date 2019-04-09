@@ -1,0 +1,90 @@
+package com.example.administrator.merchants.loan.activity;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseFragmentActivity;
+import com.example.administrator.merchants.fragment.HomePageFragment;
+import com.example.administrator.merchants.fragment.MyFragment;
+import com.example.administrator.merchants.loan.fragment.LoanHomePageFragment;
+import com.example.administrator.merchants.loan.fragment.LoanMyFragment;
+
+/**
+ * 作者：韩宇 on 2017/6/23 0023 14:39
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：贷款程序入口
+ */
+public class LoanMainActivity extends BaseFragmentActivity implements RadioGroup.OnCheckedChangeListener {
+    private RadioGroup radioGroup;
+    private RadioButton radioButtonOne;//首页按钮
+    private String fragment1Tag = "LoanHomePageFragment";//首页
+    private String fragment4Tag = "LoanMyFragment";//我的
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loan_main);
+        radioGroup = (RadioGroup) findViewById(R.id.main_activity_radioGroup);
+        radioGroup.setOnCheckedChangeListener(this);
+        radioButtonOne = (RadioButton) findViewById(R.id.main_radioOne);
+        radioButtonOne.setChecked(true);
+    }
+
+    //首页底部监听
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        LoanHomePageFragment homePageFragment = (LoanHomePageFragment) fm.findFragmentByTag(fragment1Tag);//首页
+        LoanMyFragment myFragment = (LoanMyFragment) fm.findFragmentByTag(fragment4Tag);//我的
+        if (homePageFragment != null) {
+            ft.hide(homePageFragment);
+        }
+        if (myFragment != null) {
+            ft.hide(myFragment);
+        }
+        switch (checkedId) {
+            case R.id.main_radioOne:
+                if (homePageFragment == null) {
+                    homePageFragment = new LoanHomePageFragment();
+                    ft.add(R.id.main_activity_frameLayout, homePageFragment, fragment1Tag);
+                } else {
+                    ft.show(homePageFragment);
+                }
+                break;
+            case R.id.main_radioFour:
+                //个人中心fragment
+                if (myFragment == null) {
+                    myFragment = new LoanMyFragment();
+                    ft.add(R.id.main_activity_frameLayout, myFragment, fragment4Tag);
+                } else {
+                    ft.show(myFragment);
+                }
+                break;
+        }
+        ft.commit();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            RadioButton mTab = (RadioButton) radioGroup.getChildAt(i);
+            FragmentManager fm = getSupportFragmentManager();
+            Fragment fragment = fm.findFragmentByTag((String) mTab.getTag());
+            FragmentTransaction ft = fm.beginTransaction();
+            if (fragment != null) {
+                if (!mTab.isChecked()) {
+                    ft.hide(fragment);
+                }
+            }
+            ft.commit();
+        }
+    }
+}

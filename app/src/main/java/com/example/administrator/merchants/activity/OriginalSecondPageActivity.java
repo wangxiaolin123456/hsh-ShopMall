@@ -1,0 +1,359 @@
+package com.example.administrator.merchants.activity;
+
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.adapter.MenuAdapter;
+import com.example.administrator.merchants.adapter.OriginalHomeYouLikeListAdapter;
+import com.example.administrator.merchants.application.MutualApplication;
+import com.example.administrator.merchants.base.BaseActivity;
+import com.example.administrator.merchants.http.Http;
+import com.example.administrator.merchants.http.HttpUrl;
+import com.example.administrator.merchants.http.post.MenuPostBean;
+import com.example.administrator.merchants.http.post.OriginalSecondPagePostBean;
+import com.example.administrator.merchants.http.show.CommodityShowBean;
+import com.example.administrator.merchants.http.show.PopupMenuShowBean;
+import com.example.administrator.merchants.common.views.RefreshLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/7/20 0020 14:33
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：原产地二级分类下商品列表
+ */
+public class OriginalSecondPageActivity extends BaseActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener,
+        RefreshLayout.OnLoadListener {
+    private PopupWindow popupWindow;
+    private View popupWindowView;
+    private TextView all, good, price, sales;
+    private MenuAdapter firstMenuAdapter, secondMenuAdapter;
+    private List<PopupMenuShowBean> listOne;
+    private List<PopupMenuShowBean> listTwo;//可以共用一个bean
+    private TextView textViewTitle;
+    private View viewOriginal;//一条线
+    private List<CommodityShowBean> commodityShowBeans;
+    private ListView listView;
+    private ListView list_menu2;//第二个下拉菜单
+    private OriginalHomeYouLikeListAdapter originalHomeYouLikeListAdapter;
+    private ImageView imageViewSearch;
+    private String type = "null";
+    public static int s = 0;
+    private View header;
+    private RefreshLayout swipeLayout;
+    private View footView;
+    private String menuname, menuid;
+    private ImageView shopCarIcon;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_original_second_page);
+        shopCarIcon = findViewById(R.id.shop_car_icon);
+        shopCarIcon.setVisibility(View.GONE);
+        imageViewSearch = (ImageView) findViewById(R.id.head_search);
+        footView = getLayoutInflater().inflate(R.layout.no_more_date_footview, null);
+        listOne = new ArrayList<>();
+        listTwo = new ArrayList<>();
+        commodityShowBeans = new ArrayList<>();
+        viewOriginal = findViewById(R.id.viewOriginal);
+        all = (TextView) findViewById(R.id.tv_all);//全部分类
+        good = (TextView) findViewById(R.id.tv_typegood);//好评排行
+        price = (TextView) findViewById(R.id.tv_price);//价格排行
+        sales = (TextView) findViewById(R.id.tv_count);//销量排行
+        listView = (ListView) findViewById(R.id.allkindsListView);
+        textViewTitle = (TextView) findViewById(R.id.head_title);
+        menuname = getIntent().getStringExtra("menuname");
+        menuid = getIntent().getStringExtra("menuid");
+        textViewTitle.setText(menuname);//标题
+        if (menuid.equals("all")) {
+            oneMenu(HttpUrl.original_menu_one);
+        } else {
+            oneMenu(HttpUrl.original_menu_two);
+        }
+        originalHomeYouLikeListAdapter = new OriginalHomeYouLikeListAdapter(this, commodityShowBeans);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position <= commodityShowBeans.size()) {
+                    Intent intent = new Intent();
+                    intent.putExtra("merid", commodityShowBeans.get(position - 1).getMerid());
+                    intent.setClass(OriginalSecondPageActivity.this, GoodsDetailsActivity.class);//CommodityDetailsActivity
+                    startActivity(intent);
+                }
+            }
+        });
+        initView();
+        setListener();
+        swipeLayout.post(new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                swipeLayout.setRefreshing(true);
+            }
+        }));
+        onRefresh();
+        click();
+    }
+
+    /**
+     * 点击处理
+     */
+    public void click() {
+        all.setOnClickListener(this);
+        good.setOnClickListener(this);
+        price.setOnClickListener(this);
+        sales.setOnClickListener(this);
+        imageViewSearch.setOnClickListener(this);
+    }
+
+    /**
+     * 初始化布局
+     */
+    @SuppressLint({"InlinedApi", "InflateParams"})
+    private void initView() {
+        header = getLayoutInflater().inflate(R.layout.loding_header, null);
+        swipeLayout = (RefreshLayout) findViewById(R.id.swipe_container);
+        listView.addHeaderView(header);
+    }
+
+    /**
+     * 设置监听
+     */
+    private void setListener() {
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
+    }
+
+    /**
+     * 上拉刷新
+     */
+    @Override
+    public void onRefresh() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getList("0", "15", 0);
+            }
+        }, 1000);
+    }
+
+    /**
+     * 加载更多
+     */
+    @Override
+    public void onLoad() {
+        swipeLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (s == 0 || s == 1) {
+                    s = 2;
+                    getList(commodityShowBeans.size() + "", "15", 2);
+                }
+            }
+        }, 1000);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        MutualApplication.getRequestQueue().cancelAll("originalOneMenu67");
+        MutualApplication.getRequestQueue().cancelAll("originalTwoMenu68");
+        MutualApplication.getRequestQueue().cancelAll("originalSecondPage69");
+        MutualApplication.getRequestQueue().cancelAll("discountText120");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.head_search:
+                startActivity(new Intent(OriginalSecondPageActivity.this, OriginalSearchActivity.class));
+                break;
+            case R.id.tv_all:
+                type = "all";
+                setColor(1);
+                if (popupWindow == null) {
+                    initPop();
+                }
+                popupWindow.showAsDropDown(viewOriginal);
+                break;
+            case R.id.tv_typegood:
+                type = "score";
+                setColor(2);
+                getList("0", "15", 0);
+                break;
+            case R.id.tv_price:
+                type = "price";
+                setColor(3);
+                getList("0", "15", 0);
+                break;
+            case R.id.tv_count:
+                type = "sale";
+                setColor(4);
+                getList("0", "15", 0);
+                break;
+            default:
+        }
+    }
+
+    /**
+     * 设置排序字体颜色
+     *
+     * @param type
+     */
+    private void setColor(int type) {
+        if (type == 1) {
+            all.setTextColor(Color.parseColor("#fc0404"));
+            good.setTextColor(Color.parseColor("#000000"));
+            price.setTextColor(Color.parseColor("#000000"));
+            sales.setTextColor(Color.parseColor("#000000"));
+        } else if (type == 2) {
+            all.setTextColor(Color.parseColor("#000000"));
+            good.setTextColor(Color.parseColor("#fc0404"));
+            price.setTextColor(Color.parseColor("#000000"));
+            sales.setTextColor(Color.parseColor("#000000"));
+        } else if (type == 3) {
+            all.setTextColor(Color.parseColor("#000000"));
+            good.setTextColor(Color.parseColor("#000000"));
+            price.setTextColor(Color.parseColor("#fc0404"));
+            sales.setTextColor(Color.parseColor("#000000"));
+        } else if (type == 4) {
+            all.setTextColor(Color.parseColor("#000000"));
+            good.setTextColor(Color.parseColor("#000000"));
+            price.setTextColor(Color.parseColor("#000000"));
+            sales.setTextColor(Color.parseColor("#fc0404"));
+        }
+    }
+
+    private void initPop() {//初始化popup
+        LayoutInflater layoutInflater = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        popupWindowView = layoutInflater.inflate(R.layout.view_popu_two_list, null);
+        popupWindow = new PopupWindow(popupWindowView,
+                ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT, true);
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setFocusable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+
+        ListView list_menu1 = (ListView) popupWindowView
+                .findViewById(R.id.list_menu1);
+        list_menu2 = (ListView) popupWindowView
+                .findViewById(R.id.list_menu2);
+        firstMenuAdapter = new MenuAdapter(this, listOne);
+        secondMenuAdapter = new MenuAdapter(this, listTwo);
+        list_menu1.setAdapter(firstMenuAdapter);
+        list_menu2.setAdapter(secondMenuAdapter);
+        list_menu1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for (PopupMenuShowBean o : listOne) {
+                    o.setColor(0);
+                }
+                listOne.get(position).setColor(1);
+                firstMenuAdapter.notifyDataSetChanged();
+                listTwo.clear();
+                toGetMenuTwo(listOne.get(position).getMenuid());//去拿二级菜单
+                getList("0", "15", 0);
+            }
+        });
+        list_menu2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for (PopupMenuShowBean o : listTwo) {
+                    o.setColor(0);
+                }
+                listTwo.get(position).setColor(1);
+                secondMenuAdapter.notifyDataSetChanged();
+                getList("0", "15", 0);
+            }
+        });
+    }
+
+    /**
+     * 一级菜单
+     *
+     * @param url
+     */
+    public void oneMenu(String url) {
+        MenuPostBean menuPostBean = new MenuPostBean();
+        menuPostBean.setPmenuid(menuid);
+        Http.originalOneMenu(OriginalSecondPageActivity.this, menuPostBean, listOne, url);
+
+    }
+
+    /**
+     * 二级菜单
+     *
+     * @param pmenuid
+     */
+    public void toGetMenuTwo(String pmenuid) {//拿到含有搜索商品的  二级菜单
+        MenuPostBean menuPostBean = new MenuPostBean();
+        menuPostBean.setPmenuid(pmenuid);
+        Http.originalTwoMenu(OriginalSecondPageActivity.this, menuPostBean, listTwo, list_menu2, secondMenuAdapter, HttpUrl.original_menu_two);
+    }
+
+    /**
+     * 商品列表
+     *
+     * @param offset
+     * @param limit
+     * @param Type
+     */
+    public void getList(String offset, String limit, int Type) {//好评排行
+        OriginalSecondPagePostBean originalSecondPagePostBean = new OriginalSecondPagePostBean();
+        originalSecondPagePostBean.setType(type);
+        String id0 = "menuid";
+        String paramsId0 = menuid;
+        if (menuid.equals("all")) { //toDO   如果是全部分类里的页面
+            id0 = "pmenuid";
+            for (int i = 0; i < listOne.size(); i++) {
+                if (listOne.get(i).getColor() == 1) {
+                    id0 = "menuid";
+                    paramsId0 = listOne.get(i).getMenuid();
+                    if (listOne.get(i).getMenuid().equals("all")) {//toDo 如果一级菜单点的是最后一个“全部分类”的话
+                        id0 = "pmenuid";
+                    }
+                    for (int j = 0; j < listTwo.size(); j++) {
+                        if (listTwo.get(j).getColor() == 1) {
+                            id0 = "submenuid";
+                            paramsId0 = listTwo.get(j).getMenuid();
+                        }
+                    }
+                }
+            }
+        } else {           //toDo 如果不是从全部分类跳进来的话
+            for (int i = 0; i < listOne.size(); i++) {
+                if (listOne.get(i).getColor() == 1) {
+                    id0 = "submenuid";
+                    paramsId0 = listOne.get(i).getMenuid();
+                }
+            }
+        }
+        originalSecondPagePostBean.setId0(id0);
+        originalSecondPagePostBean.setParamsId0(paramsId0);
+        originalSecondPagePostBean.setOffset(offset);
+        originalSecondPagePostBean.setLimit(limit);
+        Http.originalSecondPage(OriginalSecondPageActivity.this, originalSecondPagePostBean, Type, commodityShowBeans, listView, originalHomeYouLikeListAdapter, swipeLayout, footView);
+    }
+}
+
+
+
+

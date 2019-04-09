@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="#EAEAEA" >
+
+            <TextView
+                android:id="@+id/dialog_view_cancel"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="#999999"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/dialog_view_sure"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="#E93441"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/dialog_view_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:background="@drawable/pop_edit_shape"
+            android:gravity="top"
+            android:hint="请输入"
+            android:lines="5"
+            android:padding="5dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

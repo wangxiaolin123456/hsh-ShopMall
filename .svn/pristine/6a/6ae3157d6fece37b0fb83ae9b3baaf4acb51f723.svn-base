@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_color" />
+
+    <LinearLayout
+        android:id="@+id/layout_distence"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/address" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="和平区南山北街(95号)"
+            android:textColor="#565656"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@color/line_color" />
+
+        <ImageView
+            android:id="@+id/img_take_phone"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="center"
+            android:src="@drawable/call" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_color" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_color" />
+
+    <TextView
+        android:id="@+id/tv_work_time"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+
+        android:textColor="#565656"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line_color" />
+
+    <!--配送时间-->
+    <!--<TextView-->
+        <!--android:id="@+id/tv_distribution_time"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:singleLine="true"-->
+        <!--android:textColor="#565656"-->
+        <!--android:textSize="14sp"-->
+        <!--android:visibility="visible" />-->
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/line_color" />
+    <LinearLayout
+        android:id="@+id/layout_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightGray"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_shop_synopsis_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="商家简介"
+            android:textColor="#565656"
+            android:textSize="14sp" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_shop_synopsis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:paddingBottom="16dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="21dp"
+            android:text="必胜客是披萨专卖连锁企业之一。必胜客是披萨专卖连锁企业之一。必胜客是披萨专卖连锁企业之一。必胜客是披萨专卖连锁企业之一。必胜客是披萨专卖连锁企业之一。"
+            android:textColor="#565656"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+    <!--配送时长 起送价 配送费-->
+    <!--<LinearLayout-->
+        <!--android:id="@+id/waiMai_distribution_time_linear"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:background="@color/white"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:visibility="visible">-->
+        <!--配送时长-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:gravity="center">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/peiSong_time"-->
+                    <!--android:text="45"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="#000000"-->
+                    <!--android:textSize="15sp" />-->
+                <!--<TextView-->
+                    <!--android:text="分钟"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="#333333"-->
+                    <!--android:textSize="12sp" />-->
+            <!--</LinearLayout>-->
+            <!--<TextView-->
+                <!--android:id="@+id/peiSong_time_text"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:text="配送时长"-->
+                <!--android:textColor="#565656"-->
+                <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
+        <!--<View-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:background="#d8d8d8" />-->
+
+        <!--起送价-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical"> <LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:gravity="center">-->
+            <!--<TextView-->
+                <!--android:id="@+id/end_out_money"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="#333333"-->
+                <!--android:textSize="15sp" />-->
+            <!--<TextView-->
+                <!--android:text="元"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="#333333"-->
+                <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/end_out_money_text"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:text="起送价"-->
+                <!--android:textColor="#565656"-->
+                <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="15dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:background="#d8d8d8" />-->
+        <!--配送费-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="vertical">-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:gravity="center">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/peiSong_money"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="#333333"-->
+                    <!--android:textSize="15sp" />-->
+                <!--<TextView-->
+                    <!--android:text="元"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="#333333"-->
+                    <!--android:textSize="12sp" />-->
+            <!--</LinearLayout>-->
+            <!--<TextView-->
+                <!--android:id="@+id/peiSong_time_money_text"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:text="配送费"-->
+                <!--android:textColor="#565656"-->
+                <!--android:textSize="12sp" />-->
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="#d8d8d8" />-->
+    <!--</LinearLayout>-->
+
+    <!--<View-->
+        <!--android:id="@+id/activity_merchant_details_view_one"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:visibility="visible"-->
+        <!--android:background="@color/line_color" />-->
+
+    <!--<View-->
+        <!--android:id="@+id/activity_merchant_details_view_two"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:visibility="visible"-->
+        <!--android:background="@color/line_color" />-->
+
+
+
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/white"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingTop="15dp"-->
+        <!--android:text="招聘信息"-->
+        <!--android:textColor="#565656"-->
+        <!--android:textSize="16sp" />-->
+
+</LinearLayout>

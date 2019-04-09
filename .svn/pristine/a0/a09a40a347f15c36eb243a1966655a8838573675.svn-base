@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/head" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:text="岗位"
+            android:textColor="#2d2d2d"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#cfcfcf"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:textColor="#2d2d2d"
+            android:text="人数"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#cfcfcf"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:textColor="#2d2d2d"
+            android:text="岗位工作经验"
+            android:gravity="center"
+            android:layout_width="110dp"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#cfcfcf"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:textColor="#2d2d2d"
+            android:text="薪资"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cfcfcf"/>
+
+
+
+    <com.example.administrator.merchants.view.MyListView
+        android:id="@+id/activity_recruitment_management_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null" />
+
+
+</LinearLayout>

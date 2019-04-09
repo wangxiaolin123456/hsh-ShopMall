@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollview">
+    <LinearLayout
+      android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+         android:orientation="vertical" >
+
+           <Button
+               android:id="@+id/btn_crop"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+                android:text="Crop" />
+
+            <Button
+               android:id="@+id/btn_cancel"
+               android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:text="Cancel" />
+
+           <com.example.administrator.merchants.adapter.MyCropView
+               android:id="@+id/myCropView"
+               android:layout_width="900dp"
+               android:layout_height="600dp"
+                  />
+
+            <ImageView
+                android:id="@+id/croppedImageView"
+               android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+</ScrollView>

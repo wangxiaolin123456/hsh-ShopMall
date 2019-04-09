@@ -1,0 +1,139 @@
+package com.example.administrator.merchants.loan.activity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.base.BaseActivity;
+
+/**
+ * 作者：韩宇 on 2017/9/3 0003 08:56
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：我要借款信息详情提交
+ */
+public class LoanNeedToActivity extends BaseActivity {
+    private LinearLayout showThree;
+    private TextView commit,showMoney,showText,oneText,twoText,threeText,fourText,fiveText,sixText,oneValue,twoValue,threeValue,fourValue,fiveValue,sixValue;
+    private String type;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_loan_need_to);
+        type=getIntent().getStringExtra("type");
+        //展示
+        showMoney= (TextView) findViewById(R.id.show_money);
+        showText= (TextView) findViewById(R.id.show_text);
+        //是否隐藏布局
+        showThree= (LinearLayout) findViewById(R.id.show_three);
+        //6条信息的文字
+        oneText= (TextView) findViewById(R.id.one_text);
+        twoText= (TextView) findViewById(R.id.two_text);
+        threeText= (TextView) findViewById(R.id.three_text);
+        fourText= (TextView) findViewById(R.id.four_text);
+        fiveText= (TextView) findViewById(R.id.five_text);
+        sixText= (TextView) findViewById(R.id.six_text);
+        //6条信息的值
+        oneValue= (TextView) findViewById(R.id.one_value);
+        twoValue= (TextView) findViewById(R.id.two_value);
+        threeValue= (TextView) findViewById(R.id.three_value);
+        fourValue= (TextView) findViewById(R.id.four_value);
+        fiveValue= (TextView) findViewById(R.id.five_value);
+        sixValue= (TextView) findViewById(R.id.six_value);
+        //提交
+        commit= (TextView) findViewById(R.id.commit);
+        if ("0".equals(type)){
+            //借款
+            setTitles("借款详情");
+            showThree.setVisibility(View.GONE);
+            commit.setBackgroundResource(R.drawable.circular_theme_blue);
+            commit.setText("立即借款");
+            showMoney.setText("550.00");
+            showText.setText("到期还款(元)");
+            oneText.setText("借款金额(元)");
+            oneValue.setText("550.00");
+            twoText.setText("借款期限(天)");
+            twoValue.setText("21");
+            fourText.setText("服务费(元)");
+            fourValue.setText("25.00");
+            fiveText.setText("日息(元)");
+            fiveValue.setText("1.19");
+            sixText.setText("借款日期");
+            sixValue.setText("2017-08-25");
+        }else if ("1".equals(type)){
+            //未还
+            setTitles("账单详情");
+            showThree.setVisibility(View.GONE);
+            commit.setBackgroundResource(R.drawable.circular_theme_blue);
+            commit.setText("立即还款");
+            showMoney.setText("550.00");
+            showText.setText("到期还款(元)");
+            oneText.setText("借款金额(元)");
+            oneValue.setText("550.00");
+            twoText.setText("借款时间(天)");
+            twoValue.setText("21");
+            fourText.setText("服务费(元)");
+            fourValue.setText("25.00");
+            fiveText.setText("利息(元)");
+            fiveValue.setText("25.00");
+            sixText.setText("最迟还款日");
+            sixValue.setText("2017-08-25");
+        }else if ("2".equals(type)){
+            //逾期
+            setTitles("账单详情");
+            showThree.setVisibility(View.VISIBLE);
+            commit.setBackgroundResource(R.drawable.circular_theme_blue);
+            commit.setText("立即还款");
+            showMoney.setText("551.19");
+            showText.setText("当前应还(元)");
+            oneText.setText("借款金额(元)");
+            oneValue.setText("550.00");
+            twoText.setText("逾期时间(天)");
+            twoValue.setText("3");
+            threeText.setText("违约金(元)");
+            threeValue.setText("1.19");
+            fourText.setText("服务费(元)");
+            fourValue.setText("25.00");
+            fiveText.setText("利息(元)");
+            fiveValue.setText("25.00");
+            sixText.setText("最迟还款日");
+            sixValue.setText("2017-08-25");
+
+        }else if ("3".equals(type)){
+            //已还清
+            setTitles("账单详情");
+            showThree.setVisibility(View.GONE);
+            commit.setBackgroundResource(R.drawable.circular_gray);
+            commit.setText("已还款");
+            showMoney.setText("550.00");
+            showText.setText("已还款(元)");
+            oneText.setText("借款金额(元)");
+            oneValue.setText("550.00");
+            twoText.setText("借款时间(天)");
+            twoValue.setText("21");
+            fourText.setText("服务费(元)");
+            fourValue.setText("25.00");
+            fiveText.setText("利息(元)");
+            fiveValue.setText("25.00");
+            sixText.setText("还款日");
+            sixValue.setText("2017-08-25");
+        }
+        commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ("0".equals(type)){
+                    //立即借款
+                }else if ("1".equals(type)){
+                    //未还
+                } else if ("2".equals(type)){
+                    //逾期
+                }else if ("3".equals(type)){
+                    //已还清
+                }
+            }
+        });
+    }
+}

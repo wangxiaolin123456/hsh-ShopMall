@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/head"
+        layout="@layout/head" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/head"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <WebView
+                    android:id="@+id/activity_service_details_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00999999">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="110dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/activity_enter_need_input_phone_edt"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="8"
+                            android:background="@drawable/dialog_white_transparent"
+                            android:hint="请输入手机号码"
+                            android:inputType="number"
+                            android:maxLength="11"
+                            android:padding="5dp"
+                            android:phoneNumber="true"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/activity_enter_need_get_code_btn"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="4"
+                            android:background="@drawable/dialog_yellow"
+                            android:text="获取验证码"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/activity_enter_need_input_code_edt"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="4"
+                            android:background="@drawable/dialog_white_transparent"
+                            android:hint="验证码"
+                            android:inputType="number"
+                            android:padding="5dp"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/activity_enter_need_check_image"
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/item_checkbox_car_true"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/activity_enter_need_call_pepole_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/dialog_white_transparent"
+                        android:hint="请输入企业联系人"
+                        android:maxLength="16"
+                        android:padding="5dp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/activity_enter_need_input_content_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/dialog_white_transparent"
+                        android:gravity="top"
+                        android:hint="请填写需求说明"
+                        android:padding="5dp"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/activity_enter_need_commit_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/dialog_theme"
+                        android:text="立即提交"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

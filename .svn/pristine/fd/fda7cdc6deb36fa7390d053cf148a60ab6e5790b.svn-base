@@ -1,0 +1,75 @@
+package com.example.administrator.merchants.loan.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.administrator.merchants.R;
+import com.example.administrator.merchants.http.show.BankShowBean;
+import com.example.administrator.merchants.http.show.NeedRepaymentShowBean;
+
+import java.util.List;
+
+/**
+ * 作者：韩宇 on 2017/7/20 0020 14:33
+ * 邮箱：18698802347@163.com
+ * QQ：1760010478
+ * 功能：我要还款列表适配器
+ */
+public class LoanNeedRepaymentListAdapter extends BaseAdapter {
+    private Context context;
+    private List<NeedRepaymentShowBean> list;
+
+    public LoanNeedRepaymentListAdapter(Context context, List<NeedRepaymentShowBean> list) {
+        this.context = context;
+        this.list = list;
+    }
+
+    @Override
+    public int getCount() {
+        return list == null ? 0 : list.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return list.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        Holder holder;
+        if (convertView == null) {
+            holder = new Holder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_loan_need_repayment_list, null);
+            holder.money = (TextView) convertView.findViewById(R.id.loan_money);
+            holder.stage = (TextView) convertView.findViewById(R.id.loan_stage);
+            holder.stu = (TextView) convertView.findViewById(R.id.loan_stu);
+            holder.date = (TextView) convertView.findViewById(R.id.loan_date);
+            convertView.setTag(holder);
+        } else {
+            holder = (Holder) convertView.getTag();
+        }
+        holder.money.setText(list.get(position).getMoney());
+        holder.stage.setText(list.get(position).getStage());
+        holder.stu.setBackgroundResource(list.get(position).getStu());
+        holder.stu.setText(list.get(position).getStuText());
+        holder.date.setText(list.get(position).getDate());
+        return convertView;
+    }
+
+    public class Holder {
+        public TextView money;//姓名
+        public TextView stage;//地址
+        public TextView stu;
+        public TextView date;
+    }
+}

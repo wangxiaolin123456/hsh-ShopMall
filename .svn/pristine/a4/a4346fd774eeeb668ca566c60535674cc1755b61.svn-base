@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#F5F5F5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/item_shop_car_shop_name_text"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="意识大米饭"
+            android:textColor="#585858"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/item_shop_car_buy_jian"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/buy_jian" />
+
+        <TextView
+            android:id="@+id/item_shop_car_buy_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="1"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/item_shop_car_buy_add"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/add_shop_into" />
+    </LinearLayout>
+</LinearLayout>

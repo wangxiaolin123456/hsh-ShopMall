@@ -1,0 +1,1013 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\me\app\src\main\AndroidManifest.xml:2:1-586:12
+	xmlns:android
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:2:11-69
+	package
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:3:5-50
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+application
+ADDED from D:\me\app\src\main\AndroidManifest.xml:5:5-523:19
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
+	android:supportsRtl
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:10:9-41
+	android:allowBackup
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:8:9-35
+	android:icon
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:9:9-39
+	android:theme
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:12:9-40
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:7:9-54
+uses-library#org.simalliance.openmobileapi
+ADDED from D:\me\app\src\main\AndroidManifest.xml:14:9-16:40
+	android:required
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:16:13-37
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:15:13-57
+activity#com.example.administrator.merchants.welcome.WelcomeActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:19:9-26:20
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:21:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:20:13-52
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\me\app\src\main\AndroidManifest.xml:22:13-25:29
+action#android.intent.action.MAIN
+ADDED from D:\me\app\src\main\AndroidManifest.xml:23:17-69
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:23:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\me\app\src\main\AndroidManifest.xml:24:17-77
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:24:27-74
+activity#com.example.administrator.merchants.activity.LoginActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:29:9-32:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:32:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:31:13-42
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:30:13-51
+activity#com.example.administrator.merchants.adapter.MainActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:33:9-57
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:33:19-55
+activity#com.example.administrator.merchants.activity.ForgetPasswordActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:34:9-37:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:37:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:36:13-52
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:35:13-60
+activity#com.example.administrator.merchants.activity.MyMessageActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:38:9-41:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:41:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:40:13-44
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:39:13-55
+activity#com.example.administrator.merchants.activity.MessageActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:42:9-45:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:45:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:44:13-52
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:43:13-53
+activity#com.example.administrator.merchants.activity.UpdatePasswordActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:46:9-49:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:49:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:48:13-52
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:47:13-60
+activity#com.example.administrator.merchants.activity.AddressListActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:50:9-53:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:53:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:52:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:51:13-57
+activity#com.example.administrator.merchants.activity.UpdateAddressActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:54:9-57:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:57:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:56:13-51
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:55:13-59
+activity#com.example.administrator.merchants.activity.AddAddressActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:58:9-61:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:61:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:60:13-48
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:59:13-56
+activity#com.example.administrator.merchants.activity.BeiManagementActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:63:9-66:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:66:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:65:13-50
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:64:13-59
+activity#com.example.administrator.merchants.activity.BeiRechargeActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:67:9-70:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:70:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:69:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:68:13-57
+activity#com.example.administrator.merchants.activity.BeiRecordActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:71:9-74:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:74:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:73:13-47
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:72:13-55
+activity#com.example.administrator.merchants.activity.AboutUsActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:75:9-78:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:78:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:77:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:76:13-53
+activity#com.example.administrator.merchants.activity.EvaluateActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:79:9-83:55
+	android:windowSoftInputMode
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:83:13-52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:82:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:81:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:80:13-54
+activity#com.example.administrator.merchants.activity.RecruitmentManagementActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:84:9-87:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:87:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:86:13-59
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:85:13-67
+activity#com.example.administrator.merchants.activity.AddRecruitmentActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:88:9-91:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:91:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:90:13-53
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:89:13-60
+activity#com.example.administrator.merchants.activity.InformationManagementActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:92:9-95:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:95:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:94:13-59
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:93:13-67
+activity#com.example.administrator.merchants.activity.BankCardListActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:96:9-99:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:99:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:98:13-52
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:97:13-58
+activity#com.example.administrator.merchants.activity.AddBankCardActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:100:9-103:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:103:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:102:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:101:13-57
+activity#com.example.administrator.merchants.activity.UpdateBankActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:104:9-107:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:107:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:106:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:105:13-56
+activity#com.example.administrator.merchants.activity.BanlaceActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:108:9-111:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:111:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:110:13-53
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:109:13-53
+activity#com.example.administrator.merchants.activity.UpdateBeiBipasswordActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:112:9-115:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:115:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:114:13-58
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:113:13-65
+activity#com.example.administrator.merchants.activity.ForgetBeiBiPasswordActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:116:9-119:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:119:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:118:13-58
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:117:13-65
+activity#com.example.administrator.merchants.activity.MainActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:122:9-126:73
+	android:windowSoftInputMode
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:126:13-70
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:125:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:124:13-41
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:123:13-50
+activity#com.example.administrator.merchants.activity.ShoppingCarActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:128:9-131:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:131:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:130:13-48
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:129:13-57
+activity#com.example.administrator.merchants.activity.ConfirmOrderActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:132:9-136:55
+	android:windowSoftInputMode
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:136:13-52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:135:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:134:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:133:13-58
+activity#com.example.administrator.merchants.activity.OriginalSearchActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:138:9-141:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:141:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:140:13-51
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:139:13-60
+activity#com.example.administrator.merchants.activity.OriginalHomePageActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:143:9-146:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:146:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:145:13-53
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:144:13-62
+activity#com.example.administrator.merchants.activity.OriginalSecondPageActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:148:9-151:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:151:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:150:13-55
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:149:13-64
+activity#com.example.administrator.merchants.activity.OriginalSearchResultActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:153:9-156:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:156:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:155:13-57
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:154:13-66
+activity#com.example.administrator.merchants.activity.PayOrderActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:158:9-167:20
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:161:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:160:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:159:13-54
+intent-filter#android.intent.action.VIEW+android.intent.category.DEFAULT
+ADDED from D:\me\app\src\main\AndroidManifest.xml:162:13-166:29
+action#android.intent.action.VIEW
+ADDED from D:\me\app\src\main\AndroidManifest.xml:163:17-69
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:163:25-66
+category#android.intent.category.DEFAULT
+ADDED from D:\me\app\src\main\AndroidManifest.xml:164:17-76
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:164:27-73
+activity#com.example.administrator.merchants.activity.SingleConfirmOrderActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:169:9-172:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:172:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:171:13-55
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:170:13-64
+activity#com.example.administrator.merchants.activity.BeiBiGiveActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:174:9-177:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:177:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:176:13-48
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:175:13-55
+activity#com.example.administrator.merchants.activity.SelfSupportManageActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:179:9-182:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:182:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:181:13-48
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:180:13-63
+activity#com.example.administrator.merchants.activity.GoodsManageActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:184:9-187:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:187:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:186:13-48
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:185:13-57
+activity#com.example.administrator.merchants.activity.GoodsManageActivityNew
+ADDED from D:\me\app\src\main\AndroidManifest.xml:189:9-192:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:192:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:191:13-48
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:190:13-60
+activity#com.example.administrator.merchants.activity.GoodsClassifyListNewActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:194:9-197:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:197:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:196:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:195:13-66
+activity#com.example.administrator.merchants.activity.GoodsClassifyActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:199:9-202:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:202:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:201:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:200:13-59
+activity#com.example.administrator.merchants.activity.GoodsListLianDongActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:204:9-207:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:207:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:206:13-50
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:205:13-63
+activity#com.example.administrator.merchants.activity.GoodsDetailEditActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:209:9-212:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:212:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:211:13-46
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:210:13-61
+activity#com.example.administrator.merchants.activity.GoodsDetailEditActivityAdd
+ADDED from D:\me\app\src\main\AndroidManifest.xml:214:9-217:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:217:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:216:13-46
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:215:13-64
+activity#com.example.administrator.merchants.activity.GoodsChooseClassifyActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:219:9-222:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:222:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:221:13-51
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:220:13-65
+activity#com.example.administrator.merchants.activity.ProfitCalculationActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:224:9-227:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:227:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:226:13-54
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:225:13-63
+activity#com.example.administrator.merchants.activity.SelfSupportPlatphomActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:230:9-233:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:233:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:232:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:231:13-65
+activity#com.example.administrator.merchants.activity.MonthProfitActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:235:9-238:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:238:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:237:13-48
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:236:13-57
+activity#com.example.administrator.merchants.activity.DayProfitActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:240:9-243:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:243:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:242:13-46
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:241:13-55
+activity#com.example.administrator.merchants.activity.StockNumChangeActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:245:9-248:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:248:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:247:13-50
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:246:13-60
+activity#com.example.administrator.merchants.activity.MerchantsOrderDetailActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:250:9-253:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:253:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:252:13-57
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:251:13-66
+activity#com.example.administrator.merchants.activity.NewMerchantServiceActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:255:9-258:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:258:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:257:13-44
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:256:13-64
+activity#com.example.administrator.merchants.activity.MerchantDetailsActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:261:9-264:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:264:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:263:13-51
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:262:13-61
+activity#com.example.administrator.merchants.activity.BigImageActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:266:9-269:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:269:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:268:13-46
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:267:13-54
+activity#com.example.administrator.merchants.activity.NewGoodsDetailActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:272:9-275:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:275:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:274:13-50
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:273:13-60
+activity#com.example.administrator.merchants.activity.ShowMerchantDetailActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:276:9-277:51
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:277:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:276:19-70
+activity#com.example.administrator.merchants.activity.ShowGoodsDetailsActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:278:9-279:51
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:279:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:278:19-68
+activity#com.example.administrator.merchants.activity.NewConfirmOrderActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:281:9-285:73
+	android:windowSoftInputMode
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:285:13-70
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:284:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:283:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:282:13-61
+activity#com.example.administrator.merchants.activity.SearchActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:287:9-290:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:290:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:289:13-43
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:288:13-52
+activity#com.example.administrator.merchants.activity.OutSearchResultActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:292:9-295:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:295:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:294:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:293:13-61
+activity#com.example.administrator.merchants.activity.NewPayOrderActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:297:9-300:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:300:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:299:13-46
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:298:13-57
+activity#com.example.administrator.merchants.activity.ServiceOrderDetailActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:302:9-305:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:305:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:304:13-55
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:303:13-64
+activity#com.example.administrator.merchants.activity.NewEvaluateActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:308:9-311:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:311:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:310:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:309:13-57
+activity#com.example.administrator.merchants.activity.OriginalOrderDetailActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:313:9-316:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:316:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:315:13-54
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:314:13-65
+activity#com.example.administrator.merchants.activity.MapActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:318:9-321:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:321:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:320:13-45
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:319:13-49
+activity#com.example.administrator.merchants.activity.StockControlActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:323:9-326:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:326:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:325:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:324:13-58
+activity#com.example.administrator.merchants.activity.AddressTwoLineActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:328:9-331:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:331:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:330:13-43
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:329:13-60
+activity#com.example.administrator.merchants.activity.SelectPictureActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:333:9-336:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:336:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:335:13-43
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:334:13-59
+activity#com.example.administrator.merchants.activity.Two
+ADDED from D:\me\app\src\main\AndroidManifest.xml:338:9-340:52
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:340:13-49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:339:13-41
+activity#com.unionpay.uppay.PayActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:344:9-350:58
+	android:windowSoftInputMode
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:350:13-55
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:349:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:348:13-48
+	android:configChanges
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:346:13-63
+	android:excludeFromRecents
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:347:13-46
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:345:13-58
+activity#com.unionpay.UPPayWapActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:352:9-357:58
+	android:windowSoftInputMode
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:357:13-55
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:356:13-49
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:355:13-48
+	android:configChanges
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:354:13-63
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:353:13-57
+activity#com.alipay.sdk.app.H5PayActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:361:9-366:59
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:366:13-47
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:365:13-44
+	android:configChanges
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:363:13-74
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:364:13-37
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:362:13-60
+activity#com.alipay.sdk.auth.AuthActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:367:9-372:59
+	android:screenOrientation
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:372:13-47
+	android:label
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:371:13-44
+	android:configChanges
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:369:13-74
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:370:13-37
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:368:13-60
+receiver#com.example.administrator.merchants.util.AppRegister
+ADDED from D:\me\app\src\main\AndroidManifest.xml:376:9-380:20
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:376:19-51
+intent-filter#com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP
+ADDED from D:\me\app\src\main\AndroidManifest.xml:377:13-379:29
+action#com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP
+ADDED from D:\me\app\src\main\AndroidManifest.xml:378:17-100
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:378:25-97
+activity#com.example.administrator.merchants.wxapi.WXPayEntryActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:381:9-384:55
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:383:13-36
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:382:13-53
+	android:launchMode
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:384:13-43
+activity#com.example.administrator.merchants.jpush.SecondActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:390:9-58
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:390:19-55
+activity#com.example.administrator.merchants.jpush.TestActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:392:9-400:20
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:394:13-37
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:393:13-47
+intent-filter#jpush.testAction+jpush.testCategory
+ADDED from D:\me\app\src\main\AndroidManifest.xml:396:13-399:29
+action#jpush.testAction
+ADDED from D:\me\app\src\main\AndroidManifest.xml:397:17-59
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:397:25-56
+category#jpush.testCategory
+ADDED from D:\me\app\src\main\AndroidManifest.xml:398:17-63
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:398:27-60
+activity#cn.jpush.android.ui.PopWinActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:402:9-405:52
+	android:theme
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:405:13-49
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:404:13-37
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:403:13-62
+activity#cn.jpush.android.ui.PushActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:408:9-420:20
+	android:configChanges
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:410:13-63
+	android:theme
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:412:13-60
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:411:13-37
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:409:13-60
+intent-filter#android.intent.category.DEFAULT+cn.jpush.android.ui.PushActivity+com.example.administrator.merchants
+ADDED from D:\me\app\src\main\AndroidManifest.xml:414:13-419:29
+action#cn.jpush.android.ui.PushActivity
+ADDED from D:\me\app\src\main\AndroidManifest.xml:415:17-75
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:415:25-72
+category#com.example.administrator.merchants
+ADDED from D:\me\app\src\main\AndroidManifest.xml:418:17-80
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:418:27-77
+service#cn.jpush.android.service.DownloadService
+ADDED from D:\me\app\src\main\AndroidManifest.xml:422:9-425:40
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:425:13-37
+	android:enabled
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:424:13-35
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:423:13-68
+service#cn.jpush.android.service.PushService
+ADDED from D:\me\app\src\main\AndroidManifest.xml:428:9-438:19
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:431:13-37
+	android:enabled
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:430:13-35
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:429:13-64
+intent-filter#cn.jpush.android.intent.PUSH_TIME+cn.jpush.android.intent.PushService+cn.jpush.android.intent.REGISTER+cn.jpush.android.intent.REPORT
+ADDED from D:\me\app\src\main\AndroidManifest.xml:432:13-437:29
+action#cn.jpush.android.intent.REGISTER
+ADDED from D:\me\app\src\main\AndroidManifest.xml:433:17-75
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:433:25-72
+action#cn.jpush.android.intent.REPORT
+ADDED from D:\me\app\src\main\AndroidManifest.xml:434:17-73
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:434:25-70
+action#cn.jpush.android.intent.PushService
+ADDED from D:\me\app\src\main\AndroidManifest.xml:435:17-78
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:435:25-75
+action#cn.jpush.android.intent.PUSH_TIME
+ADDED from D:\me\app\src\main\AndroidManifest.xml:436:17-76
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:436:25-73
+service#cn.jpush.android.service.DaemonService
+ADDED from D:\me\app\src\main\AndroidManifest.xml:441:9-449:19
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:444:13-36
+	android:enabled
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:443:13-35
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:442:13-66
+intent-filter#cn.jpush.android.intent.DaemonService+com.example.administrator.merchants
+ADDED from D:\me\app\src\main\AndroidManifest.xml:445:13-448:29
+action#cn.jpush.android.intent.DaemonService
+ADDED from D:\me\app\src\main\AndroidManifest.xml:446:17-80
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:446:25-77
+receiver#cn.jpush.android.service.PushReceiver
+ADDED from D:\me\app\src\main\AndroidManifest.xml:451:9-471:20
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:454:13-37
+	android:enabled
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:453:13-35
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:452:13-65
+intent-filter#cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY+com.example.administrator.merchants
+ADDED from D:\me\app\src\main\AndroidManifest.xml:455:13-459:29
+	android:priority
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:455:28-51
+action#cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY
+ADDED from D:\me\app\src\main\AndroidManifest.xml:456:17-94
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:456:25-91
+intent-filter#android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:460:13-463:29
+action#android.intent.action.USER_PRESENT
+ADDED from D:\me\app\src\main\AndroidManifest.xml:461:17-77
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:461:25-74
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:462:17-79
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:462:25-76
+intent-filter#android.intent.action.PACKAGE_ADDED+android.intent.action.PACKAGE_REMOVED
+ADDED from D:\me\app\src\main\AndroidManifest.xml:465:13-470:29
+action#android.intent.action.PACKAGE_ADDED
+ADDED from D:\me\app\src\main\AndroidManifest.xml:466:17-78
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:466:25-75
+action#android.intent.action.PACKAGE_REMOVED
+ADDED from D:\me\app\src\main\AndroidManifest.xml:467:17-80
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:467:25-77
+data
+ADDED from D:\me\app\src\main\AndroidManifest.xml:469:17-50
+	android:scheme
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:469:23-47
+receiver#cn.jpush.android.service.AlarmReceiver
+ADDED from D:\me\app\src\main\AndroidManifest.xml:473:9-475:40
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:475:13-37
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:474:13-66
+receiver#com.example.administrator.merchants.jpush.MeReceiver
+ADDED from D:\me\app\src\main\AndroidManifest.xml:477:9-497:20
+	android:exported
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:480:13-37
+	android:enabled
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:479:13-35
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:478:13-45
+intent-filter#cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK+cn.jpush.android.intent.CONNECTION+cn.jpush.android.intent.MESSAGE_RECEIVED+cn.jpush.android.intent.NOTIFICATION_OPENED+cn.jpush.android.intent.NOTIFICATION_RECEIVED+cn.jpush.android.intent.REGISTRATION+cn.jpush.android.intent.UNREGISTRATION+com.example.administrator.merchants
+ADDED from D:\me\app\src\main\AndroidManifest.xml:481:13-496:29
+action#cn.jpush.android.intent.REGISTRATION
+ADDED from D:\me\app\src\main\AndroidManifest.xml:482:17-79
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:482:25-76
+action#cn.jpush.android.intent.UNREGISTRATION
+ADDED from D:\me\app\src\main\AndroidManifest.xml:484:17-81
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:484:25-78
+action#cn.jpush.android.intent.MESSAGE_RECEIVED
+ADDED from D:\me\app\src\main\AndroidManifest.xml:485:17-83
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:485:25-80
+action#cn.jpush.android.intent.NOTIFICATION_RECEIVED
+ADDED from D:\me\app\src\main\AndroidManifest.xml:487:17-88
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:487:25-85
+action#cn.jpush.android.intent.NOTIFICATION_OPENED
+ADDED from D:\me\app\src\main\AndroidManifest.xml:489:17-86
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:489:25-83
+action#cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK
+ADDED from D:\me\app\src\main\AndroidManifest.xml:491:17-91
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:491:25-88
+action#cn.jpush.android.intent.CONNECTION
+ADDED from D:\me\app\src\main\AndroidManifest.xml:493:17-77
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:493:25-74
+meta-data#JPUSH_CHANNEL
+ADDED from D:\me\app\src\main\AndroidManifest.xml:502:9-504:49
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:503:13-41
+	android:value
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:504:13-46
+meta-data#JPUSH_APPKEY
+ADDED from D:\me\app\src\main\AndroidManifest.xml:505:9-507:56
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:506:13-40
+	android:value
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:507:13-53
+meta-data#com.baidu.lbsapi.API_KEY
+ADDED from D:\me\app\src\main\AndroidManifest.xml:516:9-518:64
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:517:13-52
+	android:value
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:518:13-61
+service#com.baidu.location.f
+ADDED from D:\me\app\src\main\AndroidManifest.xml:519:9-522:41
+	android:process
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:522:13-38
+	android:enabled
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:521:13-35
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:520:13-48
+uses-permission#android.permission.INTERNET
+ADDED from D:\me\app\src\main\AndroidManifest.xml:526:5-67
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:526:22-64
+uses-permission#android.permission.CALL_PHONE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:527:5-69
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:527:22-66
+uses-feature#android.hardware.telephony
+ADDED from D:\me\app\src\main\AndroidManifest.xml:529:5-531:36
+	android:required
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:531:9-33
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:530:9-50
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:532:5-75
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:532:22-72
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:534:5-79
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:534:22-76
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:535:5-79
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:535:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:536:5-81
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:536:22-78
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:537:5-76
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:537:22-73
+uses-permission#android.permission.NFC
+ADDED from D:\me\app\src\main\AndroidManifest.xml:538:5-62
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:538:22-59
+uses-feature#android.hardware.nfc.hce
+ADDED from D:\me\app\src\main\AndroidManifest.xml:540:5-61
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:540:19-58
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\me\app\src\main\AndroidManifest.xml:542:5-71
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:542:22-68
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from D:\me\app\src\main\AndroidManifest.xml:543:5-80
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:543:22-77
+uses-permission#org.simalliance.openmobileapi.SMARTCARD
+ADDED from D:\me\app\src\main\AndroidManifest.xml:544:5-79
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:544:22-76
+permission#com.example.administrator.merchants.permission.JPUSH_MESSAGE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:546:5-548:47
+	android:protectionLevel
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:548:9-44
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:547:9-84
+uses-permission#com.example.administrator.merchants.permission.JPUSH_MESSAGE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:550:5-100
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:550:22-97
+uses-permission#android.permission.RECEIVE_USER_PRESENT
+ADDED from D:\me\app\src\main\AndroidManifest.xml:551:5-79
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:551:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\me\app\src\main\AndroidManifest.xml:552:5-68
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:552:22-65
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:553:5-80
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:553:22-77
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from D:\me\app\src\main\AndroidManifest.xml:554:5-73
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:554:22-70
+uses-permission#android.permission.VIBRATE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:555:5-66
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:555:22-63
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\me\app\src\main\AndroidManifest.xml:556:5-84
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:556:22-81
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\me\app\src\main\AndroidManifest.xml:557:5-78
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:557:22-75
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\me\app\src\main\AndroidManifest.xml:559:5-76
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:559:22-73
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\me\app\src\main\AndroidManifest.xml:566:5-81
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:566:22-78
+uses-permission#android.permission.CAMERA
+ADDED from D:\me\app\src\main\AndroidManifest.xml:570:5-65
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:570:22-62
+uses-permission#com.android.launcher.permission.READ_SETTINGS
+ADDED from D:\me\app\src\main\AndroidManifest.xml:571:5-85
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:571:22-82
+uses-permission#android.permission.GET_TASKS
+ADDED from D:\me\app\src\main\AndroidManifest.xml:573:5-68
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:573:22-65
+uses-permission#android.permission.BROADCAST_STICKY
+ADDED from D:\me\app\src\main\AndroidManifest.xml:574:5-75
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:574:22-72
+uses-permission#android.permission.PROCESS_OUTGOING_CALLS
+ADDED from D:\me\app\src\main\AndroidManifest.xml:576:5-81
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:576:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\me\app\src\main\AndroidManifest.xml:583:5-79
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:583:22-76
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from D:\me\app\src\main\AndroidManifest.xml:584:5-89
+	android:name
+		ADDED from D:\me\app\src\main\AndroidManifest.xml:584:22-86
+uses-sdk
+INJECTED from D:\me\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:20:5-43
+	android:targetSdkVersion
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+		INJECTED from D:\me\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:23.4.0] D:\me\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:23:9-75
