@@ -22,6 +22,7 @@ import com.example.administrator.merchants.http.post.MerIdPostBean;
 import com.example.administrator.merchants.http.post.SendPostBean;
 import com.example.administrator.merchants.http.show.MerchantsOrderShowBean;
 import com.example.administrator.merchants.common.toast.CustomToast;
+import com.example.administrator.merchants.utils.LogUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -209,7 +210,8 @@ public class OriginalOrderDetailActivity extends BaseActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position > 0) {
+                LogUtil.i("pos"+position+"\n"+list.size());
+                if (position != 0 && position!= list.size()+1) {
                     toGetGoodsDetailUp(position);
                 }
             }
@@ -236,6 +238,7 @@ public class OriginalOrderDetailActivity extends BaseActivity {
     public void toGetGoodsDetailUp(int position) {//商品详情头部请求
         MerIdPostBean merIdPostBean = new MerIdPostBean();
         merIdPostBean.setMerid(list.get(position - 1).getMerid());
+        merIdPostBean.setMemStoreType("1");
         Http.toCommodityDetails(OriginalOrderDetailActivity.this, merIdPostBean, list, position);
     }
 

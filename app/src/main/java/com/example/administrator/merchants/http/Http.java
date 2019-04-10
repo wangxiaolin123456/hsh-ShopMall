@@ -821,7 +821,8 @@ public class Http {
      */
     public static void upGoodsDetail(Context context, MerIdPostBean merIdPostBean) {
         try {
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, HttpUrl.mer_detail, PossObject.getMerId(merIdPostBean), new GoodsDetailListener(context, merIdPostBean, 0), new ErrorListener(context, 1));
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, HttpUrl.mer_detail,
+                    PossObject.getMerId(merIdPostBean), new GoodsDetailListener(context, merIdPostBean, 0), new ErrorListener(context, 1));
             jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(50000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             jsonObjectRequest.setTag("upGoodsDetail25");
             MutualApplication.getRequestQueue().add(jsonObjectRequest);
@@ -1527,7 +1528,8 @@ public class Http {
      */
     public static void toCommodityDetails(Context context, MerIdPostBean merIdPostBean, List<MerchantsOrderShowBean> list, int position) {
         try {
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, HttpUrl.goodsDetail_up, PossObject.getMerId(merIdPostBean), new ToCommodityDetailsListener(context, list, position), new ErrorListener(context, 1));
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, HttpUrl.goodsDetail_up,
+                    PossObject.getMerId(merIdPostBean), new ToCommodityDetailsListener(context, list, position), new ErrorListener(context, 1));
             jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(50000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             jsonObjectRequest.setTag("toCommodityDetails59");
             MutualApplication.getRequestQueue().add(jsonObjectRequest);

@@ -130,6 +130,7 @@ public class GoodsEvaluateListActivity extends BaseActivity implements View.OnCl
     public void toGetGoodsDetailUp() {//头部请求
         MerIdPostBean merIdPostBean = new MerIdPostBean();
         merIdPostBean.setMerid(merid);
+        merIdPostBean.setMemStoreType("1");
         Http.toGetGoodsDetailUp(mContext, merIdPostBean, goodReputationBtn, allBtn, middleEvaluationBtn, negativeCommentBtn, makeBlueprintBtn);
     }
 

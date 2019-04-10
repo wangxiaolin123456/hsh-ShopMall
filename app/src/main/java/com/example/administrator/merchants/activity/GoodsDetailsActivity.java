@@ -588,6 +588,7 @@ public class GoodsDetailsActivity extends BaseActivity implements CommonPopupWin
     public void shopDetails() {
         MerIdPostBean merIdPostBean = new MerIdPostBean();
         merIdPostBean.setMerid(merid);
+        merIdPostBean.setMemStoreType("1");
         Http.getModeList(mContext, merIdPostBean, modeLineOne, modeLineTwo, modeLineThree, modeLineFour, modeLineFive, modeLineSix
                 , modeList, standardOne, standardTwo, standardThree, standardFour, standardFive, standardSix
                 , modeListShowBeanList, viewTexts, viewTextTwo, viewTextThree, viewTextFour, viewTextFive, viewTextSix, goodsViewGroupOne
@@ -622,6 +623,7 @@ public class GoodsDetailsActivity extends BaseActivity implements CommonPopupWin
     public void toGetGoodsDetailUp() {//头部请求
         MerIdPostBean merIdPostBean = new MerIdPostBean();
         merIdPostBean.setMerid(merid);
+        merIdPostBean.setMemStoreType("1");
         Http.getGoodsDetail(mContext, merIdPostBean, shopName,
                 goodsDetail_monNo, goodsDetail_storeNo,
                 textView_sale_price, goodsDetail_info,

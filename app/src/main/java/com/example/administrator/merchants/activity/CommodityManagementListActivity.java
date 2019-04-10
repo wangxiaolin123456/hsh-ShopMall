@@ -157,6 +157,7 @@ public class CommodityManagementListActivity extends BaseActivity implements Swi
     public void toGetGoodsDetailUp(int position) {
         MerIdPostBean merIdPostBean = new MerIdPostBean();
         merIdPostBean.setMerid(likeBeans.get(position).getMerid());
+        merIdPostBean.setMemStoreType("1");
         Http.upGoodsDetail(CommodityManagementListActivity.this, merIdPostBean);
     }
 

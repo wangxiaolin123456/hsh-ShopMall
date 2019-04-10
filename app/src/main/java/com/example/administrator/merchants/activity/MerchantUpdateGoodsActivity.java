@@ -336,6 +336,7 @@ public class MerchantUpdateGoodsActivity extends BaseActivity implements MineAva
     public void getMer() {
         MerIdPostBean merIdPostBean = new MerIdPostBean();
         merIdPostBean.setMerid(merid);
+        merIdPostBean.setMemStoreType("1");
         Http.upGoodsDetail(MerchantUpdateGoodsActivity.this, merIdPostBean, imageLoader, options, bitmapShowBeanList, imageView, gridView, updateImageAdapter, toggleButton, beiBiLine, number, commodityNameShow, detailShow, classifyShow, price, beiBi);
     }
 

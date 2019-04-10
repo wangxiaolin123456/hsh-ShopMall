@@ -138,16 +138,7 @@ public class GetGoodsDetailListener implements Response.Listener<JSONObject> {
                 }
 
                 //评价部分
-                //评价总数自己加得
-                double pjs = MyMath.add(object.getInt("scorememnum1") + "",
-                        object.getInt("scorememnum2") + "");
-                double pjss = MyMath.add(object.getInt("scorememnum3") + "",
-                        object.getInt("scorememnumimg") + "");
-
-
-                int pjTotalNum = (int) MyMath.add(pjss + "",
-                        pjs + "");
-                evaluateAllNumTv.setText("商品评价(" + pjTotalNum + ")");
+                evaluateAllNumTv.setText("商品评价(" + object.getInt("scorenum") + ")");
 
 
                 JSONArray evaluateArray = (JSONArray) jsonObject.get("evaluateInfo");
@@ -173,7 +164,7 @@ public class GetGoodsDetailListener implements Response.Listener<JSONObject> {
                         } else {
                             pjBean.setImgsfile(HttpUrl.BaseImageUrl + pjListJSONObject.get(j).getString("imgsfile"));
                         }
-                        pjBean.setStorename(pjListJSONObject.get(j).getString("memname"));
+                        pjBean.setStorename(pjListJSONObject.get(j).getString("storename"));
                         pjBean.setIsanonymous(pjListJSONObject.get(j).getString("isanonymous"));
                         pjBean.setMerid(pjListJSONObject.get(j).getString("merid"));
                         pjBean.setOrdno(pjListJSONObject.get(j).getString("ordno"));
@@ -232,7 +223,7 @@ public class GetGoodsDetailListener implements Response.Listener<JSONObject> {
                         images.add(er);
                     }
                 }
-                com.smarttop.library.utils.LogUtil.i("aa", "评价图片集合" + images.size());
+                LogUtil.i("评价图片集合" + images.size());
                 if (images.size() == 0) {
                     pjLine.setVisibility(View.GONE);
                 } else {

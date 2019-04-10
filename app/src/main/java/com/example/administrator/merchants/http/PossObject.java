@@ -196,7 +196,7 @@ public class PossObject {
         jsonObject.put("storeid", listPostBean.getStoreid());
         jsonObject.put("offset", listPostBean.getOffset());
         jsonObject.put("limit", listPostBean.getLimit());
-        LogUtil.i("入参"+jsonObject.toString());
+        LogUtil.i("入参" + jsonObject.toString());
         return jsonObject;
     }
 
@@ -344,7 +344,7 @@ public class PossObject {
         jsonObject.put("giftphone", beiBiGivePostBean.getGiftphone());
         jsonObject.put("giftamt", beiBiGivePostBean.getGiftamt());
         jsonObject.put("beibiType", beiBiGivePostBean.getBeibiType());
-        com.smarttop.library.utils.LogUtil.i("aa","赠予入参"+ jsonObject.toString());
+        com.smarttop.library.utils.LogUtil.i("aa", "赠予入参" + jsonObject.toString());
         return jsonObject;
     }
 
@@ -374,6 +374,8 @@ public class PossObject {
     public static JSONObject getMerId(MerIdPostBean merIdPostBean) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("merid", merIdPostBean.getMerid());
+        jsonObject.put("memStoreType", merIdPostBean.getMemStoreType());
+        LogUtil.i("商品详情入参" + jsonObject.toString());
         return jsonObject;
     }
 
@@ -553,7 +555,7 @@ public class PossObject {
         map.put("wordno", evaluatePostBean.getWordno());
         map.put("wstoreid", evaluatePostBean.getWstoreid());
         map.put("wmerList", evaluatePostBean.getWmerList().toString());
-        LogUtil.i("评价入参"+map.toString());
+        LogUtil.i("评价入参" + map.toString());
         return map;
     }
 

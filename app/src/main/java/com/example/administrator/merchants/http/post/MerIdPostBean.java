@@ -8,6 +8,15 @@ package com.example.administrator.merchants.http.post;
  */
 public class MerIdPostBean {
     private String merid;
+    private String memStoreType;//0:消费者  1：商家
+
+    public String getMemStoreType() {
+        return memStoreType;
+    }
+
+    public void setMemStoreType(String memStoreType) {
+        this.memStoreType = memStoreType;
+    }
 
     public void setMerid(String merid) {
         this.merid = merid;

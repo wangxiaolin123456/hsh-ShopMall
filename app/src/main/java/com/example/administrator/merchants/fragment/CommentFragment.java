@@ -142,6 +142,7 @@ public class CommentFragment extends BaseFragment implements View.OnClickListene
     public void toGetGoodsDetailUp() {//头部请求
         MerIdPostBean merIdPostBean = new MerIdPostBean();
         merIdPostBean.setMerid(merid);
+        merIdPostBean.setMemStoreType("1");
         Http.toGetGoodsDetailUp(getActivity(), merIdPostBean, goodReputationBtn, allBtn, middleEvaluationBtn, negativeCommentBtn, makeBlueprintBtn);
     }
 
